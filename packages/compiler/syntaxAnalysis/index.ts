@@ -1,0 +1,1 @@
+export { syntaxAnalysis } from './syntaxAnalysis';

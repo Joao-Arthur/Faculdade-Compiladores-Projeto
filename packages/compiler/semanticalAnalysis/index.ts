@@ -1,0 +1,1 @@
+export { semanticAnalysis } from './semanticAnalysis';

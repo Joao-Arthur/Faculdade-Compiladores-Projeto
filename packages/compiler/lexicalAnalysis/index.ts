@@ -1,0 +1,1 @@
+export { lexicalAnalysis } from './lexicalAnalysis';
