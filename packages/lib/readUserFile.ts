@@ -1,5 +1,5 @@
 export function readUserFile(): Promise<string> {
-    return window.ipcRenderer.invoke('my-invokable-ipc', {
+    return window.ipcRenderer.invoke('custom-event', {
         type: 'open-file'
     });
 }

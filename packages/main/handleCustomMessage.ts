@@ -14,7 +14,7 @@ export function handleCustomMessage(
         case 'open-file':
             return openFile(win);
         case 'save-file':
-            return saveFile(win, dispatchedEvent);
+            return saveFile(win, dispatchedEvent.payload);
     }
 }
 
@@ -31,10 +31,7 @@ async function openFile(win: BrowserWindow | null) {
     return fileContent;
 }
 
-async function saveFile(
-    win: BrowserWindow | null,
-    dispatchedEvent: saveFileEvent
-) {
+async function saveFile(win: BrowserWindow | null, content: string) {
     if (!win) return null;
     const chosenFile = await dialog.showSaveDialog(win, {
         filters: [{ name: 'Custom File Type', extensions: ['dfj'] }]
@@ -42,7 +39,7 @@ async function saveFile(
     if (chosenFile.canceled) return null;
     const path = chosenFile.filePath;
     if (!path) return null;
-    const fileContent = await fs.writeFile(path, dispatchedEvent.payload, {
+    const fileContent = await fs.writeFile(path, content, {
         encoding: 'utf-8'
     });
     return fileContent;

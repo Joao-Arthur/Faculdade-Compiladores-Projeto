@@ -13,7 +13,7 @@ if (!app.requestSingleInstanceLock()) {
 
 let win: BrowserWindow | null = null;
 
-ipcMain.handle('my-invokable-ipc', (_, dispatchedEvent) =>
+ipcMain.handle('custom-event', (_, dispatchedEvent) =>
     handleCustomMessage(win, dispatchedEvent)
 );
 
