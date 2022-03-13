@@ -1,15 +1,24 @@
+import { useEffect } from 'react';
+import { useMutation } from 'react-query';
 import { FcOpenedFolder } from 'react-icons/fc';
 import { readUserFile } from '../../../../lib/readUserFile';
 import { BaseButton } from '@/BaseButton';
+import { toast } from '@/toast';
 import { useEditorStore } from '../Body/Editor/useEditorStore';
 
 export function OpenFileButton() {
     const { setEditorCode } = useEditorStore();
+    const { mutate, isSuccess, data } = useMutation(() =>
+        toast(readUserFile(), {
+            loading: 'Carregando arquivo...',
+            success: 'Arquivo carregado com sucesso!',
+            error: 'Não foi possível carregar o arquivo!'
+        })
+    );
 
-    async function onClick() {
-        const content = await readUserFile();
-        setEditorCode(content);
-    }
+    useEffect(() => {
+        if (isSuccess) setEditorCode(data);
+    }, [isSuccess]);
 
-    return <BaseButton onClick={onClick} Icon={<FcOpenedFolder size={20} />} />;
+    return <BaseButton onClick={mutate} Icon={<FcOpenedFolder size={20} />} />;
 }

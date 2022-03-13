@@ -1,14 +1,20 @@
 import { StrictMode } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { GlobalStyle } from './GlobalStyle';
 import { MainPage } from './MainPage';
+import '../global.css';
 
-import '../global.css'
+const queryClient = new QueryClient();
 
 export function App() {
     return (
         <StrictMode>
-            <GlobalStyle />
-            <MainPage />
+            <QueryClientProvider client={queryClient}>
+                <GlobalStyle />
+                <Toaster />
+                <MainPage />
+            </QueryClientProvider>
         </StrictMode>
     );
 }
