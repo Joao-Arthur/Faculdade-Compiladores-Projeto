@@ -16,9 +16,12 @@
   },
   "dependencies": {
     "ace-builds": "^1.4.14",
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.8",
     "react-ace": "^9.5.0",
     "react-icons": "^4.3.1",
     "styled-components": "^5.3.3",
+    "tailwindcss": "^3.0.23",
     "zustand": "^3.7.1"
   },
   "devDependencies": {
