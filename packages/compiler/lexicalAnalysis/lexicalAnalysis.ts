@@ -1,1 +1,3 @@
-export function lexicalAnalysis() {}
+export function lexicalAnalysis(sourceCode: string) {
+    return [];
+}
