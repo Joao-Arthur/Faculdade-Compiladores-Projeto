@@ -13,16 +13,44 @@ if (!app.requestSingleInstanceLock()) {
 
 let win: BrowserWindow | null = null;
 
-ipcMain.handle('my-invokable-ipc', async (event, ...args) => {
-    if (!win) return null;
-    const chosenFile = await dialog.showOpenDialog(win, {
-        filters: [{ name: 'Custom File Type', extensions: ['dfj'] }]
-    });
-    if (chosenFile.canceled) return null;
-    const [path] = chosenFile.filePaths;
-    const fileContent = await fs.readFile(path, { encoding: 'utf-8' });
-    return fileContent;
-});
+type dispatchedEvent =
+    | { type: 'open-file' }
+    | { type: 'save-file'; payload: string };
+
+ipcMain.handle(
+    'my-invokable-ipc',
+    async (_, dispatchedEvent: dispatchedEvent) => {
+        switch (dispatchedEvent.type) {
+            case 'open-file':
+                if (!win) return null;
+                const chosenFile = await dialog.showOpenDialog(win, {
+                    filters: [{ name: 'Custom File Type', extensions: ['dfj'] }]
+                });
+                if (chosenFile.canceled) return null;
+                const [path] = chosenFile.filePaths;
+                const fileContent = await fs.readFile(path, {
+                    encoding: 'utf-8'
+                });
+                return fileContent;
+            case 'save-file':
+                if (!win) return null;
+                const chosenFile2 = await dialog.showSaveDialog(win, {
+                    filters: [{ name: 'Custom File Type', extensions: ['dfj'] }]
+                });
+                if (chosenFile2.canceled) return null;
+                const path2 = chosenFile2.filePath;
+                if (!path2) return null;
+                const fileContent2 = await fs.writeFile(
+                    path2,
+                    dispatchedEvent.payload,
+                    {
+                        encoding: 'utf-8'
+                    }
+                );
+                return fileContent2;
+        }
+    }
+);
 
 async function createWindow() {
     win = new BrowserWindow({
