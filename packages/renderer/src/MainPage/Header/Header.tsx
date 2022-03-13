@@ -1,18 +1,17 @@
 import { ClearButton } from './ClearButton';
 import { ExecuteButton } from './ExecuteButton';
 import { NewFileButton } from './NewFileButton';
-import { Container } from './Header.styles';
 import { OpenFileButton } from './OpenFileButton';
 import { SaveFileButton } from './SaveFileButton';
 
 export function Header() {
     return (
-        <Container>
+        <div className='flex items-center gap-1 bg-primary'>
             <NewFileButton />
             <OpenFileButton />
             <SaveFileButton />
             <ClearButton />
             <ExecuteButton />
-        </Container>
+        </div>
     );
 }

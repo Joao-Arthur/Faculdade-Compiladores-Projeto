@@ -22,7 +22,6 @@
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",
     "react-query": "^3.34.16",
-    "styled-components": "^5.3.3",
     "tailwindcss": "^3.0.23",
     "zustand": "^3.7.1"
   },

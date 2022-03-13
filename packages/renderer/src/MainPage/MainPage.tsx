@@ -1,12 +1,11 @@
 import { Body } from './Body';
 import { Header } from './Header';
-import { Container } from './MainPage.styles';
 
 export function MainPage() {
     return (
-        <Container>
+        <div className='flex flex-col h-screen'>
             <Header />
             <Body />
-        </Container>
+        </div>
     );
 }
