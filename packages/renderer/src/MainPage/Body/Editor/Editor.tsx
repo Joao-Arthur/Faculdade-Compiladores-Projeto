@@ -6,7 +6,7 @@ export function Editor() {
     const { editorCode, setEditorCode } = useEditorStore();
 
     return (
-        <div style={{ display: 'flex', height: '100%', width: '100%' }}>
+        <div className='flex h-full w-2/3 '>
             <AceEditor
                 theme='tomorrow_night'
                 fontSize={20}
