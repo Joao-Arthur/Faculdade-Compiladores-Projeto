@@ -47,6 +47,7 @@ todo o resto é ignorado
                     current.symbol += character;
                 } else {
                     //error?
+                    //teste
                 }
             if (current.type === 'identifier') {
                 if (
