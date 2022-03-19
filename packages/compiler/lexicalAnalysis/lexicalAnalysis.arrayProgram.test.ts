@@ -9,15 +9,15 @@ var
   FirstArray: Array [1..6] of integer;
   SecondArray: Array of integer;
 begin
-  FirstArray[1] := 32767;
-  FirstArray[2] := 2048;
-  FirstArray[3] := 2;
+  FirstArray[1] := -32767;
+  FirstArray[2] := -2048;
+  FirstArray[3] := -2;
   FirstArray[4] := 2;
   FirstArray[5] := 2048;
   FirstArray[6] := 32767;
-  SecondArray[1] := 32767;
-  SecondArray[2] := 2048;
-  SecondArray[3] := 2;
+  SecondArray[1] := -32767;
+  SecondArray[2] := -2048;
+  SecondArray[3] := -2;
   SecondArray[4] := 2;
   SecondArray[5] := 2048;
   SecondArray[6] := 32767;
@@ -51,6 +51,7 @@ end.
             { id: symbolsId.inteiro, word: '1' },
             { id: symbolsId[']'], word: ']' },
             { id: symbolsId[':='], word: ':=' },
+            { id: symbolsId['-'], word: '-' },
             { id: symbolsId.inteiro, word: '32767' },
             { id: symbolsId[';'], word: ';' },
             { id: symbolsId.identificador, word: 'firstarray' },
@@ -58,6 +59,7 @@ end.
             { id: symbolsId.inteiro, word: '2' },
             { id: symbolsId[']'], word: ']' },
             { id: symbolsId[':='], word: ':=' },
+            { id: symbolsId['-'], word: '-' },
             { id: symbolsId.inteiro, word: '2048' },
             { id: symbolsId[';'], word: ';' },
             { id: symbolsId.identificador, word: 'firstarray' },
@@ -65,6 +67,7 @@ end.
             { id: symbolsId.inteiro, word: '3' },
             { id: symbolsId[']'], word: ']' },
             { id: symbolsId[':='], word: ':=' },
+            { id: symbolsId['-'], word: '-' },
             { id: symbolsId.inteiro, word: '2' },
             { id: symbolsId[';'], word: ';' },
             { id: symbolsId.identificador, word: 'firstarray' },
@@ -93,6 +96,7 @@ end.
             { id: symbolsId.inteiro, word: '1' },
             { id: symbolsId[']'], word: ']' },
             { id: symbolsId[':='], word: ':=' },
+            { id: symbolsId['-'], word: '-' },
             { id: symbolsId.inteiro, word: '32767' },
             { id: symbolsId[';'], word: ';' },
             { id: symbolsId.identificador, word: 'secondarray' },
@@ -100,6 +104,7 @@ end.
             { id: symbolsId.inteiro, word: '2' },
             { id: symbolsId[']'], word: ']' },
             { id: symbolsId[':='], word: ':=' },
+            { id: symbolsId['-'], word: '-' },
             { id: symbolsId.inteiro, word: '2048' },
             { id: symbolsId[';'], word: ';' },
             { id: symbolsId.identificador, word: 'secondarray' },
@@ -107,6 +112,7 @@ end.
             { id: symbolsId.inteiro, word: '3' },
             { id: symbolsId[']'], word: ']' },
             { id: symbolsId[':='], word: ':=' },
+            { id: symbolsId['-'], word: '-' },
             { id: symbolsId.inteiro, word: '2' },
             { id: symbolsId[';'], word: ';' },
             { id: symbolsId.identificador, word: 'secondarray' },
