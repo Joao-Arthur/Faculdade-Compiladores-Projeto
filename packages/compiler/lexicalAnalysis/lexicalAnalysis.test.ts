@@ -1,4 +1,4 @@
-import { symbolsValue } from '../symbols';
+import { symbolsId } from '../symbols';
 import { lexicalAnalysis } from './lexicalAnalysis';
 
 describe('lexicalAnalysis', () => {
@@ -8,11 +8,11 @@ describe('lexicalAnalysis', () => {
 
     it('should separate numbers and letters', () => {
         expect(lexicalAnalysis('My1stV4r := 764VY;')).toEqual([
-            { id: symbolsValue.identificador, word: 'my1stv4r' },
-            { id: symbolsValue[':='], word: ':=' },
-            { id: symbolsValue.inteiro, word: '764' },
-            { id: symbolsValue.identificador, word: 'vy' },
-            { id: symbolsValue[';'], word: ';' }
+            { id: symbolsId.identificador, word: 'my1stv4r' },
+            { id: symbolsId[':='], word: ':=' },
+            { id: symbolsId.inteiro, word: '764' },
+            { id: symbolsId.identificador, word: 'vy' },
+            { id: symbolsId[';'], word: ';' }
         ]);
     });
 
@@ -25,26 +25,26 @@ begin
 end;
 `;
         expect(lexicalAnalysis(source)).toEqual([
-            { id: symbolsValue.program, word: 'program' },
-            { id: symbolsValue.identificador, word: 'test123' },
-            { id: symbolsValue[';'], word: ';' },
-            { id: symbolsValue.var, word: 'var' },
-            { id: symbolsValue.identificador, word: 'x' },
-            { id: symbolsValue[','], word: ',' },
-            { id: symbolsValue.identificador, word: 'y' },
-            { id: symbolsValue[','], word: ',' },
-            { id: symbolsValue.identificador, word: 'z' },
-            { id: symbolsValue[':'], word: ':' },
-            { id: symbolsValue.integer, word: 'integer' },
-            { id: symbolsValue[';'], word: ';' },
-            { id: symbolsValue.begin, word: 'begin' },
-            { id: symbolsValue.readln, word: 'readln' },
-            { id: symbolsValue['('], word: '(' },
-            { id: symbolsValue.identificador, word: 'x' },
-            { id: symbolsValue[')'], word: ')' },
-            { id: symbolsValue[';'], word: ';' },
-            { id: symbolsValue.end, word: 'end' },
-            { id: symbolsValue[';'], word: ';' }
+            { id: symbolsId.program, word: 'program' },
+            { id: symbolsId.identificador, word: 'test123' },
+            { id: symbolsId[';'], word: ';' },
+            { id: symbolsId.var, word: 'var' },
+            { id: symbolsId.identificador, word: 'x' },
+            { id: symbolsId[','], word: ',' },
+            { id: symbolsId.identificador, word: 'y' },
+            { id: symbolsId[','], word: ',' },
+            { id: symbolsId.identificador, word: 'z' },
+            { id: symbolsId[':'], word: ':' },
+            { id: symbolsId.integer, word: 'integer' },
+            { id: symbolsId[';'], word: ';' },
+            { id: symbolsId.begin, word: 'begin' },
+            { id: symbolsId.readln, word: 'readln' },
+            { id: symbolsId['('], word: '(' },
+            { id: symbolsId.identificador, word: 'x' },
+            { id: symbolsId[')'], word: ')' },
+            { id: symbolsId[';'], word: ';' },
+            { id: symbolsId.end, word: 'end' },
+            { id: symbolsId[';'], word: ';' }
         ]);
     });
 
@@ -57,22 +57,22 @@ BEGIN
 END;
 `;
         expect(lexicalAnalysis(source)).toEqual([
-            { id: symbolsValue.program, word: 'program' },
-            { id: symbolsValue.identificador, word: 'testcase' },
-            { id: symbolsValue[';'], word: ';' },
-            { id: symbolsValue.var, word: 'var' },
-            { id: symbolsValue.identificador, word: 'x' },
-            { id: symbolsValue[':'], word: ':' },
-            { id: symbolsValue.integer, word: 'integer' },
-            { id: symbolsValue[';'], word: ';' },
-            { id: symbolsValue.begin, word: 'begin' },
-            { id: symbolsValue.readln, word: 'readln' },
-            { id: symbolsValue['('], word: '(' },
-            { id: symbolsValue.identificador, word: 'x' },
-            { id: symbolsValue[')'], word: ')' },
-            { id: symbolsValue[';'], word: ';' },
-            { id: symbolsValue.end, word: 'end' },
-            { id: symbolsValue[';'], word: ';' }
+            { id: symbolsId.program, word: 'program' },
+            { id: symbolsId.identificador, word: 'testcase' },
+            { id: symbolsId[';'], word: ';' },
+            { id: symbolsId.var, word: 'var' },
+            { id: symbolsId.identificador, word: 'x' },
+            { id: symbolsId[':'], word: ':' },
+            { id: symbolsId.integer, word: 'integer' },
+            { id: symbolsId[';'], word: ';' },
+            { id: symbolsId.begin, word: 'begin' },
+            { id: symbolsId.readln, word: 'readln' },
+            { id: symbolsId['('], word: '(' },
+            { id: symbolsId.identificador, word: 'x' },
+            { id: symbolsId[')'], word: ')' },
+            { id: symbolsId[';'], word: ';' },
+            { id: symbolsId.end, word: 'end' },
+            { id: symbolsId[';'], word: ';' }
         ]);
     });
 
@@ -86,26 +86,26 @@ begin (*begin*)
 end; (*end*)
 `;
         expect(lexicalAnalysis(source)).toEqual([
-            { id: symbolsValue.program, word: 'program' },
-            { id: symbolsValue.identificador, word: 'programwithcomments' },
-            { id: symbolsValue[';'], word: ';' },
-            { id: symbolsValue.var, word: 'var' },
-            { id: symbolsValue.identificador, word: 'x' },
-            { id: symbolsValue[','], word: ',' },
-            { id: symbolsValue.identificador, word: 'y' },
-            { id: symbolsValue[','], word: ',' },
-            { id: symbolsValue.identificador, word: 'z' },
-            { id: symbolsValue[':'], word: ':' },
-            { id: symbolsValue.integer, word: 'integer' },
-            { id: symbolsValue[';'], word: ';' },
-            { id: symbolsValue.begin, word: 'begin' },
-            { id: symbolsValue.readln, word: 'readln' },
-            { id: symbolsValue['('], word: '(' },
-            { id: symbolsValue.identificador, word: 'x' },
-            { id: symbolsValue[')'], word: ')' },
-            { id: symbolsValue[';'], word: ';' },
-            { id: symbolsValue.end, word: 'end' },
-            { id: symbolsValue[';'], word: ';' }
+            { id: symbolsId.program, word: 'program' },
+            { id: symbolsId.identificador, word: 'programwithcomments' },
+            { id: symbolsId[';'], word: ';' },
+            { id: symbolsId.var, word: 'var' },
+            { id: symbolsId.identificador, word: 'x' },
+            { id: symbolsId[','], word: ',' },
+            { id: symbolsId.identificador, word: 'y' },
+            { id: symbolsId[','], word: ',' },
+            { id: symbolsId.identificador, word: 'z' },
+            { id: symbolsId[':'], word: ':' },
+            { id: symbolsId.integer, word: 'integer' },
+            { id: symbolsId[';'], word: ';' },
+            { id: symbolsId.begin, word: 'begin' },
+            { id: symbolsId.readln, word: 'readln' },
+            { id: symbolsId['('], word: '(' },
+            { id: symbolsId.identificador, word: 'x' },
+            { id: symbolsId[')'], word: ')' },
+            { id: symbolsId[';'], word: ';' },
+            { id: symbolsId.end, word: 'end' },
+            { id: symbolsId[';'], word: ';' }
         ]);
     });*/
 
@@ -117,10 +117,10 @@ WriteLn('there"s no string variables in this language');
 `;
         expect(lexicalAnalysis(source)).toEqual([
             { id: 21, word: 'writeln' },
-            { id: symbolsValue['('], word: '(' },
+            { id: symbolsId['('], word: '(' },
             { id: 48, word: 'there"s no string variables in this language' },
-            { id: symbolsValue[')'], word: ')' },
-            { id: symbolsValue[';'], word: ';' }
+            { id: symbolsId[')'], word: ')' },
+            { id: symbolsId[';'], word: ';' }
         ]);
     });*/
 

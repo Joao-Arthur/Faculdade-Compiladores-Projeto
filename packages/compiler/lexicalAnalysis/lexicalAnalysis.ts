@@ -1,4 +1,4 @@
-import { reservedWords, symbolsValue } from '../symbols';
+import { reservedWords, symbolsId } from '../symbols';
 import { literalObject } from '../types';
 import {
     autoMatchSymbols,
@@ -31,6 +31,8 @@ type currentWord = {
  - comentários
  - strings
 -> dentro deles, tudo é ignorado
+- numbers signal
+
 */
 
 export function lexicalAnalysis(sourceCode: string): lexicalTokens[] {
@@ -148,21 +150,21 @@ function addCurrentWordToStack(
 ) {
     switch (currentWord.type) {
         case 'string':
-            tokens.push({ id: symbolsValue.literal, word: currentWord.word });
+            tokens.push({ id: symbolsId.literal, word: currentWord.word });
             break;
         case 'numeric':
-            tokens.push({ id: symbolsValue.inteiro, word: currentWord.word });
+            tokens.push({ id: symbolsId.inteiro, word: currentWord.word });
             break;
         case 'identifier':
             tokens.push({
-                id: symbolsValue.identificador,
+                id: symbolsId.identificador,
                 word: currentWord.word
             });
             break;
         case 'autoMatch':
         case 'semiAutoMatch':
         case 'reservedWord':
-            const foundId = (symbolsValue as literalObject<number | undefined>)[
+            const foundId = (symbolsId as literalObject<number | undefined>)[
                 currentWord.word
             ];
             if (foundId)

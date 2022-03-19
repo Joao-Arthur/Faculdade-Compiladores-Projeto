@@ -28,7 +28,7 @@ export const reservedWords = [
     'case'
 ];
 
-export const symbolsValue = {
+export const symbolsId = {
     program: 1,
     label: 2,
     const: 3,
