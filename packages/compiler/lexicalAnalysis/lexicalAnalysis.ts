@@ -1,4 +1,5 @@
-import { symbolItem, symbols } from '../symbols';
+import { reservedWords, symbolsValue } from '../symbols';
+import { literalObject } from '../types';
 import {
     autoMatchSymbols,
     letters,
@@ -30,7 +31,6 @@ type currentWord = {
  - comentários
  - strings
 -> dentro deles, tudo é ignorado
--> se chegar no final e não tiver fechar a string??
 */
 
 export function lexicalAnalysis(sourceCode: string): lexicalTokens[] {
@@ -93,7 +93,7 @@ function tryAddCharacterToCurrent(currentWord: currentWord, character: string) {
                 currentWord.word += character;
                 currentWord.addedCurrentCharacter = true;
             } else {
-                if (symbols.some(symbol => symbol.symbol === currentWord.word))
+                if (reservedWords.includes(currentWord.word))
                     currentWord.type = 'reservedWord';
                 currentWord.shouldAdd = true;
                 currentWord.addedCurrentCharacter = false;
@@ -148,25 +148,34 @@ function addCurrentWordToStack(
 ) {
     switch (currentWord.type) {
         case 'string':
-            tokens.push({ id: 48, word: currentWord.word });
+            tokens.push({ id: symbolsValue.literal, word: currentWord.word });
             break;
         case 'numeric':
-            tokens.push({ id: 26, word: currentWord.word });
+            tokens.push({ id: symbolsValue.inteiro, word: currentWord.word });
             break;
         case 'identifier':
-            tokens.push({ id: 25, word: currentWord.word });
+            tokens.push({
+                id: symbolsValue.identificador,
+                word: currentWord.word
+            });
             break;
         case 'autoMatch':
         case 'semiAutoMatch':
         case 'reservedWord':
-            const foundSymbol = symbols.find(
-                symbol => symbol.symbol === currentWord.word
-            );
-            if (foundSymbol)
+            const foundId = (symbolsValue as literalObject<number | undefined>)[
+                currentWord.word
+            ];
+            if (foundId)
                 tokens.push({
-                    id: foundSymbol.id,
-                    word: foundSymbol.symbol
+                    id: foundId,
+                    word: currentWord.word
                 });
             break;
     }
 }
+
+//dúvidas
+//tamanho de nome de variaveis
+//valor maximo integer
+//comentário não encerrado
+//string não encerrada
