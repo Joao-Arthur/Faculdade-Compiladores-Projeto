@@ -4,7 +4,7 @@ import { lexicalAnalysis } from './lexicalAnalysis';
 describe('lexicalAnalysis', () => {
     it('should identify while loops', () => {
         const source = `
-program ForLoopProgram;
+program RepeatLoopProgram;
 var
   CompareValue: integer;
 begin
@@ -17,7 +17,7 @@ end.
 `;
         expect(lexicalAnalysis(source)).toEqual([
             { id: symbolsId.program, word: 'program' },
-            { id: symbolsId.identificador, word: 'forloopprogram' },
+            { id: symbolsId.identificador, word: 'repeatloopprogram' },
             { id: symbolsId[';'], word: ';' },
             { id: symbolsId.var, word: 'var' },
             { id: symbolsId.identificador, word: 'comparevalue' },

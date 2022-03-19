@@ -4,7 +4,7 @@ import { lexicalAnalysis } from './lexicalAnalysis';
 describe('lexicalAnalysis', () => {
     it('should identify while loops', () => {
         const source = `
-program ForLoopProgram;
+program WhileLoopProgram;
 const
   INTERVAL = 4;
 var
@@ -21,7 +21,7 @@ end.
 `;
         expect(lexicalAnalysis(source)).toEqual([
             { id: symbolsId.program, word: 'program' },
-            { id: symbolsId.identificador, word: 'forloopprogram' },
+            { id: symbolsId.identificador, word: 'whileloopprogram' },
             { id: symbolsId[';'], word: ';' },
             { id: symbolsId.const, word: 'const' },
             { id: symbolsId.identificador, word: 'interval' },

@@ -31,8 +31,6 @@ type currentWord = {
  - comentários
  - strings
 -> dentro deles, tudo é ignorado
-- numbers signal
-
 */
 
 export function lexicalAnalysis(sourceCode: string): lexicalTokens[] {
@@ -181,3 +179,5 @@ function addCurrentWordToStack(
 //valor maximo integer
 //comentário não encerrado
 //string não encerrada
+//sintaxe de arrays??
+//inteiro com sinal negativo
