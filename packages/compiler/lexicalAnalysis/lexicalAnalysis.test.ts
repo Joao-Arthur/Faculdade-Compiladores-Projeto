@@ -76,9 +76,9 @@ END;
         ]);
     });
 
-    /*it('should ignore comments', () => {
+    it('should ignore comments', () => {
         const source = `
-program programWithComments;
+program CommentsProgram; (*stupid name for a program, after all*)
     (* declaring some integer variables...*)
     var x, y, z: integer;(*another comment*)
 begin (*begin*)
@@ -86,30 +86,28 @@ begin (*begin*)
 end; (*end*)
 `;
         expect(lexicalAnalysis(source)).toEqual([
-            { id: symbolsId.program, word: 'program' },
-            { id: symbolsId.identificador, word: 'programwithcomments' },
-            { id: symbolsId[';'], word: ';' },
-            { id: symbolsId.var, word: 'var' },
-            { id: symbolsId.identificador, word: 'x' },
-            { id: symbolsId[','], word: ',' },
-            { id: symbolsId.identificador, word: 'y' },
-            { id: symbolsId[','], word: ',' },
-            { id: symbolsId.identificador, word: 'z' },
-            { id: symbolsId[':'], word: ':' },
-            { id: symbolsId.integer, word: 'integer' },
-            { id: symbolsId[';'], word: ';' },
-            { id: symbolsId.begin, word: 'begin' },
-            { id: symbolsId.readln, word: 'readln' },
-            { id: symbolsId['('], word: '(' },
-            { id: symbolsId.identificador, word: 'x' },
-            { id: symbolsId[')'], word: ')' },
-            { id: symbolsId[';'], word: ';' },
-            { id: symbolsId.end, word: 'end' },
-            { id: symbolsId[';'], word: ';' }
+            { word: 'program', id: symbolsId.program },
+            { word: 'commentsprogram', id: symbolsId.identificador },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'var', id: symbolsId.var },
+            { word: 'x', id: symbolsId.identificador },
+            { word: ',', id: symbolsId[','] },
+            { word: 'y', id: symbolsId.identificador },
+            { word: ',', id: symbolsId[','] },
+            { word: 'z', id: symbolsId.identificador },
+            { word: ':', id: symbolsId[':'] },
+            { word: 'integer', id: symbolsId.integer },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'begin', id: symbolsId.begin },
+            { word: 'readln', id: symbolsId.readln },
+            { word: '(', id: symbolsId['('] },
+            { word: 'x', id: symbolsId.identificador },
+            { word: ')', id: symbolsId[')'] },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'end', id: symbolsId.end },
+            { word: ';', id: symbolsId[';'] }
         ]);
-    });*/
-
-    /* it('should handle non ending comments?', () => { });*/
+    });
 
     it('should identify strings', () => {
         const source = `

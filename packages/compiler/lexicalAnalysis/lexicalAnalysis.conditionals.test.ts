@@ -14,6 +14,7 @@ begin
   n2 := 183;
   n3 := 372;
   
+  (*test else if expressions*)
   if n1 > 300 then
     n1 := n1 -3
   else if n1 >= 300 then
@@ -23,6 +24,7 @@ begin
   else if n1 <= 400 then
     n1 := n1 -3000;
 
+  (*test greater and smaller expressions*)
   if n2 > 300 and n2 < 400 then
     n2 := n2 + 7;
   if n2 >= 300 and n2 <= 400 then
@@ -32,6 +34,7 @@ begin
   if n3 >= 300 or n3 <= 400 then
     n2 := n2 + 7654;
 
+  (*test and or expressions*)
   if n1 = n2 or n2 = n3 then
     n3 := - n1 + n2;
   if n1 = n2 and (not (n1 = n3)) then

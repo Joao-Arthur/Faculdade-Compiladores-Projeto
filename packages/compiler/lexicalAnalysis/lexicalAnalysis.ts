@@ -14,6 +14,7 @@ type lexicalTokens = {
 };
 
 type wordType =
+    | 'comment'
     | 'string'
     | 'autoMatch'
     | 'semiAutoMatch'
@@ -59,6 +60,11 @@ export function lexicalAnalysis(sourceCode: string): lexicalTokens[] {
 
 function tryAddCharacterToCurrent(currentWord: currentWord, character: string) {
     switch (currentWord.type) {
+        case 'comment':
+            currentWord.addedCurrentCharacter = true;
+            currentWord.word += character;
+            if (currentWord.word.endsWith('*)')) currentWord.shouldAdd = true;
+            break;
         case 'string':
             currentWord.addedCurrentCharacter = true;
             if (character === stringDelimiter) {
@@ -89,6 +95,12 @@ function tryAddCharacterToCurrent(currentWord: currentWord, character: string) {
             if (currentWord.word === '.' && character === '.') {
                 currentWord.word += character;
                 currentWord.addedCurrentCharacter = true;
+            }
+            if (currentWord.word === '(' && character === '*') {
+                currentWord.word += character;
+                currentWord.addedCurrentCharacter = true;
+                currentWord.shouldAdd = false;
+                currentWord.type = 'comment';
             }
             break;
         case 'identifier':
