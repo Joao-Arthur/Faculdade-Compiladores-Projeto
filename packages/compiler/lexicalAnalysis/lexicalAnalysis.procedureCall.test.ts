@@ -15,7 +15,9 @@ var
     CurrentValue: integer;
   begin 
     readln(27, 17);
+    writeln('== Before: ', CurrentValue);
     CurrentValue := (MINVALUE + NUMBERVALUE / 28 + 9) * 2;
+    writeln('== After: ', CurrentValue);
   end;
 begin
   procedure PrintValueCopy;
@@ -25,7 +27,9 @@ begin
     CurrentValue: integer;
   begin 
     readln(27, 17);
+    writeln('== Before: ', CurrentValue);
     CurrentValue := (MINVALUE + NUMBERVALUE / 28 + 9) * 2;
+    writeln('== After: ', CurrentValue);
   end;
 
   call PrintValue;
@@ -63,6 +67,13 @@ end.
             { word: '17', id: symbolsId.inteiro },
             { word: ')', id: symbolsId[')'] },
             { word: ';', id: symbolsId[';'] },
+            { word: 'writeln', id: symbolsId.writeln },
+            { word: '(', id: symbolsId['('] },
+            { word: '== before: ', id: symbolsId.literal },
+            { word: ',', id: symbolsId[','] },
+            { word: 'currentvalue', id: symbolsId.identificador },
+            { word: ')', id: symbolsId[')'] },
+            { word: ';', id: symbolsId[';'] },
             { word: 'currentvalue', id: symbolsId.identificador },
             { word: ':=', id: symbolsId[':='] },
             { word: '(', id: symbolsId['('] },
@@ -76,6 +87,13 @@ end.
             { word: ')', id: symbolsId[')'] },
             { word: '*', id: symbolsId['*'] },
             { word: '2', id: symbolsId.inteiro },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'writeln', id: symbolsId.writeln },
+            { word: '(', id: symbolsId['('] },
+            { word: '== after: ', id: symbolsId.literal },
+            { word: ',', id: symbolsId[','] },
+            { word: 'currentvalue', id: symbolsId.identificador },
+            { word: ')', id: symbolsId[')'] },
             { word: ';', id: symbolsId[';'] },
             { word: 'end', id: symbolsId.end },
             { word: ';', id: symbolsId[';'] },
@@ -101,6 +119,13 @@ end.
             { word: '17', id: symbolsId.inteiro },
             { word: ')', id: symbolsId[')'] },
             { word: ';', id: symbolsId[';'] },
+            { word: 'writeln', id: symbolsId.writeln },
+            { word: '(', id: symbolsId['('] },
+            { word: '== before: ', id: symbolsId.literal },
+            { word: ',', id: symbolsId[','] },
+            { word: 'currentvalue', id: symbolsId.identificador },
+            { word: ')', id: symbolsId[')'] },
+            { word: ';', id: symbolsId[';'] },
             { word: 'currentvalue', id: symbolsId.identificador },
             { word: ':=', id: symbolsId[':='] },
             { word: '(', id: symbolsId['('] },
@@ -114,6 +139,13 @@ end.
             { word: ')', id: symbolsId[')'] },
             { word: '*', id: symbolsId['*'] },
             { word: '2', id: symbolsId.inteiro },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'writeln', id: symbolsId.writeln },
+            { word: '(', id: symbolsId['('] },
+            { word: '== after: ', id: symbolsId.literal },
+            { word: ',', id: symbolsId[','] },
+            { word: 'currentvalue', id: symbolsId.identificador },
+            { word: ')', id: symbolsId[')'] },
             { word: ';', id: symbolsId[';'] },
             { word: 'end', id: symbolsId.end },
             { word: ';', id: symbolsId[';'] },

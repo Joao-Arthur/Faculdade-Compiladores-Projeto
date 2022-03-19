@@ -4,7 +4,8 @@ import {
     autoMatchSymbols,
     letters,
     numbers,
-    semiAutoMatchSymbols
+    semiAutoMatchSymbols,
+    stringDelimiter
 } from './constants';
 
 type lexicalTokens = {
@@ -26,12 +27,6 @@ type currentWord = {
     shouldAdd: boolean;
     addedCurrentCharacter: boolean;
 };
-
-/*
- - comentários
- - strings
--> dentro deles, tudo é ignorado
-*/
 
 export function lexicalAnalysis(sourceCode: string): lexicalTokens[] {
     let tokens: lexicalTokens[] = [];
@@ -64,6 +59,14 @@ export function lexicalAnalysis(sourceCode: string): lexicalTokens[] {
 
 function tryAddCharacterToCurrent(currentWord: currentWord, character: string) {
     switch (currentWord.type) {
+        case 'string':
+            currentWord.addedCurrentCharacter = true;
+            if (character === stringDelimiter) {
+                currentWord.shouldAdd = true;
+            } else {
+                currentWord.word += character;
+            }
+            break;
         case 'semiAutoMatch':
             currentWord.shouldAdd = true;
             currentWord.addedCurrentCharacter = false;
@@ -140,6 +143,13 @@ function tryFindCurrentWord(character: string): currentWord | undefined {
             shouldAdd: false,
             addedCurrentCharacter: true
         };
+    if (stringDelimiter === character)
+        return {
+            type: 'string',
+            word: '',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        };
 }
 
 function addCurrentWordToStack(
@@ -174,10 +184,11 @@ function addCurrentWordToStack(
     }
 }
 
+//adicionar comentários
 //dúvidas
 //tamanho de nome de variaveis
 //valor maximo integer
 //comentário não encerrado
 //string não encerrada
-//sintaxe de arrays??
-//inteiro com sinal negativo
+//sintaxe de arrays
+//string deve presenvar o case?

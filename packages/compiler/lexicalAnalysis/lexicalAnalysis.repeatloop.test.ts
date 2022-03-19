@@ -11,6 +11,7 @@ begin
   CompareValue := 1;
   repeat
     CompareValue := CompareValue * 10;
+    writeln('writeln comparevalue if <> 10 ', CompareValue);
   until CompareValue <> 10;
   readln(CompareValue, CompareValue);
 end.
@@ -35,6 +36,13 @@ end.
             { word: 'comparevalue', id: symbolsId.identificador },
             { word: '*', id: symbolsId['*'] },
             { word: '10', id: symbolsId.inteiro },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'writeln', id: symbolsId.writeln },
+            { word: '(', id: symbolsId['('] },
+            { word: 'writeln comparevalue if <> 10 ', id: symbolsId.literal },
+            { word: ',', id: symbolsId[','] },
+            { word: 'comparevalue', id: symbolsId.identificador },
+            { word: ')', id: symbolsId[')'] },
             { word: ';', id: symbolsId[';'] },
             { word: 'until', id: symbolsId.until },
             { word: 'comparevalue', id: symbolsId.identificador },

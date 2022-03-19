@@ -13,6 +13,7 @@ begin
   begin
     values[i] := 10 * i / 2 - 9;
     values[i + 1] := i * 2 + 3;
+    writeln('I value is: ', i);
   end;
 end.
 `;
@@ -65,6 +66,13 @@ end.
             { word: '2', id: symbolsId.inteiro },
             { word: '+', id: symbolsId['+'] },
             { word: '3', id: symbolsId.inteiro },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'writeln', id: symbolsId.writeln },
+            { word: '(', id: symbolsId['('] },
+            { word: 'i value is: ', id: symbolsId.literal },
+            { word: ',', id: symbolsId[','] },
+            { word: 'i', id: symbolsId.identificador },
+            { word: ')', id: symbolsId[')'] },
             { word: ';', id: symbolsId[';'] },
             { word: 'end', id: symbolsId.end },
             { word: ';', id: symbolsId[';'] },

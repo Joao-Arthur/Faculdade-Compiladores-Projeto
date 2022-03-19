@@ -111,18 +111,19 @@ end; (*end*)
 
     /* it('should handle non ending comments?', () => { });*/
 
-    /*it('should identify strings', () => {
+    it('should identify strings', () => {
         const source = `
-WriteLn('there"s no string variables in this language');
+WriteLn('There"s NO String variables IN THIS language');
 `;
         expect(lexicalAnalysis(source)).toEqual([
-            { id: 21, word: 'writeln' },
-            { id: symbolsId['('], word: '(' },
-            { id: 48, word: 'there"s no string variables in this language' },
-            { id: symbolsId[')'], word: ')' },
-            { id: symbolsId[';'], word: ';' }
+            { word: 'writeln', id: symbolsId.writeln },
+            { word: '(', id: symbolsId['('] },
+            {
+                word: 'there"s no string variables in this language',
+                id: symbolsId.literal
+            },
+            { word: ')', id: symbolsId[')'] },
+            { word: ';', id: symbolsId[';'] }
         ]);
-    });*/
-
-    /* it('should handle non ending strings?', () => { });*/
+    });
 });
