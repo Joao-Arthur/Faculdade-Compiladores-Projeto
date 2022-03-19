@@ -1,4 +1,9 @@
-export const symbols = [
+export type symbolItem = {
+    id: number;
+    symbol: string;
+};
+
+export const symbols: symbolItem[] = [
     { id: 1, symbol: 'program' },
     { id: 2, symbol: 'label' },
     { id: 3, symbol: 'const' },
