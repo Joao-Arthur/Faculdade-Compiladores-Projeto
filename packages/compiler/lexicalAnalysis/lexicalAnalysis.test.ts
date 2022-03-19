@@ -22,7 +22,7 @@ program test123;
     var x, y, z: integer;
 begin
     readln(x);
-end;
+end.
 `;
         expect(lexicalAnalysis(source)).toEqual([
             { id: symbolsId.program, word: 'program' },
@@ -44,7 +44,7 @@ end;
             { id: symbolsId[')'], word: ')' },
             { id: symbolsId[';'], word: ';' },
             { id: symbolsId.end, word: 'end' },
-            { id: symbolsId[';'], word: ';' }
+            { id: symbolsId['.'], word: '.' }
         ]);
     });
 
