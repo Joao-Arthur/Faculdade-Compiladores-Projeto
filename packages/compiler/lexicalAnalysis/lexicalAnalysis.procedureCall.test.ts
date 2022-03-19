@@ -4,7 +4,7 @@ import { lexicalAnalysis } from './lexicalAnalysis';
 describe('lexicalAnalysis', () => {
     it('should identify array', () => {
         const source = `
-program ProcedureCall;
+program ProcedureCallProgram;
 const
   NUMBERVALUE = 2398;
 var
@@ -34,7 +34,7 @@ end.
 `;
         expect(lexicalAnalysis(source)).toEqual([
             { id: symbolsId.program, word: 'program' },
-            { id: symbolsId.identificador, word: 'procedurecall' },
+            { id: symbolsId.identificador, word: 'procedurecallprogram' },
             { id: symbolsId[';'], word: ';' },
             { id: symbolsId.const, word: 'const' },
             { id: symbolsId.identificador, word: 'numbervalue' },
