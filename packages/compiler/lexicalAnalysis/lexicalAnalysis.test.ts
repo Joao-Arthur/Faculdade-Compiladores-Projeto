@@ -8,11 +8,11 @@ describe('lexicalAnalysis', () => {
 
     it('should separate numbers and letters', () => {
         expect(lexicalAnalysis('My1stV4r := 764VY;')).toEqual([
-            { id: symbolsId.identificador, word: 'my1stv4r' },
-            { id: symbolsId[':='], word: ':=' },
-            { id: symbolsId.inteiro, word: '764' },
-            { id: symbolsId.identificador, word: 'vy' },
-            { id: symbolsId[';'], word: ';' }
+            { word: 'my1stv4r', id: symbolsId.identificador },
+            { word: ':=', id: symbolsId[':='] },
+            { word: '764', id: symbolsId.inteiro },
+            { word: 'vy', id: symbolsId.identificador },
+            { word: ';', id: symbolsId[';'] }
         ]);
     });
 
@@ -25,26 +25,26 @@ begin
 end.
 `;
         expect(lexicalAnalysis(source)).toEqual([
-            { id: symbolsId.program, word: 'program' },
-            { id: symbolsId.identificador, word: 'test123' },
-            { id: symbolsId[';'], word: ';' },
-            { id: symbolsId.var, word: 'var' },
-            { id: symbolsId.identificador, word: 'x' },
-            { id: symbolsId[','], word: ',' },
-            { id: symbolsId.identificador, word: 'y' },
-            { id: symbolsId[','], word: ',' },
-            { id: symbolsId.identificador, word: 'z' },
-            { id: symbolsId[':'], word: ':' },
-            { id: symbolsId.integer, word: 'integer' },
-            { id: symbolsId[';'], word: ';' },
-            { id: symbolsId.begin, word: 'begin' },
-            { id: symbolsId.readln, word: 'readln' },
-            { id: symbolsId['('], word: '(' },
-            { id: symbolsId.identificador, word: 'x' },
-            { id: symbolsId[')'], word: ')' },
-            { id: symbolsId[';'], word: ';' },
-            { id: symbolsId.end, word: 'end' },
-            { id: symbolsId['.'], word: '.' }
+            { word: 'program', id: symbolsId.program },
+            { word: 'test123', id: symbolsId.identificador },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'var', id: symbolsId.var },
+            { word: 'x', id: symbolsId.identificador },
+            { word: ',', id: symbolsId[','] },
+            { word: 'y', id: symbolsId.identificador },
+            { word: ',', id: symbolsId[','] },
+            { word: 'z', id: symbolsId.identificador },
+            { word: ':', id: symbolsId[':'] },
+            { word: 'integer', id: symbolsId.integer },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'begin', id: symbolsId.begin },
+            { word: 'readln', id: symbolsId.readln },
+            { word: '(', id: symbolsId['('] },
+            { word: 'x', id: symbolsId.identificador },
+            { word: ')', id: symbolsId[')'] },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'end', id: symbolsId.end },
+            { word: '.', id: symbolsId['.'] }
         ]);
     });
 
@@ -57,22 +57,22 @@ BEGIN
 END;
 `;
         expect(lexicalAnalysis(source)).toEqual([
-            { id: symbolsId.program, word: 'program' },
-            { id: symbolsId.identificador, word: 'testcase' },
-            { id: symbolsId[';'], word: ';' },
-            { id: symbolsId.var, word: 'var' },
-            { id: symbolsId.identificador, word: 'x' },
-            { id: symbolsId[':'], word: ':' },
-            { id: symbolsId.integer, word: 'integer' },
-            { id: symbolsId[';'], word: ';' },
-            { id: symbolsId.begin, word: 'begin' },
-            { id: symbolsId.readln, word: 'readln' },
-            { id: symbolsId['('], word: '(' },
-            { id: symbolsId.identificador, word: 'x' },
-            { id: symbolsId[')'], word: ')' },
-            { id: symbolsId[';'], word: ';' },
-            { id: symbolsId.end, word: 'end' },
-            { id: symbolsId[';'], word: ';' }
+            { word: 'program', id: symbolsId.program },
+            { word: 'testcase', id: symbolsId.identificador },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'var', id: symbolsId.var },
+            { word: 'x', id: symbolsId.identificador },
+            { word: ':', id: symbolsId[':'] },
+            { word: 'integer', id: symbolsId.integer },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'begin', id: symbolsId.begin },
+            { word: 'readln', id: symbolsId.readln },
+            { word: '(', id: symbolsId['('] },
+            { word: 'x', id: symbolsId.identificador },
+            { word: ')', id: symbolsId[')'] },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'end', id: symbolsId.end },
+            { word: ';', id: symbolsId[';'] }
         ]);
     });
 
