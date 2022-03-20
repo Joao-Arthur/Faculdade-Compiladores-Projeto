@@ -6,6 +6,19 @@ describe('lexicalAnalysis', () => {
         expect(lexicalAnalysis('')).toEqual([]);
     });
 
+    it('should identify last character', () => {
+        expect(
+            lexicalAnalysis(`
+program;
+end.`)
+        ).toEqual([
+            { word: 'program', id: symbolsId.program },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'end', id: symbolsId.end },
+            { word: '.', id: symbolsId['.'] }
+        ]);
+    });
+
     it('should separate numbers and letters', () => {
         expect(lexicalAnalysis('My1stV4r := 764VY;')).toEqual([
             { word: 'my1stv4r', id: symbolsId.identificador },

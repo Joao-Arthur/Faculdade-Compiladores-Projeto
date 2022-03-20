@@ -36,8 +36,8 @@ export function lexicalAnalysis(sourceCode: string): lexicalTokens[] {
     const iterator = sourceCode[Symbol.iterator]();
     let rawCharacter = iterator.next();
 
-    while (!rawCharacter.done) {
-        const character = rawCharacter.value.toLocaleLowerCase();
+    while (!rawCharacter.done || currentWord) {
+        const character = rawCharacter.value?.toLocaleLowerCase();
 
         if (currentWord) {
             tryAddCharacterToCurrent(currentWord, character);
