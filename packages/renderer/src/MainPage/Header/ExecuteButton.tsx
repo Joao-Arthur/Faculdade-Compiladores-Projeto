@@ -1,11 +1,14 @@
 import { BaseButton } from '@/BaseButton';
 import { FcVideoFile } from 'react-icons/fc';
+import { compiler } from '../../../../compiler';
+import { useEditorStore } from '../Body/Editor/useEditorStore';
 
 export function ExecuteButton() {
-    return (
-        <BaseButton
-            onClick={() => console.log('execute button')}
-            Icon={<FcVideoFile size={20} />}
-        />
-    );
+    const { editorCode, setTokens } = useEditorStore();
+
+    function onClick() {
+        setTokens(compiler.lexicalCompilation(editorCode));
+    }
+
+    return <BaseButton onClick={onClick} Icon={<FcVideoFile size={20} />} />;
 }

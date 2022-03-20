@@ -1,7 +1,7 @@
 type props = {
     data: {
         id: number;
-        token: string;
+        word: string;
     }[];
 };
 
@@ -13,10 +13,10 @@ export function Table({ data }: props) {
                     <th className='px-4'>Identificador</th>
                     <th className='px-4'>Token</th>
                 </tr>
-                {data.map(({ id, token }) => (
+                {data.map(({ id, word }) => (
                     <tr className='border-b border-white/10'>
                         <td className='px-4 py-2'>{id}</td>
-                        <td className='px-4 py-2'>{token}</td>
+                        <td className='px-4 py-2'>{word}</td>
                     </tr>
                 ))}
             </table>
