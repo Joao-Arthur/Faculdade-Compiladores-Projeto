@@ -2,7 +2,40 @@ import { symbolsId } from '../symbols';
 import { lexicalAnalysis } from './lexicalAnalysis';
 
 describe('lexicalAnalysis', () => {
-    it('should ignore comments', () => {
+    it('should ignore comments in the middle of the program', () => {
+        const source = `
+program CommentsProgram; (*stupid name for a program, after all*)
+    (* declaring some integer variables...*)
+    var x, y, z: integer;(*another comment*)
+begin (*begin*)
+    readln(x);(*read line*)
+end; (*end*)
+`;
+        expect(lexicalAnalysis(source)).toEqual([
+            { word: 'program', id: symbolsId.program },
+            { word: 'commentsprogram', id: symbolsId.identificador },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'var', id: symbolsId.var },
+            { word: 'x', id: symbolsId.identificador },
+            { word: ',', id: symbolsId[','] },
+            { word: 'y', id: symbolsId.identificador },
+            { word: ',', id: symbolsId[','] },
+            { word: 'z', id: symbolsId.identificador },
+            { word: ':', id: symbolsId[':'] },
+            { word: 'integer', id: symbolsId.integer },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'begin', id: symbolsId.begin },
+            { word: 'readln', id: symbolsId.readln },
+            { word: '(', id: symbolsId['('] },
+            { word: 'x', id: symbolsId.identificador },
+            { word: ')', id: symbolsId[')'] },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'end', id: symbolsId.end },
+            { word: ';', id: symbolsId[';'] }
+        ]);
+    });
+
+    it('comments should break tokens', () => {
         const source = `(*comment before start*)
 program CommentsProgram;
 var
