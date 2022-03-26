@@ -39,6 +39,17 @@ export function lexicalAnalysis(sourceCode: string): lexicalTokens[] {
     while (!rawCharacter.done || currentWord) {
         const character = rawCharacter.value?.toLocaleLowerCase();
 
+        if (rawCharacter.done) {
+            if (currentWord) {
+                if (currentWord.type === 'string') {
+                    throw new Error('string não encerrada!');
+                }
+
+                if (currentWord.type === 'comment') {
+                    throw new Error('comentário não encerrado!');
+                }
+            }
+        }
         if (currentWord) {
             tryAddCharacterToCurrent(currentWord, character);
         } else {
@@ -195,12 +206,3 @@ function addCurrentWordToStack(
             break;
     }
 }
-
-//adicionar comentários
-//dúvidas
-//tamanho de nome de variaveis
-//valor maximo integer
-//comentário não encerrado
-//string não encerrada
-//sintaxe de arrays
-//string deve presenvar o case?

@@ -69,4 +69,16 @@ end.
             { word: '.', id: symbolsId['.'] }
         ]);
     });
+
+    it('should identify if ends on comment', () => {
+        const source = `(*no comments so far*)`;
+        expect(lexicalAnalysis(source)).toEqual([]);
+    });
+
+    it('should throw on unfinished comment', () => {
+        const source = `(*no comments so far`;
+        expect(() => lexicalAnalysis(source)).toThrow(
+            'comentário não encerrado'
+        );
+    });
 });
