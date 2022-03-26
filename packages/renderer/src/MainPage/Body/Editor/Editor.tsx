@@ -9,7 +9,7 @@ export function Editor() {
     const { editorCode, setEditorCode } = useEditorStore();
 
     return (
-        <div className='flex h-full w-2/3 '>
+        <div className='flex h-full w-full'>
             <AceEditor
                 theme='tomorrow_night'
                 mode='pascal'

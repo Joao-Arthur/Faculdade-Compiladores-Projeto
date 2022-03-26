@@ -7,19 +7,19 @@ type props = {
 
 export function Table({ data }: props) {
     return (
-        <div className='w-1/2 text-left overflow-auto text-white bg-primary '>
-            <table className='w-full '>
+        <div className='h-full text-left text-white bg-primary flex overflow-hidden'>
+            <table className='w-full overflow-x-auto h-full flex flex-col'>
                 <thead>
-                <tr className='bg-black/20'>
-                    <th className='px-4'>Identificador</th>
-                    <th className='px-4'>Token</th>
-                </tr>
+                    <tr className='bg-black/20'>
+                        <th className='px-4 w-36'>Código</th>
+                        <th className='px-4 w-96'>Palavra</th>
+                    </tr>
                 </thead>
-                <tbody>
+                <tbody className='overflow-y-auto '>
                     {data.map(({ id, word }, index) => (
                         <tr className='border-b border-white/10' key={index}>
-                            <td className='px-4 py-2'>{id}</td>
-                            <td className='px-4 py-2'>{word}</td>
+                            <td className='px-4 py-2 w-36'>{id}</td>
+                            <td className='px-4 py-2 w-96'>{word}</td>
                         </tr>
                     ))}
                 </tbody>
