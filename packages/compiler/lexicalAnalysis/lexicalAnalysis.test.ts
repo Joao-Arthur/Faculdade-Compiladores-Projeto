@@ -6,11 +6,22 @@ describe('lexicalAnalysis', () => {
         expect(lexicalAnalysis('')).toEqual([]);
     });
 
-    it('should identify last character', () => {
+    it('should correctly identify begin and end', () => {
+        expect(
+            lexicalAnalysis(`program;
+end.`)
+        ).toEqual([
+            { word: 'program', id: symbolsId.program },
+            { word: ';', id: symbolsId[';'] },
+            { word: 'end', id: symbolsId.end },
+            { word: '.', id: symbolsId['.'] }
+        ]);
+
         expect(
             lexicalAnalysis(`
 program;
-end.`)
+end.
+`)
         ).toEqual([
             { word: 'program', id: symbolsId.program },
             { word: ';', id: symbolsId[';'] },
