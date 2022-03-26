@@ -22,7 +22,6 @@ Possui a uma IDE Básica, com um editor de código.
 -   análise semântica
 
 -   GUI
-    -   better icon contrast on hover
     -   call compiler instead of function
     -   implement shortcuts
     -   pubsub to compiler
