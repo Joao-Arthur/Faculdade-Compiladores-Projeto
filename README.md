@@ -18,6 +18,14 @@ Possui a uma IDE Básica, com um editor de código.
     -   validação string não encerrada
     -   validação comentário não encerrado
     -   erro em caracteres errados
-    -   melhorias visuais
 -   análise sintâtica
 -   análise semântica
+
+-   GUI
+    -   better icon contrast on hover
+    -   icon title
+    -   icon cursor pointer
+    -   call compiler instead of function
+    -   pubsub to compiler
+    -   separate gui and function
+    -   dismiss toast on cancel save file
