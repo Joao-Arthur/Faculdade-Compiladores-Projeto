@@ -9,5 +9,11 @@ export function ClearButton() {
         setEditorCode('');
     }
 
-    return <BaseButton onClick={onClick} Icon={<FcCancel size={20} />} />;
+    return (
+        <BaseButton
+            title='Limpar'
+            onClick={onClick}
+            Icon={<FcCancel size={20} />}
+        />
+    );
 }

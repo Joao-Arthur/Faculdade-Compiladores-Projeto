@@ -10,5 +10,11 @@ export function ExecuteButton() {
         setTokens(compiler.lexicalCompilation(editorCode));
     }
 
-    return <BaseButton onClick={onClick} Icon={<FcVideoFile size={20} />} />;
+    return (
+        <BaseButton
+            title='Executar (f9)'
+            onClick={onClick}
+            Icon={<FcVideoFile size={20} />}
+        />
+    );
 }

@@ -23,9 +23,8 @@ Possui a uma IDE Básica, com um editor de código.
 
 -   GUI
     -   better icon contrast on hover
-    -   icon title
-    -   icon cursor pointer
     -   call compiler instead of function
+    -   implement shortcuts
     -   pubsub to compiler
     -   separate gui and function
     -   dismiss toast on cancel save file

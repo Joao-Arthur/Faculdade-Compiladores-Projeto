@@ -9,5 +9,11 @@ export function NewFileButton() {
         setEditorCode('');
     }
 
-    return <BaseButton onClick={onClick} Icon={<FcDocument size={20} />} />;
+    return (
+        <BaseButton
+            title='Novo (ctrl+n)'
+            onClick={onClick}
+            Icon={<FcDocument size={20} />}
+        />
+    );
 }

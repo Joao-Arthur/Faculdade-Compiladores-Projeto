@@ -6,7 +6,7 @@ import { SaveFileButton } from './SaveFileButton';
 
 export function Header() {
     return (
-        <div className='flex items-center gap-1 bg-primary'>
+        <div className='flex items-center bg-primary'>
             <NewFileButton />
             <OpenFileButton />
             <SaveFileButton />

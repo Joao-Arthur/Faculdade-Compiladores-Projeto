@@ -20,5 +20,11 @@ export function OpenFileButton() {
         if (isSuccess) setEditorCode(data);
     }, [isSuccess]);
 
-    return <BaseButton onClick={mutate} Icon={<FcOpenedFolder size={20} />} />;
+    return (
+        <BaseButton
+            title='Abrir (ctrl+o)'
+            onClick={mutate}
+            Icon={<FcOpenedFolder size={20} />}
+        />
+    );
 }

@@ -19,5 +19,11 @@ export function SaveFileButton() {
         mutate();
     }
 
-    return <BaseButton onClick={onClick} Icon={<img src={save} />} />;
+    return (
+        <BaseButton
+            title='Salvar (ctrl+s)'
+            onClick={onClick}
+            Icon={<img src={save} alt='salvar' />}
+        />
+    );
 }
