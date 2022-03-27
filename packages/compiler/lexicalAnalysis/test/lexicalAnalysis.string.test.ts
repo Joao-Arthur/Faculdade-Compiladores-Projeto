@@ -34,4 +34,10 @@ WriteLn('There"s NO String variables IN THIS language');
         const source = `'so far, so good, so what?`;
         expect(() => lexicalAnalysis(source)).toThrow('string não encerrada');
     });
+
+    it('should throw on multiline string', () => {
+        const source = `'Lorem ipsum dolor sit amet,
+consectetur adipiscing elit.'`;
+        expect(() => lexicalAnalysis(source)).toThrow('string não encerrada');
+    });
 });

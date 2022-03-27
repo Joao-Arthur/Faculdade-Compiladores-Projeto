@@ -8,14 +8,11 @@ Possui a uma IDE Básica, com um editor de código.
 ### TODO
 
 -   análise léxica
-    -   salvar linha do token
     -   números
         -   sinal positivo e negativo
         -   validação tamanho
     -   identificadores
         -   validação tamanho
-    -   validação string não encerrada
-    -   validação comentário não encerrado
     -   erro em caracteres errados
 -   análise sintâtica
 -   análise semântica
