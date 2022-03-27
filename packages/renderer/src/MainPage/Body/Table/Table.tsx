@@ -7,7 +7,7 @@ type props = {
 
 export function Table({ data }: props) {
     return (
-        <div className='h-full text-left text-white bg-primary flex overflow-hidden'>
+        <div className='h-full w-[528px] text-left text-white bg-primary flex overflow-hidden'>
             <table className='w-full overflow-x-auto h-full flex flex-col'>
                 <thead>
                     <tr className='bg-black/20'>
