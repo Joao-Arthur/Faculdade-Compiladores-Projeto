@@ -1,5 +1,5 @@
-import { symbolsId } from '../symbols';
-import { lexicalAnalysis } from './lexicalAnalysis';
+import { symbolsId } from '../../symbols';
+import { lexicalAnalysis } from '../lexicalAnalysis';
 
 describe('lexicalAnalysis', () => {
     it('should identify while loops', () => {

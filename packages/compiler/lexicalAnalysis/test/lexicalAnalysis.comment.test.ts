@@ -1,5 +1,5 @@
-import { symbolsId } from '../symbols';
-import { lexicalAnalysis } from './lexicalAnalysis';
+import { symbolsId } from '../../symbols';
+import { lexicalAnalysis } from '../lexicalAnalysis';
 
 describe('lexicalAnalysis', () => {
     it('should ignore comments in the middle of the program', () => {
