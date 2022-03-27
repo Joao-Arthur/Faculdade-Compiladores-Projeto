@@ -4,17 +4,27 @@ import { currentWord, token } from './types';
 
 export function addCurrentWordToStack(
     tokens: token[],
-    currentWord: currentWord
+    currentWord: currentWord,
+    line: number
 ) {
     switch (currentWord.type) {
         case 'string':
-            tokens.push({ id: symbolsId.literal, word: currentWord.word });
+            tokens.push({
+                line,
+                id: symbolsId.literal,
+                word: currentWord.word
+            });
             break;
         case 'numeric':
-            tokens.push({ id: symbolsId.inteiro, word: currentWord.word });
+            tokens.push({
+                line,
+                id: symbolsId.inteiro,
+                word: currentWord.word
+            });
             break;
         case 'identifier':
             tokens.push({
+                line,
                 id: symbolsId.identificador,
                 word: currentWord.word
             });
@@ -26,10 +36,7 @@ export function addCurrentWordToStack(
                 currentWord.word
             ];
             if (foundId)
-                tokens.push({
-                    id: foundId,
-                    word: currentWord.word
-                });
+                tokens.push({ line, id: foundId, word: currentWord.word });
             break;
     }
 }

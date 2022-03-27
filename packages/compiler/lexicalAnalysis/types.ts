@@ -1,4 +1,5 @@
 export type token = {
+    line: number;
     id: number;
     word: string;
 };

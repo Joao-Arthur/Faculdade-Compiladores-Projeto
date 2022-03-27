@@ -7,14 +7,15 @@ describe('lexicalAnalysis', () => {
 WriteLn('There"s NO String variables IN THIS language');
 `;
         expect(lexicalAnalysis(source)).toEqual([
-            { word: 'writeln', id: symbolsId.writeln },
-            { word: '(', id: symbolsId['('] },
+            { line: 2, word: 'writeln', id: symbolsId.writeln },
+            { line: 2, word: '(', id: symbolsId['('] },
             {
+                line: 2,
                 word: 'there"s no string variables in this language',
                 id: symbolsId.literal
             },
-            { word: ')', id: symbolsId[')'] },
-            { word: ';', id: symbolsId[';'] }
+            { line: 2, word: ')', id: symbolsId[')'] },
+            { line: 2, word: ';', id: symbolsId[';'] }
         ]);
     });
 
@@ -22,6 +23,7 @@ WriteLn('There"s NO String variables IN THIS language');
         const source = `'THIS IS GROUND CONTROL TO MAJOR TOM'`;
         expect(lexicalAnalysis(source)).toEqual([
             {
+                line: 1,
                 word: 'this is ground control to major tom',
                 id: symbolsId.literal
             }

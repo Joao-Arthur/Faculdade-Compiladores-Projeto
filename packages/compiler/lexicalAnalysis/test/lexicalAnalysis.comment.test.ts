@@ -9,29 +9,29 @@ program CommentsProgram; (*stupid name for a program, after all*)
     var x, y, z: integer;(*another comment*)
 begin (*begin*)
     readln(x);(*read line*)
-end; (*end*)
+end. (*end*)
 `;
         expect(lexicalAnalysis(source)).toEqual([
-            { word: 'program', id: symbolsId.program },
-            { word: 'commentsprogram', id: symbolsId.identificador },
-            { word: ';', id: symbolsId[';'] },
-            { word: 'var', id: symbolsId.var },
-            { word: 'x', id: symbolsId.identificador },
-            { word: ',', id: symbolsId[','] },
-            { word: 'y', id: symbolsId.identificador },
-            { word: ',', id: symbolsId[','] },
-            { word: 'z', id: symbolsId.identificador },
-            { word: ':', id: symbolsId[':'] },
-            { word: 'integer', id: symbolsId.integer },
-            { word: ';', id: symbolsId[';'] },
-            { word: 'begin', id: symbolsId.begin },
-            { word: 'readln', id: symbolsId.readln },
-            { word: '(', id: symbolsId['('] },
-            { word: 'x', id: symbolsId.identificador },
-            { word: ')', id: symbolsId[')'] },
-            { word: ';', id: symbolsId[';'] },
-            { word: 'end', id: symbolsId.end },
-            { word: ';', id: symbolsId[';'] }
+            { line: 2, word: 'program', id: symbolsId.program },
+            { line: 2, word: 'commentsprogram', id: symbolsId.identificador },
+            { line: 2, word: ';', id: symbolsId[';'] },
+            { line: 4, word: 'var', id: symbolsId.var },
+            { line: 4, word: 'x', id: symbolsId.identificador },
+            { line: 4, word: ',', id: symbolsId[','] },
+            { line: 4, word: 'y', id: symbolsId.identificador },
+            { line: 4, word: ',', id: symbolsId[','] },
+            { line: 4, word: 'z', id: symbolsId.identificador },
+            { line: 4, word: ':', id: symbolsId[':'] },
+            { line: 4, word: 'integer', id: symbolsId.integer },
+            { line: 4, word: ';', id: symbolsId[';'] },
+            { line: 5, word: 'begin', id: symbolsId.begin },
+            { line: 6, word: 'readln', id: symbolsId.readln },
+            { line: 6, word: '(', id: symbolsId['('] },
+            { line: 6, word: 'x', id: symbolsId.identificador },
+            { line: 6, word: ')', id: symbolsId[')'] },
+            { line: 6, word: ';', id: symbolsId[';'] },
+            { line: 7, word: 'end', id: symbolsId.end },
+            { line: 7, word: '.', id: symbolsId['.'] }
         ]);
     });
 
@@ -45,28 +45,28 @@ beg(*breaking comment*)in
 end.
 `;
         expect(lexicalAnalysis(source)).toEqual([
-            { word: 'program', id: symbolsId.program },
-            { word: 'commentsprogram', id: symbolsId.identificador },
-            { word: ';', id: symbolsId[';'] },
-            { word: 'var', id: symbolsId.var },
-            { word: 'n', id: symbolsId.identificador },
-            { word: ',', id: symbolsId[','] },
-            { word: 'um', id: symbolsId.identificador },
-            { word: ',', id: symbolsId[','] },
-            { word: 'num', id: symbolsId.identificador },
-            { word: ':', id: symbolsId[':'] },
-            { word: 'integer', id: symbolsId.integer },
-            { word: ';', id: symbolsId[';'] },
-            { word: 'beg', id: symbolsId.identificador },
-            { word: 'in', id: symbolsId.identificador },
-            { word: 'n', id: symbolsId.identificador },
-            { word: 'um', id: symbolsId.identificador },
-            { word: ':', id: symbolsId[':'] },
-            { word: '=', id: symbolsId['='] },
-            { word: '19', id: symbolsId.inteiro },
-            { word: ';', id: symbolsId[';'] },
-            { word: 'end', id: symbolsId.end },
-            { word: '.', id: symbolsId['.'] }
+            { line: 2, word: 'program', id: symbolsId.program },
+            { line: 2, word: 'commentsprogram', id: symbolsId.identificador },
+            { line: 2, word: ';', id: symbolsId[';'] },
+            { line: 3, word: 'var', id: symbolsId.var },
+            { line: 4, word: 'n', id: symbolsId.identificador },
+            { line: 4, word: ',', id: symbolsId[','] },
+            { line: 4, word: 'um', id: symbolsId.identificador },
+            { line: 4, word: ',', id: symbolsId[','] },
+            { line: 4, word: 'num', id: symbolsId.identificador },
+            { line: 4, word: ':', id: symbolsId[':'] },
+            { line: 4, word: 'integer', id: symbolsId.integer },
+            { line: 4, word: ';', id: symbolsId[';'] },
+            { line: 5, word: 'beg', id: symbolsId.identificador },
+            { line: 5, word: 'in', id: symbolsId.identificador },
+            { line: 6, word: 'n', id: symbolsId.identificador },
+            { line: 6, word: 'um', id: symbolsId.identificador },
+            { line: 6, word: ':', id: symbolsId[':'] },
+            { line: 6, word: '=', id: symbolsId['='] },
+            { line: 6, word: '19', id: symbolsId.inteiro },
+            { line: 6, word: ';', id: symbolsId[';'] },
+            { line: 7, word: 'end', id: symbolsId.end },
+            { line: 7, word: '.', id: symbolsId['.'] }
         ]);
     });
 

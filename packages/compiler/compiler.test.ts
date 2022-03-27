@@ -8,9 +8,9 @@ describe('compiler', () => {
         const { tokens, error } = compile(source);
 
         expect(tokens).toEqual([
-            { word: 'program', id: symbolsId.program },
-            { word: 'compilerprogram', id: symbolsId.identificador },
-            { word: ';', id: symbolsId[';'] }
+            { line: 1, word: 'program', id: symbolsId.program },
+            { line: 1, word: 'compilerprogram', id: symbolsId.identificador },
+            { line: 1, word: ';', id: symbolsId[';'] }
         ]);
 
         expect(error).toEqual(undefined);
