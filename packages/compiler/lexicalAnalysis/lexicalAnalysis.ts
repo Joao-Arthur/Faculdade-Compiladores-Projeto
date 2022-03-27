@@ -23,7 +23,9 @@ export function lexicalAnalysis(sourceCode: string): token[] {
                     }
 
                     if (currentWord.type === 'comment') {
-                        throw new Error('comentário não encerrado!');
+                        if (lineIndex === lines.length - 1) {
+                            throw new Error('comentário não encerrado!');
+                        } else break;
                     }
                 }
             }

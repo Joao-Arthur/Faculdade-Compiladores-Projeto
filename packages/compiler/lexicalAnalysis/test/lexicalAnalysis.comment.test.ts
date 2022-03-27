@@ -75,6 +75,23 @@ end.
         expect(lexicalAnalysis(source)).toEqual([]);
     });
 
+    it('should handle multiline comments', () => {
+        const source = `(*
+Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt.
+Ut sem viverra aliquet eget sit amet tellus cras adipiscing.
+Ut tristique et egestas quis ipsum suspendisse.
+Ultricies integer quis auctor elit sed vulputate mi sit.
+Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at.
+Enim ut tellus elementum sagittis vitae et leo duis.
+Posuere ac ut consequat semper.
+Vitae tempus quam pellentesque nec nam aliquam sem et.
+Quis enim lobortis scelerisque fermentum.          
+*)`;
+        expect(lexicalAnalysis(source)).toEqual([]);
+    });
+
     it('should throw on unfinished comment', () => {
         const source = '(*no comments so far';
         expect(() => lexicalAnalysis(source)).toThrow(
