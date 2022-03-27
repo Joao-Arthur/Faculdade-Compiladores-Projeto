@@ -1,3 +1,5 @@
+import { symbols } from '../../symbols';
+import { currentWord, token } from '../types';
 import { numberInterpreter } from './numberInterpreter';
 
 describe('numberInterpreter', () => {
@@ -30,5 +32,19 @@ describe('numberInterpreter', () => {
             shouldAdd: false,
             addedCurrentCharacter: true
         });
+    });
+
+    it('should add to stack', () => {
+        let tokens: token[] = [];
+        const currentWord: currentWord = {
+            type: 'numeric',
+            word: '56709',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        };
+        numberInterpreter.addToStack(tokens, currentWord, 10);
+        expect(tokens).toEqual([
+            { line: 10, id: symbols.inteiro, word: '56709' }
+        ]);
     });
 });

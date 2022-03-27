@@ -7,7 +7,7 @@ export interface wordInterpreter {
         currentWord: currentWord,
         character: string
     ) => currentWord;
-    addToStack?: (
+    addToStack: (
         tokens: token[],
         currentWord: currentWord,
         line: number

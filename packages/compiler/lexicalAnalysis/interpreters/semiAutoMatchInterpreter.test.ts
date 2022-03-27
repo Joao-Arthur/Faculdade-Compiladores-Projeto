@@ -1,3 +1,5 @@
+import { symbols } from '../../symbols';
+import { currentWord, token } from '../types';
 import { semiAutoMatchInterpreter } from './semiAutoMatchInterpreter';
 
 describe('semiAutoMatchInterpreter', () => {
@@ -30,5 +32,17 @@ describe('semiAutoMatchInterpreter', () => {
             shouldAdd: false,
             addedCurrentCharacter: true
         });
+    });
+
+    it('should add to stack', () => {
+        let tokens: token[] = [];
+        const currentWord: currentWord = {
+            type: 'semiAutoMatch',
+            word: '<=',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        };
+        semiAutoMatchInterpreter.addToStack(tokens, currentWord, 10);
+        expect(tokens).toEqual([{ line: 10, id: symbols['<='], word: '<=' }]);
     });
 });

@@ -1,3 +1,5 @@
+import { symbols } from '../../symbols';
+import { currentWord, token } from '../types';
 import { autoMatchInterpreter } from './autoMatchInterpreter';
 
 describe('autoMatchInterpreter', () => {
@@ -30,5 +32,17 @@ describe('autoMatchInterpreter', () => {
             shouldAdd: true,
             addedCurrentCharacter: true
         });
+    });
+
+    it('should add to stack', () => {
+        let tokens: token[] = [];
+        const currentWord: currentWord = {
+            type: 'autoMatch',
+            word: '[',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        };
+        autoMatchInterpreter.addToStack(tokens, currentWord, 10);
+        expect(tokens).toEqual([{ line: 10, id: symbols['['], word: '[' }]);
     });
 });

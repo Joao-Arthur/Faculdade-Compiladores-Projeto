@@ -1,3 +1,5 @@
+import { symbols } from '../../symbols';
+import { currentWord, token } from '../types';
 import { identifierInterpreter } from './identifierInterpreter';
 
 describe('identifierInterpreter', () => {
@@ -30,5 +32,19 @@ describe('identifierInterpreter', () => {
             shouldAdd: false,
             addedCurrentCharacter: true
         });
+    });
+
+    it('should add to stack', () => {
+        let tokens: token[] = [];
+        const currentWord: currentWord = {
+            type: 'identifier',
+            word: 'hello_world',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        };
+        identifierInterpreter.addToStack(tokens, currentWord, 10);
+        expect(tokens).toEqual([
+            { line: 10, id: symbols.identificador, word: 'hello_world' }
+        ]);
     });
 });

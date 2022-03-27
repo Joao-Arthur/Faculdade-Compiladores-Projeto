@@ -1,3 +1,5 @@
+import { symbols } from '../../symbols';
+import { literalObject } from '../../types';
 import { currentWord, token } from '../types';
 import { wordInterpreter } from '../wordInterpreter';
 
@@ -10,5 +12,11 @@ export const semiAutoMatchInterpreter: wordInterpreter = {
         word: character,
         shouldAdd: false,
         addedCurrentCharacter: true
-    })
+    }),
+    addToStack: (tokens: token[], currentWord: currentWord, line: number) => {
+        const foundId = (symbols as literalObject<number | undefined>)[
+            currentWord.word
+        ];
+        if (foundId) tokens.push({ line, id: foundId, word: currentWord.word });
+    }
 };
