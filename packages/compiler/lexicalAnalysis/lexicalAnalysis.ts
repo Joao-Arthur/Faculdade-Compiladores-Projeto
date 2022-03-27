@@ -7,11 +7,7 @@ import {
     semiAutoMatchSymbols,
     stringDelimiter
 } from './constants';
-
-type lexicalTokens = {
-    id: number;
-    word: string;
-};
+import { token } from './types';
 
 type wordType =
     | 'comment'
@@ -29,8 +25,8 @@ type currentWord = {
     addedCurrentCharacter: boolean;
 };
 
-export function lexicalAnalysis(sourceCode: string): lexicalTokens[] {
-    let tokens: lexicalTokens[] = [];
+export function lexicalAnalysis(sourceCode: string): token[] {
+    let tokens: token[] = [];
     let currentWord: currentWord | null = null;
 
     const iterator = sourceCode[Symbol.iterator]();
@@ -175,10 +171,7 @@ function tryFindCurrentWord(character: string): currentWord | undefined {
         };
 }
 
-function addCurrentWordToStack(
-    tokens: lexicalTokens[],
-    currentWord: currentWord
-) {
+function addCurrentWordToStack(tokens: token[], currentWord: currentWord) {
     switch (currentWord.type) {
         case 'string':
             tokens.push({ id: symbolsId.literal, word: currentWord.word });

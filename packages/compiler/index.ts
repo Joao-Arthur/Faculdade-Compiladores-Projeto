@@ -1,1 +1,1 @@
-export { compiler } from './compiler';
+export { compile } from './compiler';

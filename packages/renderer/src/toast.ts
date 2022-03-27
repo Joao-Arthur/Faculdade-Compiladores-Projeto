@@ -6,10 +6,16 @@ export type messages = {
     success: string;
 };
 
+const defaultOptions = {
+    style: {
+        minWidth: '250px'
+    }
+};
+
 export function toast<T>(promise: Promise<T>, messages: messages) {
-    return hotToast.promise(promise, messages, {
-        style: {
-            minWidth: '250px'
-        }
-    });
+    return hotToast.promise(promise, messages, defaultOptions);
+}
+
+export function errorToast(message: string) {
+    hotToast.error(message, defaultOptions);
 }

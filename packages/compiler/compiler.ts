@@ -1,12 +1,18 @@
 import { lexicalAnalysis } from './lexicalAnalysis';
+import { token } from './lexicalAnalysis/types';
 
-function lexicalCompilation(source: string) {
-    return lexicalAnalysis(source);
+export function compile(source: string) {
+    let tokens: token[] | undefined;
+    let error: string | undefined;
+
+    try {
+        tokens = lexicalAnalysis(source);
+    } catch (compileError) {
+        if (compileError instanceof Error) error = compileError.message;
+    }
+
+    return {
+        tokens,
+        error
+    } as const;
 }
-
-function fullCompilation(source: string) {}
-
-export const compiler = {
-    lexicalCompilation,
-    fullCompilation
-};

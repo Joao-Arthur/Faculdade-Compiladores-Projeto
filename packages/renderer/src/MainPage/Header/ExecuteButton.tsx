@@ -1,13 +1,16 @@
 import { BaseButton } from '@/BaseButton';
+import { errorToast } from '@/toast';
 import { FcVideoFile } from 'react-icons/fc';
-import { compiler } from '../../../../compiler';
+import { compile } from '../../../../compiler';
 import { useEditorStore } from '../Body/Editor/useEditorStore';
 
 export function ExecuteButton() {
     const { editorCode, setTokens } = useEditorStore();
 
     function onClick() {
-        setTokens(compiler.lexicalCompilation(editorCode));
+        const { tokens, error } = compile(editorCode);
+        if (tokens) setTokens(tokens);
+        if (error) errorToast(error);
     }
 
     return (

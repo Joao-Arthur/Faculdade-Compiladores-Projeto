@@ -22,8 +22,6 @@ Possui a uma IDE Básica, com um editor de código.
 -   análise semântica
 
 -   GUI
-    -   call compiler instead of function
     -   implement shortcuts
-    -   pubsub to compiler
     -   separate gui and function
     -   dismiss toast on cancel save file
