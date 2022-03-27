@@ -1,6 +1,11 @@
 import { literalObject } from '../types';
 import { symbols } from '../symbols';
 import { currentWord, token } from './types';
+import { stringInterpreter } from './interpreters/stringInterpreter';
+import { numberInterpreter } from './interpreters/numberInterpreter';
+import { identifierInterpreter } from './interpreters/identifierInterpreter';
+import { autoMatchInterpreter } from './interpreters/autoMatchInterpreter';
+import { semiAutoMatchInterpreter } from './interpreters/semiAutoMatchInterpreter';
 
 export function addCurrentWordToStack(
     tokens: token[],
@@ -9,28 +14,20 @@ export function addCurrentWordToStack(
 ) {
     switch (currentWord.type) {
         case 'string':
-            tokens.push({
-                line,
-                id: symbols.literal,
-                word: currentWord.word
-            });
+            stringInterpreter.addToStack(tokens, currentWord, line);
             break;
         case 'numeric':
-            tokens.push({
-                line,
-                id: symbols.inteiro,
-                word: currentWord.word
-            });
+            numberInterpreter.addToStack(tokens, currentWord, line);
             break;
         case 'identifier':
-            tokens.push({
-                line,
-                id: symbols.identificador,
-                word: currentWord.word
-            });
+            identifierInterpreter.addToStack(tokens, currentWord, line);
             break;
         case 'autoMatch':
+            autoMatchInterpreter.addToStack(tokens, currentWord, line);
+            break;
         case 'semiAutoMatch':
+            semiAutoMatchInterpreter.addToStack(tokens, currentWord, line);
+            break;
         case 'reservedWord':
             const foundId = (symbols as literalObject<number | undefined>)[
                 currentWord.word
