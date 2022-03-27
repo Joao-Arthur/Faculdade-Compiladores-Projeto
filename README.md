@@ -13,7 +13,6 @@ Possui a uma IDE Básica, com um editor de código.
         -   sinal positivo e negativo
         -   validação tamanho
     -   identificadores
-        -   mapear outros caracteres de identificadores
         -   validação tamanho
     -   validação string não encerrada
     -   validação comentário não encerrado
@@ -23,5 +22,3 @@ Possui a uma IDE Básica, com um editor de código.
 
 -   GUI
     -   implement shortcuts
-    -   separate gui and function
-    -   dismiss toast on cancel save file
