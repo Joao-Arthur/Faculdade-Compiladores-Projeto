@@ -1,5 +1,5 @@
 import { literalObject } from '../types';
-import { symbolsId } from '../symbols';
+import { symbols } from '../symbols';
 import { currentWord, token } from './types';
 
 export function addCurrentWordToStack(
@@ -11,28 +11,28 @@ export function addCurrentWordToStack(
         case 'string':
             tokens.push({
                 line,
-                id: symbolsId.literal,
+                id: symbols.literal,
                 word: currentWord.word
             });
             break;
         case 'numeric':
             tokens.push({
                 line,
-                id: symbolsId.inteiro,
+                id: symbols.inteiro,
                 word: currentWord.word
             });
             break;
         case 'identifier':
             tokens.push({
                 line,
-                id: symbolsId.identificador,
+                id: symbols.identificador,
                 word: currentWord.word
             });
             break;
         case 'autoMatch':
         case 'semiAutoMatch':
         case 'reservedWord':
-            const foundId = (symbolsId as literalObject<number | undefined>)[
+            const foundId = (symbols as literalObject<number | undefined>)[
                 currentWord.word
             ];
             if (foundId)

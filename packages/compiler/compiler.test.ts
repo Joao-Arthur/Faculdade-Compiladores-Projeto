@@ -1,5 +1,5 @@
 import { compile } from './compiler';
-import { symbolsId } from './symbols';
+import { symbols } from './symbols';
 
 describe('compiler', () => {
     it('should return the token', () => {
@@ -8,9 +8,9 @@ describe('compiler', () => {
         const { tokens, error } = compile(source);
 
         expect(tokens).toEqual([
-            { line: 1, word: 'program', id: symbolsId.program },
-            { line: 1, word: 'compilerprogram', id: symbolsId.identificador },
-            { line: 1, word: ';', id: symbolsId[';'] }
+            { line: 1, word: 'program', id: symbols.program },
+            { line: 1, word: 'compilerprogram', id: symbols.identificador },
+            { line: 1, word: ';', id: symbols[';'] }
         ]);
 
         expect(error).toEqual(undefined);
