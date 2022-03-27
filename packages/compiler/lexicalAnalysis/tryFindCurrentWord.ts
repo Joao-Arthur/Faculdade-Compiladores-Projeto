@@ -1,42 +1,40 @@
-import {
-    autoMatchSymbols,
-    letters,
-    numbers,
-    semiAutoMatchSymbols,
-    stringDelimiter
-} from './constants';
+import { autoMatchInterpreter } from './interpreters/autoMatchInterpreter';
+import { identifierInterpreter } from './interpreters/identifierInterpreter';
+import { numberInterpreter } from './interpreters/numberInterpreter';
+import { semiAutoMatchInterpreter } from './interpreters/semiAutoMatchInterpreter';
+import { stringInterpreter } from './interpreters/stringInterpreter';
 import { currentWord } from './types';
 
 export function tryFindCurrentWord(character: string): currentWord | undefined {
-    if (autoMatchSymbols.includes(character))
+    if (autoMatchInterpreter.matches(character))
         return {
             type: 'autoMatch',
             word: character,
             shouldAdd: true,
             addedCurrentCharacter: true
         };
-    if (semiAutoMatchSymbols.includes(character))
+    if (semiAutoMatchInterpreter.matches(character))
         return {
             type: 'semiAutoMatch',
             word: character,
             shouldAdd: false,
             addedCurrentCharacter: true
         };
-    if (letters.includes(character))
+    if (identifierInterpreter.matches(character))
         return {
             type: 'identifier',
             word: character,
             shouldAdd: false,
             addedCurrentCharacter: true
         };
-    if (numbers.includes(character))
+    if (numberInterpreter.matches(character))
         return {
             type: 'numeric',
             word: character,
             shouldAdd: false,
             addedCurrentCharacter: true
         };
-    if (stringDelimiter === character)
+    if (stringInterpreter.matches(character))
         return {
             type: 'string',
             word: '',
