@@ -76,8 +76,11 @@ end.
     });
 
     it('should throw on unfinished comment', () => {
-        const source = `(*no comments so far`;
+        const source = '(*no comments so far';
         expect(() => lexicalAnalysis(source)).toThrow(
+            'comentário não encerrado'
+        );
+        expect(() => lexicalAnalysis('(*)')).toThrow(
             'comentário não encerrado'
         );
     });

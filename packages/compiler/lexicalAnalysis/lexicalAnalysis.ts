@@ -104,7 +104,7 @@ function tryAddCharacterToCurrent(currentWord: currentWord, character: string) {
                 currentWord.addedCurrentCharacter = true;
             }
             if (currentWord.word === '(' && character === '*') {
-                currentWord.word += character;
+                currentWord.word = '';
                 currentWord.addedCurrentCharacter = true;
                 currentWord.shouldAdd = false;
                 currentWord.type = 'comment';
