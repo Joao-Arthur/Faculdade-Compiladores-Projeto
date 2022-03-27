@@ -36,11 +36,11 @@ async function saveFile(win: BrowserWindow | null, content: string) {
     const chosenFile = await dialog.showSaveDialog(win, {
         filters: [{ name: 'Custom File Type', extensions: ['dfj'] }]
     });
-    if (chosenFile.canceled) return null;
+    if (chosenFile.canceled) return 'cancelled';
     const path = chosenFile.filePath;
-    if (!path) return null;
-    const fileContent = await fs.writeFile(path, content, {
+    if (!path) return 'error';
+    await fs.writeFile(path, content, {
         encoding: 'utf-8'
     });
-    return fileContent;
+    return 'success';
 }

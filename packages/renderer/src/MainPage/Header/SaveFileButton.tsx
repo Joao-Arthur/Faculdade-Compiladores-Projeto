@@ -4,6 +4,7 @@ import { BaseButton } from '@/BaseButton';
 import { toast } from '@/toast';
 import save from '@/assets/save.svg';
 import { useEditorStore } from '../Body/Editor/useEditorStore';
+import { toast as hotToast } from 'react-hot-toast';
 
 export function SaveFileButton() {
     const { editorCode } = useEditorStore();
@@ -12,6 +13,8 @@ export function SaveFileButton() {
             loading: 'Salvando arquivo...',
             success: 'Arquivo salvo com sucesso!',
             error: 'Não foi possível salvar o arquivo!'
+        }).then(res => {
+            if (res === 'cancelled') hotToast.dismiss();
         })
     );
 
