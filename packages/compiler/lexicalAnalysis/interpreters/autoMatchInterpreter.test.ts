@@ -22,4 +22,13 @@ describe('autoMatchInterpreter', () => {
         expect(autoMatchInterpreter.matches('.')).toBe(false);
         expect(autoMatchInterpreter.matches('$')).toBe(true);
     });
+
+    it('should create currentWord', () => {
+        expect(autoMatchInterpreter.create('[')).toEqual({
+            type: 'autoMatch',
+            word: '[',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        });
+    });
 });

@@ -22,4 +22,13 @@ describe('stringInterpreter', () => {
         expect(stringInterpreter.matches('.')).toBe(false);
         expect(stringInterpreter.matches('$')).toBe(false);
     });
+
+    it('should create currentWord', () => {
+        expect(stringInterpreter.create(`'`)).toEqual({
+            type: 'string',
+            word: '',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        });
+    });
 });

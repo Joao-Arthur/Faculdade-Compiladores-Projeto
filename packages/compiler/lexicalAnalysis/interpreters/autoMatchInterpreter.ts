@@ -4,5 +4,11 @@ import { wordInterpreter } from '../wordInterpreter';
 const autoMatchCharacters = '+-*/[])=,;$' as const;
 
 export const autoMatchInterpreter: wordInterpreter = {
-    matches: (character: string) => autoMatchCharacters.includes(character)
+    matches: (character: string) => autoMatchCharacters.includes(character),
+    create: (character: string) => ({
+        type: 'autoMatch',
+        word: character,
+        shouldAdd: true,
+        addedCurrentCharacter: true
+    })
 };

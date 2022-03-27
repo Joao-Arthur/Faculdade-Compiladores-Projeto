@@ -22,4 +22,13 @@ describe('numberInterpreter', () => {
         expect(numberInterpreter.matches('.')).toBe(false);
         expect(numberInterpreter.matches('$')).toBe(false);
     });
+
+    it('should create currentWord', () => {
+        expect(numberInterpreter.create(`6`)).toEqual({
+            type: 'numeric',
+            word: '6',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        });
+    });
 });

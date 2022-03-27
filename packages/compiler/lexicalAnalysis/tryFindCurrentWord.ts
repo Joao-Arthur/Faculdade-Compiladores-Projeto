@@ -7,38 +7,17 @@ import { currentWord } from './types';
 
 export function tryFindCurrentWord(character: string): currentWord | undefined {
     if (autoMatchInterpreter.matches(character))
-        return {
-            type: 'autoMatch',
-            word: character,
-            shouldAdd: true,
-            addedCurrentCharacter: true
-        };
+        return autoMatchInterpreter.create(character);
+
     if (semiAutoMatchInterpreter.matches(character))
-        return {
-            type: 'semiAutoMatch',
-            word: character,
-            shouldAdd: false,
-            addedCurrentCharacter: true
-        };
+        return semiAutoMatchInterpreter.create(character);
+
     if (identifierInterpreter.matches(character))
-        return {
-            type: 'identifier',
-            word: character,
-            shouldAdd: false,
-            addedCurrentCharacter: true
-        };
+        return identifierInterpreter.create(character);
+
     if (numberInterpreter.matches(character))
-        return {
-            type: 'numeric',
-            word: character,
-            shouldAdd: false,
-            addedCurrentCharacter: true
-        };
+        return numberInterpreter.create(character);
+
     if (stringInterpreter.matches(character))
-        return {
-            type: 'string',
-            word: '',
-            shouldAdd: false,
-            addedCurrentCharacter: true
-        };
+        return stringInterpreter.create(character);
 }

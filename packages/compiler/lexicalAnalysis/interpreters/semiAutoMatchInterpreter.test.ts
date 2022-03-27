@@ -22,4 +22,13 @@ describe('semiAutoMatchInterpreter', () => {
         expect(semiAutoMatchInterpreter.matches('.')).toBe(true);
         expect(semiAutoMatchInterpreter.matches('$')).toBe(false);
     });
+
+    it('should create currentWord', () => {
+        expect(semiAutoMatchInterpreter.create(`<`)).toEqual({
+            type: 'semiAutoMatch',
+            word: '<',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        });
+    });
 });
