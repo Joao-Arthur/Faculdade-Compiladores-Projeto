@@ -15,7 +15,7 @@ export function Table({ data }: props) {
                         <th className='px-4 w-96'>Palavra</th>
                     </tr>
                 </thead>
-                <tbody className='overflow-y-auto '>
+                <tbody className='overflow-y-auto h-full'>
                     {data.map(({ id, word }, index) => (
                         <tr className='border-b border-white/10' key={index}>
                             <td className='px-4 py-2 w-36'>{id}</td>
