@@ -68,7 +68,7 @@ describe('numberInterpreter', () => {
             type: 'numeric',
             word: '56709',
             shouldAdd: true,
-            addedCurrentCharacter: true
+            addedCurrentCharacter: false
         };
         numberInterpreter.addToStack(tokens, currentWord, 10);
         expect(tokens).toEqual([

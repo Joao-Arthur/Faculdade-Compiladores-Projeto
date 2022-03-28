@@ -80,8 +80,8 @@ describe('identifierInterpreter', () => {
         const currentWord: currentWord = {
             type: 'identifier',
             word: 'hello_world',
-            shouldAdd: false,
-            addedCurrentCharacter: true
+            shouldAdd: true,
+            addedCurrentCharacter: false
         };
         identifierInterpreter.addToStack(tokens, currentWord, 10);
         expect(tokens).toEqual([

@@ -29,6 +29,7 @@ export function lexicalAnalysis(sourceCode: string): token[] {
                     }
                 }
             }
+
             if (currentWord) {
                 tryAddCharacterToCurrent(currentWord, character);
             } else {

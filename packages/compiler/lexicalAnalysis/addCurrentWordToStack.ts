@@ -1,11 +1,10 @@
-import { literalObject } from '../types';
-import { symbols } from '../symbols';
 import { currentWord, token } from './types';
 import { stringInterpreter } from './interpreters/stringInterpreter';
 import { numberInterpreter } from './interpreters/numberInterpreter';
 import { identifierInterpreter } from './interpreters/identifierInterpreter';
 import { autoMatchInterpreter } from './interpreters/autoMatchInterpreter';
 import { semiAutoMatchInterpreter } from './interpreters/semiAutoMatchInterpreter';
+import { reservedWordInterpreter } from './interpreters/reservedWordInterpreter';
 
 export function addCurrentWordToStack(
     tokens: token[],
@@ -29,11 +28,7 @@ export function addCurrentWordToStack(
             semiAutoMatchInterpreter.addToStack(tokens, currentWord, line);
             break;
         case 'reservedWord':
-            const foundId = (symbols as literalObject<number | undefined>)[
-                currentWord.word
-            ];
-            if (foundId)
-                tokens.push({ line, id: foundId, word: currentWord.word });
+            reservedWordInterpreter.addToStack(tokens, currentWord, line);
             break;
     }
 }

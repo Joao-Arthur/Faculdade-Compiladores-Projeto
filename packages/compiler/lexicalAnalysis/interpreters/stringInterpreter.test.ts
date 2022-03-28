@@ -73,7 +73,7 @@ describe('stringInterpreter', () => {
         const currentWord: currentWord = {
             type: 'string',
             word: 'hello world!',
-            shouldAdd: false,
+            shouldAdd: true,
             addedCurrentCharacter: true
         };
         stringInterpreter.addToStack(tokens, currentWord, 10);
