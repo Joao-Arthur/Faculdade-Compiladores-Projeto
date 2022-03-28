@@ -1,3 +1,4 @@
+import { pipe } from 'ramda';
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { autoMatchInterpreter } from './autoMatchInterpreter';
@@ -27,6 +28,21 @@ describe('autoMatchInterpreter', () => {
 
     it('should create currentWord', () => {
         expect(autoMatchInterpreter.create('[')).toEqual({
+            type: 'autoMatch',
+            word: '[',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        });
+    });
+
+    it('should add caracter to word', () => {
+        expect(
+            pipe(
+                word => autoMatchInterpreter.handleCharacter(word, '='),
+                word => autoMatchInterpreter.handleCharacter(word, '-'),
+                word => autoMatchInterpreter.handleCharacter(word, ']')
+            )(autoMatchInterpreter.create('['))
+        ).toEqual({
             type: 'autoMatch',
             word: '[',
             shouldAdd: true,

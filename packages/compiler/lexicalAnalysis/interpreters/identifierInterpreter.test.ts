@@ -1,3 +1,4 @@
+import { pipe } from 'ramda';
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { identifierInterpreter } from './identifierInterpreter';
@@ -31,6 +32,46 @@ describe('identifierInterpreter', () => {
             word: 'h',
             shouldAdd: false,
             addedCurrentCharacter: true
+        });
+    });
+
+    it('should add caracter to word', () => {
+        expect(
+            pipe(
+                word => identifierInterpreter.handleCharacter(word, 'u'),
+                word => identifierInterpreter.handleCharacter(word, 'm')
+            )(identifierInterpreter.create('n'))
+        ).toEqual({
+            type: 'identifier',
+            word: 'num',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(
+                word => identifierInterpreter.handleCharacter(word, 'u'),
+                word => identifierInterpreter.handleCharacter(word, 'm'),
+                word => identifierInterpreter.handleCharacter(word, ';')
+            )(identifierInterpreter.create('n'))
+        ).toEqual({
+            type: 'identifier',
+            word: 'num',
+            shouldAdd: true,
+            addedCurrentCharacter: false
+        });
+
+        expect(
+            pipe(
+                word => identifierInterpreter.handleCharacter(word, 'f'),
+
+                word => identifierInterpreter.handleCharacter(word, ';')
+            )(identifierInterpreter.create('i'))
+        ).toEqual({
+            type: 'reservedWord',
+            word: 'if',
+            shouldAdd: true,
+            addedCurrentCharacter: false
         });
     });
 

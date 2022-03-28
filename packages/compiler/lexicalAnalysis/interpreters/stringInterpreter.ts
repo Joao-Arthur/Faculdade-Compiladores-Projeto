@@ -12,6 +12,21 @@ export const stringInterpreter: wordInterpreter = {
         shouldAdd: false,
         addedCurrentCharacter: true
     }),
+    handleCharacter: (currentWord: currentWord, character: string) => {
+        if (stringDelimiter.includes(character))
+            return {
+                type: 'string',
+                word: currentWord.word,
+                shouldAdd: true,
+                addedCurrentCharacter: true
+            };
+        return {
+            type: 'string',
+            word: currentWord.word + character,
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        };
+    },
     addToStack: (tokens: token[], currentWord: currentWord, line: number) => {
         tokens.push({
             line,

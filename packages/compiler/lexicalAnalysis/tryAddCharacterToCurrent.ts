@@ -1,11 +1,14 @@
-import { reservedWords } from '../symbols';
-import { letters, numbers, stringDelimiter } from './constants';
+import { identifierInterpreter } from './interpreters/identifierInterpreter';
+import { numberInterpreter } from './interpreters/numberInterpreter';
+import { semiAutoMatchInterpreter } from './interpreters/semiAutoMatchInterpreter';
+import { stringInterpreter } from './interpreters/stringInterpreter';
 import { currentWord } from './types';
 
 export function tryAddCharacterToCurrent(
     currentWord: currentWord,
     character: string
 ) {
+    let newWord: currentWord;
     switch (currentWord.type) {
         case 'comment':
             currentWord.addedCurrentCharacter = true;
@@ -13,62 +16,38 @@ export function tryAddCharacterToCurrent(
             if (currentWord.word.endsWith('*)')) currentWord.shouldAdd = true;
             break;
         case 'string':
-            currentWord.addedCurrentCharacter = true;
-            if (character === stringDelimiter) {
-                currentWord.shouldAdd = true;
-            } else {
-                currentWord.word += character;
-            }
+            newWord = stringInterpreter.handleCharacter(currentWord, character);
+            currentWord.addedCurrentCharacter = newWord.addedCurrentCharacter;
+            currentWord.shouldAdd = newWord.shouldAdd;
+            currentWord.type = newWord.type;
+            currentWord.word = newWord.word;
             break;
         case 'semiAutoMatch':
-            currentWord.shouldAdd = true;
-            currentWord.addedCurrentCharacter = false;
-            if (currentWord.word === ':' && character === '=') {
-                currentWord.word += character;
-                currentWord.addedCurrentCharacter = true;
-            }
-            if (currentWord.word === '>' && character === '=') {
-                currentWord.word += character;
-                currentWord.addedCurrentCharacter = true;
-            }
-            if (currentWord.word === '<' && character === '=') {
-                currentWord.word += character;
-                currentWord.addedCurrentCharacter = true;
-            }
-            if (currentWord.word === '<' && character === '>') {
-                currentWord.word += character;
-                currentWord.addedCurrentCharacter = true;
-            }
-            if (currentWord.word === '.' && character === '.') {
-                currentWord.word += character;
-                currentWord.addedCurrentCharacter = true;
-            }
-            if (currentWord.word === '(' && character === '*') {
-                currentWord.word = '';
-                currentWord.addedCurrentCharacter = true;
-                currentWord.shouldAdd = false;
-                currentWord.type = 'comment';
-            }
+            newWord = semiAutoMatchInterpreter.handleCharacter(
+                currentWord,
+                character
+            );
+            currentWord.addedCurrentCharacter = newWord.addedCurrentCharacter;
+            currentWord.shouldAdd = newWord.shouldAdd;
+            currentWord.type = newWord.type;
+            currentWord.word = newWord.word;
             break;
         case 'identifier':
-            if (letters.includes(character) || numbers.includes(character)) {
-                currentWord.word += character;
-                currentWord.addedCurrentCharacter = true;
-            } else {
-                if (reservedWords.includes(currentWord.word))
-                    currentWord.type = 'reservedWord';
-                currentWord.shouldAdd = true;
-                currentWord.addedCurrentCharacter = false;
-            }
+            newWord = identifierInterpreter.handleCharacter(
+                currentWord,
+                character
+            );
+            currentWord.addedCurrentCharacter = newWord.addedCurrentCharacter;
+            currentWord.shouldAdd = newWord.shouldAdd;
+            currentWord.type = newWord.type;
+            currentWord.word = newWord.word;
             break;
         case 'numeric':
-            if (numbers.includes(character)) {
-                currentWord.word += character;
-                currentWord.addedCurrentCharacter = true;
-            } else {
-                currentWord.shouldAdd = true;
-                currentWord.addedCurrentCharacter = false;
-            }
+            newWord = numberInterpreter.handleCharacter(currentWord, character);
+            currentWord.addedCurrentCharacter = newWord.addedCurrentCharacter;
+            currentWord.shouldAdd = newWord.shouldAdd;
+            currentWord.type = newWord.type;
+            currentWord.word = newWord.word;
             break;
     }
 }

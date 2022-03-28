@@ -1,3 +1,4 @@
+import { pipe } from 'ramda';
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { numberInterpreter } from './numberInterpreter';
@@ -31,6 +32,33 @@ describe('numberInterpreter', () => {
             word: '6',
             shouldAdd: false,
             addedCurrentCharacter: true
+        });
+    });
+
+    it('should add caracter to word', () => {
+        expect(
+            pipe(
+                word => numberInterpreter.handleCharacter(word, '6'),
+                word => numberInterpreter.handleCharacter(word, '6')
+            )(numberInterpreter.create(`6`))
+        ).toEqual({
+            type: 'numeric',
+            word: '666',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(
+                word => numberInterpreter.handleCharacter(word, '6'),
+                word => numberInterpreter.handleCharacter(word, '6'),
+                word => numberInterpreter.handleCharacter(word, ';')
+            )(numberInterpreter.create(`6`))
+        ).toEqual({
+            type: 'numeric',
+            word: '666',
+            shouldAdd: true,
+            addedCurrentCharacter: false
         });
     });
 

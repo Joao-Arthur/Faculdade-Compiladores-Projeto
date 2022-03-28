@@ -13,6 +13,11 @@ export const autoMatchInterpreter: wordInterpreter = {
         shouldAdd: true,
         addedCurrentCharacter: true
     }),
+    handleCharacter: (currentWord: currentWord, character: string) => {
+        //implemented only for convention.
+        //shall never be called
+        return currentWord;
+    },
     addToStack: (tokens: token[], currentWord: currentWord, line: number) => {
         const foundId = (symbols as literalObject<number | undefined>)[
             currentWord.word

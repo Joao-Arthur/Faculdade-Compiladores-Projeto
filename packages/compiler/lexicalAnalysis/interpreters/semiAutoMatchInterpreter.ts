@@ -13,6 +13,64 @@ export const semiAutoMatchInterpreter: wordInterpreter = {
         shouldAdd: false,
         addedCurrentCharacter: true
     }),
+    handleCharacter: (currentWord: currentWord, character: string) => {
+        currentWord.shouldAdd = true;
+        currentWord.addedCurrentCharacter = false;
+        if (currentWord.word === ':' && character === '=') {
+            return {
+                type: 'semiAutoMatch',
+                word: currentWord.word + character,
+                addedCurrentCharacter: true,
+                shouldAdd: true
+            };
+        }
+        if (currentWord.word === '>' && character === '=') {
+            return {
+                type: 'semiAutoMatch',
+                word: currentWord.word + character,
+                addedCurrentCharacter: true,
+                shouldAdd: true
+            };
+        }
+        if (currentWord.word === '<' && character === '=') {
+            return {
+                type: 'semiAutoMatch',
+                word: currentWord.word + character,
+                addedCurrentCharacter: true,
+                shouldAdd: true
+            };
+        }
+        if (currentWord.word === '<' && character === '>') {
+            return {
+                type: 'semiAutoMatch',
+                word: currentWord.word + character,
+                addedCurrentCharacter: true,
+                shouldAdd: true
+            };
+        }
+        if (currentWord.word === '.' && character === '.') {
+            return {
+                type: 'semiAutoMatch',
+                word: currentWord.word + character,
+                addedCurrentCharacter: true,
+                shouldAdd: true
+            };
+        }
+        if (currentWord.word === '(' && character === '*') {
+            return {
+                type: 'comment',
+                word: '',
+                addedCurrentCharacter: true,
+                shouldAdd: false
+            };
+        }
+        return {
+            type: 'semiAutoMatch',
+            word: currentWord.word,
+            shouldAdd: true,
+            addedCurrentCharacter: false
+        };
+    },
     addToStack: (tokens: token[], currentWord: currentWord, line: number) => {
         const foundId = (symbols as literalObject<number | undefined>)[
             currentWord.word

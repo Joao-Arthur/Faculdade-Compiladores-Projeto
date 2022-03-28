@@ -3,7 +3,7 @@ import { currentWord, token } from './types';
 export interface wordInterpreter {
     matches: (character: string) => boolean;
     create: (character: string) => currentWord;
-    handleCharacter?: (
+    handleCharacter: (
         currentWord: currentWord,
         character: string
     ) => currentWord;

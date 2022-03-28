@@ -3,7 +3,7 @@ import { symbols } from './symbols';
 
 describe('compiler', () => {
     it('should return the token', () => {
-        const source = `program CompilerProgram;`;
+        const source = 'program CompilerProgram;';
 
         const { tokens, error } = compile(source);
 

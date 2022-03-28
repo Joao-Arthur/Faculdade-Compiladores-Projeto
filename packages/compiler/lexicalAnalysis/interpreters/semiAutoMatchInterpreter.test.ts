@@ -1,3 +1,4 @@
+import { pipe } from 'ramda';
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { semiAutoMatchInterpreter } from './semiAutoMatchInterpreter';
@@ -26,9 +27,143 @@ describe('semiAutoMatchInterpreter', () => {
     });
 
     it('should create currentWord', () => {
-        expect(semiAutoMatchInterpreter.create(`<`)).toEqual({
+        expect(semiAutoMatchInterpreter.create('<')).toEqual({
             type: 'semiAutoMatch',
             word: '<',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        });
+    });
+
+    it('should add caracter to word', () => {
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, ' '))(
+                semiAutoMatchInterpreter.create('>')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '>',
+            shouldAdd: true,
+            addedCurrentCharacter: false
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, '='))(
+                semiAutoMatchInterpreter.create('>')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '>=',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, ' '))(
+                semiAutoMatchInterpreter.create(':')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: ':',
+            shouldAdd: true,
+            addedCurrentCharacter: false
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, '='))(
+                semiAutoMatchInterpreter.create(`:`)
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: ':=',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, ' '))(
+                semiAutoMatchInterpreter.create('<')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '<',
+            shouldAdd: true,
+            addedCurrentCharacter: false
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, '='))(
+                semiAutoMatchInterpreter.create('<')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '<=',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, ' '))(
+                semiAutoMatchInterpreter.create('<')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '<',
+            shouldAdd: true,
+            addedCurrentCharacter: false
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, '>'))(
+                semiAutoMatchInterpreter.create('<')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '<>',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, ' '))(
+                semiAutoMatchInterpreter.create('.')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '.',
+            shouldAdd: true,
+            addedCurrentCharacter: false
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, '.'))(
+                semiAutoMatchInterpreter.create('.')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '..',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, ' '))(
+                semiAutoMatchInterpreter.create('(')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '(',
+            shouldAdd: true,
+            addedCurrentCharacter: false
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, '*'))(
+                semiAutoMatchInterpreter.create('(')
+            )
+        ).toEqual({
+            type: 'comment',
+            word: '',
             shouldAdd: false,
             addedCurrentCharacter: true
         });

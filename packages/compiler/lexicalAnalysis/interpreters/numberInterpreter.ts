@@ -12,6 +12,21 @@ export const numberInterpreter: wordInterpreter = {
         shouldAdd: false,
         addedCurrentCharacter: true
     }),
+    handleCharacter: (currentWord: currentWord, character: string) => {
+        if (numbers.includes(character))
+            return {
+                type: 'numeric',
+                word: currentWord.word + character,
+                shouldAdd: false,
+                addedCurrentCharacter: true
+            };
+        return {
+            type: 'numeric',
+            word: currentWord.word,
+            shouldAdd: true,
+            addedCurrentCharacter: false
+        };
+    },
     addToStack: (tokens: token[], currentWord: currentWord, line: number) => {
         tokens.push({
             line,

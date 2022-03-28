@@ -1,3 +1,4 @@
+import { pipe } from 'ramda';
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { stringInterpreter } from './stringInterpreter';
@@ -30,6 +31,39 @@ describe('stringInterpreter', () => {
             type: 'string',
             word: '',
             shouldAdd: false,
+            addedCurrentCharacter: true
+        });
+    });
+
+    it('should add caracter to word', () => {
+        expect(
+            pipe(
+                word => stringInterpreter.handleCharacter(word, 'h'),
+                word => stringInterpreter.handleCharacter(word, 'e'),
+                word => stringInterpreter.handleCharacter(word, 'l'),
+                word => stringInterpreter.handleCharacter(word, 'l'),
+                word => stringInterpreter.handleCharacter(word, 'o')
+            )(stringInterpreter.create(`'`))
+        ).toEqual({
+            type: 'string',
+            word: 'hello',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(
+                word => stringInterpreter.handleCharacter(word, 'h'),
+                word => stringInterpreter.handleCharacter(word, 'e'),
+                word => stringInterpreter.handleCharacter(word, 'l'),
+                word => stringInterpreter.handleCharacter(word, 'l'),
+                word => stringInterpreter.handleCharacter(word, 'o'),
+                word => stringInterpreter.handleCharacter(word, `'`)
+            )(stringInterpreter.create(`'`))
+        ).toEqual({
+            type: 'string',
+            word: 'hello',
+            shouldAdd: true,
             addedCurrentCharacter: true
         });
     });

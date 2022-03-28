@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@types/jest': ^27.4.1
+  '@types/ramda': ^0.28.3
   '@types/react': ^17.0.39
   '@types/react-dom': ^17.0.11
   '@vitejs/plugin-react': ^1.2.0
@@ -12,6 +13,7 @@ specifiers:
   electron-builder: ^22.14.13
   jest: ^27.5.1
   postcss: ^8.4.8
+  ramda: ^0.28.0
   react: ^17.0.2
   react-ace: ^9.5.0
   react-dom: ^17.0.2
@@ -31,6 +33,7 @@ dependencies:
   ace-builds: 1.4.14
   autoprefixer: 10.4.2_postcss@8.4.8
   postcss: 8.4.8
+  ramda: 0.28.0
   react-ace: 9.5.0_react-dom@17.0.2+react@17.0.2
   react-hot-toast: 2.2.0_react-dom@17.0.2+react@17.0.2
   react-icons: 4.3.1_react@17.0.2
@@ -41,6 +44,7 @@ dependencies:
 
 devDependencies:
   '@types/jest': 27.4.1
+  '@types/ramda': 0.28.3
   '@types/react': 17.0.39
   '@types/react-dom': 17.0.13
   '@vitejs/plugin-react': 1.2.0
@@ -2312,6 +2316,12 @@ packages:
   /@types/qs/6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
     dev: false
+
+  /@types/ramda/0.28.3:
+    resolution: {integrity: sha512-K2n75/PZokvCOGH/FzSN/csyMJSoG0C8auXdPJE350Qm/WR/kccPmLr1LYL1/FzJ0GlZsJFXps8qAN0jsarNGg==}
+    dependencies:
+      ts-toolbelt: 6.15.5
+    dev: true
 
   /@types/range-parser/1.2.4:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
@@ -8615,6 +8625,10 @@ packages:
       performance-now: 2.1.0
     dev: false
 
+  /ramda/0.28.0:
+    resolution: {integrity: sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==}
+    dev: false
+
   /randombytes/2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
@@ -9985,6 +9999,10 @@ packages:
       typescript: 4.6.2
       v8-compile-cache-lib: 3.0.0
       yn: 3.1.1
+    dev: true
+
+  /ts-toolbelt/6.15.5:
+    resolution: {integrity: sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==}
     dev: true
 
   /tsconfig-paths/3.13.0:
