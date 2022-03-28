@@ -88,4 +88,12 @@ describe('identifierInterpreter', () => {
             { line: 10, id: symbols.identificador, word: 'hello_world' }
         ]);
     });
+
+    it('should handle line end', () => {
+        expect(identifierInterpreter.onLineEnd()).toEqual(undefined);
+    });
+
+    it('should handle file end', () => {
+        expect(identifierInterpreter.onFileEnd()).toEqual(undefined);
+    });
 });

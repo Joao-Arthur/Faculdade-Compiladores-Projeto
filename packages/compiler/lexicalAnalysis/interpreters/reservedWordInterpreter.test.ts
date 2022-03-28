@@ -66,4 +66,12 @@ describe('reservedWordInterpreter', () => {
             { line: 10, id: symbols.repeat, word: 'repeat' }
         ]);
     });
+
+    it('should handle line end', () => {
+        expect(reservedWordInterpreter.onLineEnd()).toEqual(undefined);
+    });
+
+    it('should handle file end', () => {
+        expect(reservedWordInterpreter.onFileEnd()).toEqual(undefined);
+    });
 });

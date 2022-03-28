@@ -61,4 +61,12 @@ describe('autoMatchInterpreter', () => {
         autoMatchInterpreter.addToStack(tokens, currentWord, 10);
         expect(tokens).toEqual([{ line: 10, id: symbols['['], word: '[' }]);
     });
+
+    it('should handle line end', () => {
+        expect(autoMatchInterpreter.onLineEnd()).toEqual(undefined);
+    });
+
+    it('should handle file end', () => {
+        expect(autoMatchInterpreter.onFileEnd()).toEqual(undefined);
+    });
 });

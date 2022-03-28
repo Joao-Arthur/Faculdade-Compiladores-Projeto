@@ -75,4 +75,12 @@ describe('numberInterpreter', () => {
             { line: 10, id: symbols.inteiro, word: '56709' }
         ]);
     });
+
+    it('should handle line end', () => {
+        expect(numberInterpreter.onLineEnd()).toEqual(undefined);
+    });
+
+    it('should handle file end', () => {
+        expect(numberInterpreter.onFileEnd()).toEqual(undefined);
+    });
 });

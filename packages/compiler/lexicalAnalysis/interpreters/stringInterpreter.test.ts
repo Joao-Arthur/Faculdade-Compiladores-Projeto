@@ -81,4 +81,14 @@ describe('stringInterpreter', () => {
             { line: 10, id: symbols.literal, word: 'hello world!' }
         ]);
     });
+
+    it('should handle line end', () => {
+        expect(() => stringInterpreter.onLineEnd()).toThrow(
+            'string não encerrada!'
+        );
+    });
+
+    it('should handle file end', () => {
+        expect(stringInterpreter.onFileEnd()).toEqual(undefined);
+    });
 });

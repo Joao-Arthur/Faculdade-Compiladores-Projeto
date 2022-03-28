@@ -5,7 +5,7 @@ import { wordInterpreter } from '../wordInterpreter';
 const stringDelimiter = `'` as const;
 
 export const stringInterpreter: wordInterpreter = {
-    matches: (character: string) => stringDelimiter.includes(character),
+    matches: (character: string) => stringDelimiter === character,
     create: (character: string) => ({
         type: 'string',
         word: '',
@@ -33,5 +33,9 @@ export const stringInterpreter: wordInterpreter = {
             id: symbols.literal,
             word: currentWord.word
         });
-    }
+    },
+    onLineEnd: () => {
+        throw new Error('string não encerrada!');
+    },
+    onFileEnd: () => {}
 };

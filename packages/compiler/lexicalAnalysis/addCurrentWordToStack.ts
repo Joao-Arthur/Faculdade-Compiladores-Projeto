@@ -5,6 +5,7 @@ import { identifierInterpreter } from './interpreters/identifierInterpreter';
 import { autoMatchInterpreter } from './interpreters/autoMatchInterpreter';
 import { semiAutoMatchInterpreter } from './interpreters/semiAutoMatchInterpreter';
 import { reservedWordInterpreter } from './interpreters/reservedWordInterpreter';
+import { commentInterpreter } from './interpreters/commentInterpreter';
 
 export function addCurrentWordToStack(
     tokens: token[],
@@ -14,6 +15,9 @@ export function addCurrentWordToStack(
     switch (currentWord.type) {
         case 'string':
             stringInterpreter.addToStack(tokens, currentWord, line);
+            break;
+        case 'comment':
+            commentInterpreter.addToStack(tokens, currentWord, line);
             break;
         case 'numeric':
             numberInterpreter.addToStack(tokens, currentWord, line);

@@ -39,5 +39,7 @@ export const identifierInterpreter: wordInterpreter = {
             id: symbols.identificador,
             word: currentWord.word
         });
-    }
+    },
+    onLineEnd: () => {},
+    onFileEnd: () => {}
 };

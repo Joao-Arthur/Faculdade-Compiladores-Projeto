@@ -33,5 +33,7 @@ export const numberInterpreter: wordInterpreter = {
             id: symbols.inteiro,
             word: currentWord.word
         });
-    }
+    },
+    onLineEnd: () => {},
+    onFileEnd: () => {}
 };

@@ -2,6 +2,8 @@ import { currentWord, token } from './types';
 import { addCurrentWordToStack } from './addCurrentWordToStack';
 import { tryFindCurrentWord } from './tryFindCurrentWord';
 import { tryAddCharacterToCurrent } from './tryAddCharacterToCurrent';
+import { handleLineEnd } from './handleLineEnd';
+import { handleFileEnd } from './handleFileEnd';
 
 export function lexicalAnalysis(sourceCode: string): token[] {
     const lines = sourceCode.split('\n');
@@ -15,20 +17,24 @@ export function lexicalAnalysis(sourceCode: string): token[] {
 
         while (!rawCharacter.done || currentWord) {
             const character = rawCharacter.value?.toLocaleLowerCase();
+            const isLineEnd = rawCharacter.done;
+            const isFileEnd = isLineEnd && lineIndex === lines.length - 1;
 
-            if (rawCharacter.done) {
-                if (currentWord) {
-                    if (currentWord.type === 'string') {
-                        throw new Error('string não encerrada!');
-                    }
-
-                    if (currentWord.type === 'comment') {
-                        if (lineIndex === lines.length - 1) {
-                            throw new Error('comentário não encerrado!');
-                        } else break;
-                    }
-                }
+            if (currentWord) {
+                if (isLineEnd) handleLineEnd(currentWord);
+                if (isFileEnd) handleFileEnd(currentWord);
             }
+
+            //change logic to "while (!rawCharacter.done || (currentWord && currentWord.type !== 'comment'))"
+            //and yet throw error
+            //hard to solve
+            if (
+                currentWord &&
+                currentWord.type === 'comment' &&
+                isLineEnd &&
+                !isFileEnd
+            )
+                break;
 
             if (currentWord) {
                 tryAddCharacterToCurrent(currentWord, character);
