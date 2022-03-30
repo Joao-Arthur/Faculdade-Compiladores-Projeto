@@ -9,7 +9,7 @@ export type wordType =
     | 'string'
     | 'autoMatch'
     | 'semiAutoMatch'
-    | 'numeric'
+    | 'number'
     | 'reservedWord'
     | 'identifier';
 

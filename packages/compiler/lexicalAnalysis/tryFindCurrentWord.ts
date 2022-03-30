@@ -12,7 +12,7 @@ export function tryFindCurrentWord(character: string): wordType | undefined {
     if (stringInterpreter.matches(character)) return 'string';
     if (autoMatchInterpreter.matches(character)) return 'autoMatch';
     if (semiAutoMatchInterpreter.matches(character)) return 'semiAutoMatch';
-    if (numberInterpreter.matches(character)) return 'numeric';
+    if (numberInterpreter.matches(character)) return 'number';
     if (reservedWordInterpreter.matches(character)) return 'reservedWord';
     if (identifierInterpreter.matches(character)) return 'identifier';
 }

@@ -28,7 +28,7 @@ describe('numberInterpreter', () => {
 
     it('should create currentWord', () => {
         expect(numberInterpreter.create(`6`)).toEqual({
-            type: 'numeric',
+            type: 'number',
             word: '6',
             shouldAdd: false,
             addedCurrentCharacter: true
@@ -42,7 +42,7 @@ describe('numberInterpreter', () => {
                 word => numberInterpreter.handleCharacter(word, '6')
             )(numberInterpreter.create(`6`))
         ).toEqual({
-            type: 'numeric',
+            type: 'number',
             word: '666',
             shouldAdd: false,
             addedCurrentCharacter: true
@@ -55,7 +55,7 @@ describe('numberInterpreter', () => {
                 word => numberInterpreter.handleCharacter(word, ';')
             )(numberInterpreter.create(`6`))
         ).toEqual({
-            type: 'numeric',
+            type: 'number',
             word: '666',
             shouldAdd: true,
             addedCurrentCharacter: false
@@ -65,7 +65,7 @@ describe('numberInterpreter', () => {
     it('should add to stack', () => {
         let tokens: token[] = [];
         const currentWord: currentWord = {
-            type: 'numeric',
+            type: 'number',
             word: '56709',
             shouldAdd: true,
             addedCurrentCharacter: false

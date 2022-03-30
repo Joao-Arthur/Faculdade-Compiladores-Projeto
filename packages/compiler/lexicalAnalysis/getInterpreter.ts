@@ -18,7 +18,7 @@ export function getInterpreter(wordType: wordType): wordInterpreter {
             return autoMatchInterpreter;
         case 'semiAutoMatch':
             return semiAutoMatchInterpreter;
-        case 'numeric':
+        case 'number':
             return numberInterpreter;
         case 'reservedWord':
             return reservedWordInterpreter;

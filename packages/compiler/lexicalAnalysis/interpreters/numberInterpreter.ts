@@ -7,7 +7,7 @@ const numbers = '0123456789' as const;
 export const numberInterpreter: wordInterpreter = {
     matches: (character: string) => numbers.includes(character),
     create: (character: string) => ({
-        type: 'numeric',
+        type: 'number',
         word: character,
         shouldAdd: false,
         addedCurrentCharacter: true
@@ -15,13 +15,13 @@ export const numberInterpreter: wordInterpreter = {
     handleCharacter: (currentWord: currentWord, character: string) => {
         if (numbers.includes(character))
             return {
-                type: 'numeric',
+                type: 'number',
                 word: currentWord.word + character,
                 shouldAdd: false,
                 addedCurrentCharacter: true
             };
         return {
-            type: 'numeric',
+            type: 'number',
             word: currentWord.word,
             shouldAdd: true,
             addedCurrentCharacter: false
