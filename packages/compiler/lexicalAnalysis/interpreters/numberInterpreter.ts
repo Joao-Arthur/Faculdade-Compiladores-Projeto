@@ -35,5 +35,6 @@ export const numberInterpreter: wordInterpreter = {
         });
     },
     onLineEnd: () => {},
-    onFileEnd: () => {}
+    onFileEnd: () => {},
+    onBeforePush: (currentWord: currentWord) => {}
 };

@@ -78,5 +78,6 @@ export const semiAutoMatchInterpreter: wordInterpreter = {
         if (foundId) tokens.push({ line, id: foundId, word: currentWord.word });
     },
     onLineEnd: () => {},
-    onFileEnd: () => {}
+    onFileEnd: () => {},
+    onBeforePush: (currentWord: currentWord) => {}
 };

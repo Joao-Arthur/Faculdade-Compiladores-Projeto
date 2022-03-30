@@ -31,5 +31,6 @@ export const commentInterpreter: wordInterpreter = {
     onLineEnd: () => {},
     onFileEnd: () => {
         throw new Error('comentário não encerrado!');
-    }
+    },
+    onBeforePush: (currentWord: currentWord) => {}
 };

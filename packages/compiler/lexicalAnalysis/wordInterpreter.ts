@@ -14,5 +14,5 @@ export interface wordInterpreter {
     ) => void;
     onLineEnd: () => void;
     onFileEnd: () => void;
-    onBeforePush?: (currentWord: currentWord) => void;
+    onBeforePush: (currentWord: currentWord) => void;
 }

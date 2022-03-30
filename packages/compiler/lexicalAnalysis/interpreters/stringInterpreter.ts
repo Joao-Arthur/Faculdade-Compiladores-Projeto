@@ -37,5 +37,6 @@ export const stringInterpreter: wordInterpreter = {
     onLineEnd: () => {
         throw new Error('string não encerrada!');
     },
-    onFileEnd: () => {}
+    onFileEnd: () => {},
+    onBeforePush: (currentWord: currentWord) => {}
 };
