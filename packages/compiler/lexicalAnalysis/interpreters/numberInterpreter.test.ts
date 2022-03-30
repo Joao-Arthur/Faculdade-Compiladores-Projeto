@@ -77,10 +77,10 @@ describe('numberInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(numberInterpreter.onLineEnd()).toEqual(undefined);
+        expect(numberInterpreter.onLineEnd?.()).toEqual(undefined);
     });
 
     it('should handle file end', () => {
-        expect(numberInterpreter.onFileEnd()).toEqual(undefined);
+        expect(numberInterpreter.onFileEnd?.()).toEqual(undefined);
     });
 });

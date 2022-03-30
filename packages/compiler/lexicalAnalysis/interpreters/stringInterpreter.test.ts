@@ -83,12 +83,12 @@ describe('stringInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(() => stringInterpreter.onLineEnd()).toThrow(
+        expect(() => stringInterpreter.onLineEnd?.()).toThrow(
             'string não encerrada!'
         );
     });
 
     it('should handle file end', () => {
-        expect(stringInterpreter.onFileEnd()).toEqual(undefined);
+        expect(stringInterpreter.onFileEnd?.()).toEqual(undefined);
     });
 });

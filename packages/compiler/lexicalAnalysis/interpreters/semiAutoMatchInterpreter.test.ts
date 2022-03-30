@@ -182,10 +182,10 @@ describe('semiAutoMatchInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(semiAutoMatchInterpreter.onLineEnd()).toEqual(undefined);
+        expect(semiAutoMatchInterpreter.onLineEnd?.()).toEqual(undefined);
     });
 
     it('should handle file end', () => {
-        expect(semiAutoMatchInterpreter.onFileEnd()).toEqual(undefined);
+        expect(semiAutoMatchInterpreter.onFileEnd?.()).toEqual(undefined);
     });
 });

@@ -63,10 +63,10 @@ describe('autoMatchInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(autoMatchInterpreter.onLineEnd()).toEqual(undefined);
+        expect(autoMatchInterpreter.onLineEnd?.()).toEqual(undefined);
     });
 
     it('should handle file end', () => {
-        expect(autoMatchInterpreter.onFileEnd()).toEqual(undefined);
+        expect(autoMatchInterpreter.onFileEnd?.()).toEqual(undefined);
     });
 });

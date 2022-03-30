@@ -20,8 +20,8 @@ export function lexicalAnalysis(sourceCode: string): token[] {
             if (currentWord) {
                 const wordInterpreter = getInterpreter(currentWord.type);
 
-                if (isLineEnd) wordInterpreter.onLineEnd();
-                if (isFileEnd) wordInterpreter.onFileEnd();
+                if (isLineEnd) wordInterpreter.onLineEnd?.();
+                if (isFileEnd) wordInterpreter.onFileEnd?.();
 
                 //change logic to "while (!rawCharacter.done || (currentWord && currentWord.type !== 'comment'))"
                 //and yet throw error hard to solve

@@ -24,7 +24,5 @@ export const autoMatchInterpreter: wordInterpreter = {
         ];
         if (foundId) tokens.push({ line, id: foundId, word: currentWord.word });
     },
-    onLineEnd: () => {},
-    onFileEnd: () => {},
     onBeforePush: (currentWord: currentWord) => {}
 };

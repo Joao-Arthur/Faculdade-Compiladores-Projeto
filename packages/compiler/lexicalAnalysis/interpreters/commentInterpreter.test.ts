@@ -75,11 +75,11 @@ describe('commentInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(commentInterpreter.onLineEnd()).toEqual(undefined);
+        expect(commentInterpreter.onLineEnd?.()).toEqual(undefined);
     });
 
     it('should handle file end', () => {
-        expect(() => commentInterpreter.onFileEnd()).toThrow(
+        expect(() => commentInterpreter.onFileEnd?.()).toThrow(
             'comentário não encerrado!'
         );
     });

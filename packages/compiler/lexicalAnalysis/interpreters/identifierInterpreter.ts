@@ -40,7 +40,5 @@ export const identifierInterpreter: wordInterpreter = {
             word: currentWord.word
         });
     },
-    onLineEnd: () => {},
-    onFileEnd: () => {},
     onBeforePush: (currentWord: currentWord) => {}
 };

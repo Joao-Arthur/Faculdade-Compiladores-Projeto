@@ -90,10 +90,10 @@ describe('identifierInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(identifierInterpreter.onLineEnd()).toEqual(undefined);
+        expect(identifierInterpreter.onLineEnd?.()).toEqual(undefined);
     });
 
     it('should handle file end', () => {
-        expect(identifierInterpreter.onFileEnd()).toEqual(undefined);
+        expect(identifierInterpreter.onFileEnd?.()).toEqual(undefined);
     });
 });

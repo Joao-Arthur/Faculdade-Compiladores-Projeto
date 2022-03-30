@@ -12,7 +12,7 @@ export interface wordInterpreter {
         currentWord: currentWord,
         line: number
     ) => void;
-    onLineEnd: () => void;
-    onFileEnd: () => void;
+    onLineEnd?: () => void;
+    onFileEnd?: () => void;
     onBeforePush: (currentWord: currentWord) => void;
 }
