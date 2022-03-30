@@ -35,7 +35,7 @@ end. (*end*)
         ]);
     });
 
-    it('comments should break tokens', () => {
+    it('should break tokens with comments', () => {
         const source = `(*comment before start*)
 program CommentsProgram;
 var

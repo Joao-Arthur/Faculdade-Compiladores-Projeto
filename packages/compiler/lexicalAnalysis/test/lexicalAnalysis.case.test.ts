@@ -2,7 +2,7 @@ import { symbols } from '../../symbols';
 import { lexicalAnalysis } from '../lexicalAnalysis';
 
 describe('lexicalAnalysis', () => {
-    it('should identify array', () => {
+    it('should identify case expressions', () => {
         const source = `
 program CaseProgram;
 var

@@ -2,7 +2,7 @@ import { symbols } from '../../symbols';
 import { lexicalAnalysis } from '../lexicalAnalysis';
 
 describe('lexicalAnalysis', () => {
-    it('line breaks should be separator for numbers', () => {
+    it('should consider line breaks separators for numbers', () => {
         const source = `1
 2
 3`;
@@ -13,7 +13,7 @@ describe('lexicalAnalysis', () => {
         ]);
     });
 
-    it('line breaks should be separator for identifiers', () => {
+    it('should consider line breaks separators for identifiers', () => {
         const source = `lorem
 ipsum`;
         expect(lexicalAnalysis(source)).toEqual([
@@ -22,7 +22,7 @@ ipsum`;
         ]);
     });
 
-    it('line breaks should be separator for reserved words', () => {
+    it('should consider line breaks separators for reserved words', () => {
         const source = `if
 else`;
         expect(lexicalAnalysis(source)).toEqual([
@@ -31,7 +31,7 @@ else`;
         ]);
     });
 
-    it('line breaks should be handled for strings', () => {
+    it('should consider line breaks separators for strings', () => {
         const source = `'hello'','
 'world'
 '!'`;
@@ -43,7 +43,7 @@ else`;
         ]);
     });
 
-    it('line breaks should be handled for symbols', () => {
+    it('should consider line breaks separators for symbols', () => {
         const source = `:
 =
 ...
@@ -54,6 +54,19 @@ else`;
             { line: 3, word: '..', id: symbols['..'] },
             { line: 3, word: '.', id: symbols['.'] },
             { line: 4, word: '.', id: symbols['.'] }
+        ]);
+    });
+
+    it('should consider line breaks separators for all words', () => {
+        const source = `hello
+:=
+76
+;`;
+        expect(lexicalAnalysis(source)).toEqual([
+            { line: 1, word: 'hello', id: symbols.identificador },
+            { line: 2, word: ':=', id: symbols[':='] },
+            { line: 3, word: '76', id: symbols.inteiro },
+            { line: 4, word: ';', id: symbols[';'] }
         ]);
     });
 });
