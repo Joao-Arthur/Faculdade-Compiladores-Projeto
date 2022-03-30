@@ -32,18 +32,19 @@ export function lexicalAnalysis(sourceCode: string): token[] {
                 tryAddCharacterToCurrent(currentWord, character);
             } else {
                 const found = tryFindCurrentWord(character);
-                if (found) currentWord = found;
+                if (found) {
+                    currentWord = found;
+                } else {
+                    rawCharacter = iterator.next();
+                    continue;
+                }
             }
 
-            if (currentWord) {
-                if (currentWord.addedCurrentCharacter)
-                    rawCharacter = iterator.next();
-                if (currentWord.shouldAdd) {
-                    addCurrentWordToStack(tokens, currentWord, lineIndex + 1);
-                    currentWord = null;
-                }
-            } else {
+            if (currentWord.addedCurrentCharacter)
                 rawCharacter = iterator.next();
+            if (currentWord.shouldAdd) {
+                addCurrentWordToStack(tokens, currentWord, lineIndex + 1);
+                currentWord = null;
             }
         }
     });
