@@ -1,9 +1,6 @@
 import { currentWord, token } from './types';
-import { addCurrentWordToStack } from './addCurrentWordToStack';
 import { tryFindCurrentWord } from './tryFindCurrentWord';
-import { tryAddCharacterToCurrent } from './tryAddCharacterToCurrent';
-import { handleLineEnd } from './handleLineEnd';
-import { handleFileEnd } from './handleFileEnd';
+import { getInterpreter } from './getInterpreter';
 
 export function lexicalAnalysis(sourceCode: string): token[] {
     const lines = sourceCode.split('\n');
@@ -21,19 +18,25 @@ export function lexicalAnalysis(sourceCode: string): token[] {
             const isFileEnd = isLineEnd && lineIndex === lines.length - 1;
 
             if (currentWord) {
-                if (isLineEnd) handleLineEnd(currentWord);
-                if (isFileEnd) handleFileEnd(currentWord);
+                const wordInterpreter = getInterpreter(currentWord.type);
+
+                if (isLineEnd) wordInterpreter.onLineEnd();
+                if (isFileEnd) wordInterpreter.onFileEnd();
 
                 //change logic to "while (!rawCharacter.done || (currentWord && currentWord.type !== 'comment'))"
                 //and yet throw error hard to solve
                 if (currentWord.type === 'comment' && isLineEnd && !isFileEnd)
                     break;
 
-                tryAddCharacterToCurrent(currentWord, character);
+                currentWord = wordInterpreter.handleCharacter(
+                    currentWord,
+                    character
+                );
             } else {
-                const found = tryFindCurrentWord(character);
-                if (found) {
-                    currentWord = found;
+                const foundType = tryFindCurrentWord(character);
+                if (foundType) {
+                    const wordInterpreter = getInterpreter(foundType);
+                    currentWord = wordInterpreter.create(character);
                 } else {
                     rawCharacter = iterator.next();
                     continue;
@@ -43,7 +46,8 @@ export function lexicalAnalysis(sourceCode: string): token[] {
             if (currentWord.addedCurrentCharacter)
                 rawCharacter = iterator.next();
             if (currentWord.shouldAdd) {
-                addCurrentWordToStack(tokens, currentWord, lineIndex + 1);
+                const wordInterpreter = getInterpreter(currentWord.type);
+                wordInterpreter.addToStack(tokens, currentWord, lineIndex + 1);
                 currentWord = null;
             }
         }

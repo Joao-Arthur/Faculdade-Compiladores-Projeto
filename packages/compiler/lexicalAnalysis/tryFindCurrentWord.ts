@@ -1,23 +1,18 @@
 import { autoMatchInterpreter } from './interpreters/autoMatchInterpreter';
+import { commentInterpreter } from './interpreters/commentInterpreter';
 import { identifierInterpreter } from './interpreters/identifierInterpreter';
 import { numberInterpreter } from './interpreters/numberInterpreter';
+import { reservedWordInterpreter } from './interpreters/reservedWordInterpreter';
 import { semiAutoMatchInterpreter } from './interpreters/semiAutoMatchInterpreter';
 import { stringInterpreter } from './interpreters/stringInterpreter';
-import { currentWord } from './types';
+import { wordType } from './types';
 
-export function tryFindCurrentWord(character: string): currentWord | undefined {
-    if (autoMatchInterpreter.matches(character))
-        return autoMatchInterpreter.create(character);
-
-    if (semiAutoMatchInterpreter.matches(character))
-        return semiAutoMatchInterpreter.create(character);
-
-    if (identifierInterpreter.matches(character))
-        return identifierInterpreter.create(character);
-
-    if (numberInterpreter.matches(character))
-        return numberInterpreter.create(character);
-
-    if (stringInterpreter.matches(character))
-        return stringInterpreter.create(character);
+export function tryFindCurrentWord(character: string): wordType | undefined {
+    if (commentInterpreter.matches(character)) return 'comment';
+    if (stringInterpreter.matches(character)) return 'string';
+    if (autoMatchInterpreter.matches(character)) return 'autoMatch';
+    if (semiAutoMatchInterpreter.matches(character)) return 'semiAutoMatch';
+    if (numberInterpreter.matches(character)) return 'numeric';
+    if (reservedWordInterpreter.matches(character)) return 'reservedWord';
+    if (identifierInterpreter.matches(character)) return 'identifier';
 }

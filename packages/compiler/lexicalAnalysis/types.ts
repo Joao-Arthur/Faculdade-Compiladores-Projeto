@@ -4,7 +4,7 @@ export type token = {
     word: string;
 };
 
-type wordType =
+export type wordType =
     | 'comment'
     | 'string'
     | 'autoMatch'
