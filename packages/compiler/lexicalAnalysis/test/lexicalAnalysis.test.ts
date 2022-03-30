@@ -98,21 +98,4 @@ END;
             { line: 6, word: ';', id: symbols[';'] }
         ]);
     });
-
-    it('line breaks should be separators', () => {
-        const source = `
-linebreak
-linebreak
-1
-2
-3
-`;
-        expect(lexicalAnalysis(source)).toEqual([
-            { line: 2, word: 'linebreak', id: symbols.identificador },
-            { line: 3, word: 'linebreak', id: symbols.identificador },
-            { line: 4, word: '1', id: symbols.inteiro },
-            { line: 5, word: '2', id: symbols.inteiro },
-            { line: 6, word: '3', id: symbols.inteiro }
-        ]);
-    });
 });
