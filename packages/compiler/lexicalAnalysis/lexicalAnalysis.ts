@@ -23,32 +23,27 @@ export function lexicalAnalysis(sourceCode: string): token[] {
             if (currentWord) {
                 if (isLineEnd) handleLineEnd(currentWord);
                 if (isFileEnd) handleFileEnd(currentWord);
-            }
 
-            //change logic to "while (!rawCharacter.done || (currentWord && currentWord.type !== 'comment'))"
-            //and yet throw error
-            //hard to solve
-            if (
-                currentWord &&
-                currentWord.type === 'comment' &&
-                isLineEnd &&
-                !isFileEnd
-            )
-                break;
+                //change logic to "while (!rawCharacter.done || (currentWord && currentWord.type !== 'comment'))"
+                //and yet throw error hard to solve
+                if (currentWord.type === 'comment' && isLineEnd && !isFileEnd)
+                    break;
 
-            if (currentWord) {
                 tryAddCharacterToCurrent(currentWord, character);
             } else {
                 const found = tryFindCurrentWord(character);
                 if (found) currentWord = found;
             }
 
-            if (!currentWord || currentWord?.addedCurrentCharacter)
+            if (currentWord) {
+                if (currentWord.addedCurrentCharacter)
+                    rawCharacter = iterator.next();
+                if (currentWord.shouldAdd) {
+                    addCurrentWordToStack(tokens, currentWord, lineIndex + 1);
+                    currentWord = null;
+                }
+            } else {
                 rawCharacter = iterator.next();
-
-            if (currentWord?.shouldAdd) {
-                addCurrentWordToStack(tokens, currentWord, lineIndex + 1);
-                currentWord = null;
             }
         }
     });
