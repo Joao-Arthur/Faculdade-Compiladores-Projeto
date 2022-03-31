@@ -3,6 +3,7 @@ import { currentWord, token } from '../types';
 import { wordInterpreter } from '../wordInterpreter';
 
 const stringDelimiter = `'` as const;
+const maxLength = 256;
 
 export const stringInterpreter: wordInterpreter = {
     matches: (character: string) => stringDelimiter === character,
@@ -37,5 +38,8 @@ export const stringInterpreter: wordInterpreter = {
     onLineEnd: () => {
         throw new Error('string não encerrada!');
     },
-    onBeforePush: (currentWord: currentWord) => {}
+    onBeforePush: (currentWord: currentWord) => {
+        if(currentWord.word.length > maxLength)
+          throw new Error('o tamanho máximo para uma string é 256 caracteres!')
+    }
 };

@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@faker-js/faker': ^6.1.1
   '@types/jest': ^27.4.1
   '@types/ramda': ^0.28.3
   '@types/react': ^17.0.39
@@ -33,7 +34,6 @@ dependencies:
   ace-builds: 1.4.14
   autoprefixer: 10.4.2_postcss@8.4.8
   postcss: 8.4.8
-  ramda: 0.28.0
   react-ace: 9.5.0_react-dom@17.0.2+react@17.0.2
   react-hot-toast: 2.2.0_react-dom@17.0.2+react@17.0.2
   react-icons: 4.3.1_react@17.0.2
@@ -43,6 +43,7 @@ dependencies:
   zustand: 3.7.1_react@17.0.2
 
 devDependencies:
+  '@faker-js/faker': 6.1.1
   '@types/jest': 27.4.1
   '@types/ramda': 0.28.3
   '@types/react': 17.0.39
@@ -52,6 +53,7 @@ devDependencies:
   electron: 17.1.0
   electron-builder: 22.14.13
   jest: 27.5.1_ts-node@10.7.0
+  ramda: 0.28.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   ts-jest: 27.1.3_60149d457e34ffba7d4e845dde6a1263
@@ -1569,6 +1571,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
+
+  /@faker-js/faker/6.1.1:
+    resolution: {integrity: sha512-8yq1LJVGn4GY06riLddIU1LbJm15yjt46hjfkpWNpH/mqdciPOBVzicKOJxzQNrGgVHVBxcdm7sgwjI/Y19MYw==}
+    engines: {node: '>=14.0.0', npm: '>=7.0.0'}
+    dev: true
 
   /@humanwhocodes/config-array/0.9.5:
     resolution: {integrity: sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw==}
@@ -8627,7 +8634,7 @@ packages:
 
   /ramda/0.28.0:
     resolution: {integrity: sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==}
-    dev: false
+    dev: true
 
   /randombytes/2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
