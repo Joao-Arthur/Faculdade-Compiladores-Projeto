@@ -96,4 +96,27 @@ describe('identifierInterpreter', () => {
     it('should handle file end', () => {
         expect(identifierInterpreter.onFileEnd?.()).toEqual(undefined);
     });
+
+    it('should handle before push', () => {
+        expect(() => identifierInterpreter.onBeforePush?.({
+            type: 'identifier',
+            word: 'veryLongNameForAValidVariable',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        })).not.toThrow('o tamanho máximo para um identificador é 30 caracteres!');
+
+        expect(() => identifierInterpreter.onBeforePush?.({
+            type: 'identifier',
+            word: 'VeeryLongNameForAValidVariable',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        })).not.toThrow('o tamanho máximo para um identificador é 30 caracteres!');
+
+        expect(() => identifierInterpreter.onBeforePush?.({
+            type: 'identifier',
+            word: 'VeryLongNameButNotValidForAVariable',
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        })).toThrow('o tamanho máximo para um identificador é 30 caracteres!');
+    });
 });

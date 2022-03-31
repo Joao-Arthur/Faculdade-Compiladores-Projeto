@@ -4,6 +4,7 @@ import { wordInterpreter } from '../wordInterpreter';
 
 const identifierCharacters = 'abcdefghijklmnopqrstuvwxyz_' as const;
 const numbers = '0123456789' as const;
+const maxLength = 30;
 
 export const identifierInterpreter: wordInterpreter = {
     matches: (character: string) => identifierCharacters.includes(character),
@@ -40,5 +41,8 @@ export const identifierInterpreter: wordInterpreter = {
             word: currentWord.word
         });
     },
-    onBeforePush: (currentWord: currentWord) => {}
+    onBeforePush: (currentWord: currentWord) => {
+        if (currentWord.word.length > maxLength)
+            throw new Error('o tamanho máximo para um identificador é 30 caracteres!')
+    }
 };
