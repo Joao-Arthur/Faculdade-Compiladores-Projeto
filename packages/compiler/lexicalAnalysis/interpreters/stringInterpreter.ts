@@ -39,7 +39,7 @@ export const stringInterpreter: wordInterpreter = {
         throw new Error('string não encerrada!');
     },
     onBeforePush: (currentWord: currentWord) => {
-        if(currentWord.word.length > maxLength)
-          throw new Error('o tamanho máximo para uma string é 256 caracteres!')
+        if (currentWord.word.length > maxLength)
+            throw new Error('o tamanho máximo para uma string é 256 caracteres!')
     }
 };
