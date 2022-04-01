@@ -10,7 +10,10 @@ export function ExecuteButton() {
     function onClick() {
         const { tokens, error } = compile(editorCode);
         if (tokens) setTokens(tokens);
-        if (error) errorToast(error);
+        if (error) {
+            errorToast(error);
+            setTokens([]);
+        }
     }
 
     return (
