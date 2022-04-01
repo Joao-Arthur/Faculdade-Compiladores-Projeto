@@ -47,6 +47,7 @@ export function lexicalAnalysis(sourceCode: string): token[] {
                 rawCharacter = iterator.next();
             if (currentWord.shouldAdd) {
                 const wordInterpreter = getInterpreter(currentWord.type);
+                wordInterpreter.onBeforePush?.(currentWord);
                 wordInterpreter.addToStack(tokens, currentWord, lineIndex + 1);
                 currentWord = null;
             }

@@ -1,6 +1,6 @@
 import { currentWord, token } from './types';
 
-export interface wordInterpreter {
+export type wordInterpreter {
     matches: (character: string) => boolean;
     create: (character: string) => currentWord;
     handleCharacter: (
@@ -14,5 +14,5 @@ export interface wordInterpreter {
     ) => void;
     onLineEnd?: () => void;
     onFileEnd?: () => void;
-    onBeforePush: (currentWord: currentWord) => void;
+    onBeforePush?: (currentWord: currentWord) => void;
 }

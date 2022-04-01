@@ -30,6 +30,5 @@ export const commentInterpreter: wordInterpreter = {
     addToStack: (tokens: token[], currentWord: currentWord, line: number) => {},
     onFileEnd: () => {
         throw new Error('comentário não encerrado!');
-    },
-    onBeforePush: (currentWord: currentWord) => {}
+    }
 };

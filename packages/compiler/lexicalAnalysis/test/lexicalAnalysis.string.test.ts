@@ -40,4 +40,36 @@ WriteLn('There"s NO String variables IN THIS language');
 consectetur adipiscing elit.'`;
         expect(() => lexicalAnalysis(source)).toThrow('string não encerrada');
     });
+
+    it('should throw on strings larger than 256 character', () => {
+        expect(
+            lexicalAnalysis(`
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a mauris sed diam feugiat malesuada. Vestibulum maximus elementum odio, ac tempor elit egestas at. Nulla ut lorem cursus, convallis sapien non, pharetra mi. Pellentesque habitant morbi tristi'
+            `)
+        ).toEqual([
+            {
+                line: 2,
+                word: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam a mauris sed diam feugiat malesuada. vestibulum maximus elementum odio, ac tempor elit egestas at. nulla ut lorem cursus, convallis sapien non, pharetra mi. pellentesque habitant morbi tristi',
+                id: symbols.literal
+            }
+        ])
+
+        expect(
+            lexicalAnalysis(`
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a mauris sed diam feugiat malesuada. Vestibulum maximus elementum odio, ac tempor elit egestas at. Nulla ut lorem cursus, convallis sapien non, pharetra mi. Pellentesque habitant morbi tristiq'
+            `)
+        ).toEqual([
+            {
+                line: 2,
+                word: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam a mauris sed diam feugiat malesuada. vestibulum maximus elementum odio, ac tempor elit egestas at. nulla ut lorem cursus, convallis sapien non, pharetra mi. pellentesque habitant morbi tristiq',
+                id: symbols.literal
+            }
+        ])
+
+        expect(() =>
+            lexicalAnalysis(`
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a mauris sed diam feugiat malesuada. Vestibulum maximus elementum odio, ac tempor elit egestas at. Nulla ut lorem cursus, convallis sapien non, pharetra mi. Pellentesque habitant morbi tristiqu'
+            `)
+        ).toThrow('o tamanho máximo para uma string é 256 caracteres!');
+    });
 });

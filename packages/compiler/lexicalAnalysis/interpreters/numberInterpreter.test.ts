@@ -1,4 +1,5 @@
 import { pipe } from 'ramda';
+import faker from '@faker-js/faker';
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { numberInterpreter } from './numberInterpreter';
@@ -82,5 +83,51 @@ describe('numberInterpreter', () => {
 
     it('should handle file end', () => {
         expect(numberInterpreter.onFileEnd?.()).toEqual(undefined);
+    });
+
+    it('should handle before push', () => {
+        expect(() =>
+            pipe(String, word =>
+                numberInterpreter.onBeforePush?.({
+                    type: 'string',
+                    word,
+                    shouldAdd: true,
+                    addedCurrentCharacter: true
+                })
+            )(faker.datatype.number({ min: -32767, max: 32767 }))
+        ).not.toThrow('o valor mínimo para um número é -32767!');
+
+        expect(() =>
+            pipe(String, word =>
+                numberInterpreter.onBeforePush?.({
+                    type: 'string',
+                    word,
+                    shouldAdd: true,
+                    addedCurrentCharacter: true
+                })
+            )(faker.datatype.number({ min: -32767, max: 32767 }))
+        ).not.toThrow('o valor máximo para um número é 32767!');
+
+        expect(() =>
+            pipe(String, word =>
+                numberInterpreter.onBeforePush?.({
+                    type: 'string',
+                    word,
+                    shouldAdd: true,
+                    addedCurrentCharacter: true
+                })
+            )(faker.datatype.number({ max: -32766 }))
+        ).not.toThrow('o valor mínimo para um número é -32767!');
+
+        expect(() =>
+            pipe(String, word =>
+                numberInterpreter.onBeforePush?.({
+                    type: 'string',
+                    word,
+                    shouldAdd: true,
+                    addedCurrentCharacter: true
+                })
+            )(faker.datatype.number({ min: 32766 }))
+        ).toThrow('o valor máximo para um número é 32767!');
     });
 });

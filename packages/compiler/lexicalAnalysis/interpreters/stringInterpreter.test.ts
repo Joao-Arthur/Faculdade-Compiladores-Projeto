@@ -1,4 +1,5 @@
 import { pipe } from 'ramda';
+import faker from '@faker-js/faker';
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { stringInterpreter } from './stringInterpreter';
@@ -90,5 +91,28 @@ describe('stringInterpreter', () => {
 
     it('should handle file end', () => {
         expect(stringInterpreter.onFileEnd?.()).toEqual(undefined);
+    });
+
+    it('should handle before push', () => {
+        expect(() => stringInterpreter.onBeforePush?.({
+            type: 'string',
+            word: faker.datatype.string(255),
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        })).not.toThrow('o tamanho máximo para uma string é 256 caracteres!');
+
+        expect(() => stringInterpreter.onBeforePush?.({
+            type: 'string',
+            word: faker.datatype.string(256),
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        })).not.toThrow('o tamanho máximo para uma string é 256 caracteres!');
+
+        expect(() => stringInterpreter.onBeforePush?.({
+            type: 'string',
+            word: faker.datatype.string(257),
+            shouldAdd: true,
+            addedCurrentCharacter: true
+        })).toThrow('o tamanho máximo para uma string é 256 caracteres!');
     });
 });
