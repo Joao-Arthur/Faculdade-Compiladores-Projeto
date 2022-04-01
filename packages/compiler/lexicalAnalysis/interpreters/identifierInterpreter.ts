@@ -43,6 +43,8 @@ export const identifierInterpreter: wordInterpreter = {
     },
     onBeforePush: (currentWord: currentWord) => {
         if (currentWord.word.length > maxLength)
-            throw new Error('o tamanho máximo para um identificador é 30 caracteres!')
+            throw new Error(
+                `o tamanho máximo para um identificador é ${maxLength} caracteres!`
+            );
     }
 };

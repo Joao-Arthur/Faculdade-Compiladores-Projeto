@@ -1,6 +1,6 @@
 import { currentWord, token } from './types';
 
-export interface wordInterpreter {
+export type wordInterpreter {
     matches: (character: string) => boolean;
     create: (character: string) => currentWord;
     handleCharacter: (

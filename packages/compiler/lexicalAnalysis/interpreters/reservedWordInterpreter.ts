@@ -21,6 +21,5 @@ export const reservedWordInterpreter: wordInterpreter = {
             currentWord.word
         ];
         if (foundId) tokens.push({ line, id: foundId, word: currentWord.word });
-    },
-    onBeforePush: (currentWord: currentWord) => {}
+    }
 };
