@@ -1,4 +1,5 @@
-import { reservedWords, symbols } from '../../symbols';
+import { symbols } from '../../symbols';
+import { reservedWords } from '../../reservedWords';
 import { literalObject } from '../../types';
 import { currentWord, token } from '../types';
 import { wordInterpreter } from '../wordInterpreter';
