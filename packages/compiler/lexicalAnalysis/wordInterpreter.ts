@@ -1,6 +1,7 @@
 import { currentWord, token } from './types';
 
 export type wordInterpreter = {
+    supportsMultiline?: boolean;
     matches: (character: string) => boolean;
     create: (character: string) => currentWord;
     handleCharacter: (
@@ -15,4 +16,4 @@ export type wordInterpreter = {
     onLineEnd?: () => void;
     onFileEnd?: () => void;
     onBeforePush?: (currentWord: currentWord) => void;
-}
+};
