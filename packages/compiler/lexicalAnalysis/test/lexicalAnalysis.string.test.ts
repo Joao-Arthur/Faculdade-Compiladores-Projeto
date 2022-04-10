@@ -52,7 +52,7 @@ consectetur adipiscing elit.'`;
                 word: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam a mauris sed diam feugiat malesuada. vestibulum maximus elementum odio, ac tempor elit egestas at. nulla ut lorem cursus, convallis sapien non, pharetra mi. pellentesque habitant morbi tristi',
                 id: symbols.literal
             }
-        ])
+        ]);
 
         expect(
             lexicalAnalysis(`
@@ -64,7 +64,7 @@ consectetur adipiscing elit.'`;
                 word: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam a mauris sed diam feugiat malesuada. vestibulum maximus elementum odio, ac tempor elit egestas at. nulla ut lorem cursus, convallis sapien non, pharetra mi. pellentesque habitant morbi tristiq',
                 id: symbols.literal
             }
-        ])
+        ]);
 
         expect(() =>
             lexicalAnalysis(`

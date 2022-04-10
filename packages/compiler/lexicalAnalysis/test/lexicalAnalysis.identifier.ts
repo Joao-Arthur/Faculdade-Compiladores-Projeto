@@ -3,25 +3,21 @@ import { lexicalAnalysis } from '../lexicalAnalysis';
 
 describe('lexicalAnalysis', () => {
     it('should throw on identifiers larger than 30 character', () => {
-        expect(
-            lexicalAnalysis('veryLongNameForAValidVariable')
-        ).toEqual([
+        expect(lexicalAnalysis('veryLongNameForAValidVariable')).toEqual([
             {
                 line: 1,
                 word: 'veryLongNameForAValidVariable',
                 id: symbols.identificador
             }
-        ])
+        ]);
 
-        expect(
-            lexicalAnalysis('veryLongNameForAValidVariable')
-        ).toEqual([
+        expect(lexicalAnalysis('veryLongNameForAValidVariable')).toEqual([
             {
                 line: 1,
                 word: 'veeryLongNameForAValidVariable',
                 id: symbols.identificador
             }
-        ])
+        ]);
 
         expect(() =>
             lexicalAnalysis('VeryLongNameButNotValidForAVariable')
