@@ -22,10 +22,11 @@ export function lexicalAnalysis(sourceCode: string): token[] {
 
                 if (isLineEnd) wordInterpreter.onLineEnd?.();
                 if (isFileEnd) wordInterpreter.onFileEnd?.();
-
-                //change logic to "while (!rawCharacter.done || (currentWord && currentWord.type !== 'comment'))"
-                //and yet throw error hard to solve
-                if (currentWord.type === 'comment' && isLineEnd && !isFileEnd)
+                if (
+                    wordInterpreter.supportsMultiline &&
+                    isLineEnd &&
+                    !isFileEnd
+                )
                     break;
 
                 currentWord = wordInterpreter.handleCharacter(

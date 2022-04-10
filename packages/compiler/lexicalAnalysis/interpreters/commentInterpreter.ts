@@ -5,6 +5,7 @@ const commentStartDelimiter = '(*' as const;
 const commentEndDelimiter = '*)' as const;
 
 export const commentInterpreter: wordInterpreter = {
+    supportsMultiline: true,
     matches: (character: string) => commentStartDelimiter === character,
     create: (character: string) => ({
         type: 'comment',
