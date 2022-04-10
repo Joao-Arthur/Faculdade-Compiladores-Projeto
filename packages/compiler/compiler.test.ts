@@ -16,7 +16,7 @@ describe('compiler', () => {
         expect(error).toEqual(undefined);
     });
 
-    it('should return the error', () => {
+    it('should return the lexical error', () => {
         const { tokens, error } = compile(`'ill be back`);
 
         expect(tokens).toEqual(undefined);
