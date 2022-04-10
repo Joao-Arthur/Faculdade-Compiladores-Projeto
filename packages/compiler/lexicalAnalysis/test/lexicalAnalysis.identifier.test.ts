@@ -6,15 +6,15 @@ describe('lexicalAnalysis', () => {
         expect(lexicalAnalysis('veryLongNameForAValidVariable')).toEqual([
             {
                 line: 1,
-                word: 'veryLongNameForAValidVariable',
+                word: 'verylongnameforavalidvariable',
                 id: symbols.identificador
             }
         ]);
 
-        expect(lexicalAnalysis('veryLongNameForAValidVariable')).toEqual([
+        expect(lexicalAnalysis('veeryLongNameForAValidVariable')).toEqual([
             {
                 line: 1,
-                word: 'veeryLongNameForAValidVariable',
+                word: 'veerylongnameforavalidvariable',
                 id: symbols.identificador
             }
         ]);
