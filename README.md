@@ -9,15 +9,17 @@ A arquitetura do projeto é composta de 3 camadas:
 -   Análise léxica
     -   Divide o fonte em `tokens`.
 -   Análise sintâtica
+    -   Valida a ordem dos `tokens`. Pode ser implementado em árvore ou por um autômato.
 -   Análise semântica
 
 ### TODO
 
 -   análise léxica
-    -   números
-        -   sinal positivo e negativo
-    -   erro em caracteres errados
+    -   Números com sinal positivo e negativo
+    -   Erro em caracteres inválidos
 -   análise sintâtica
+    -   implementação do algoritmo
+    -   testes
 -   análise semântica
 
 -   GUI

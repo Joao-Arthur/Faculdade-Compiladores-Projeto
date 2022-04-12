@@ -13,7 +13,7 @@ export function lexicalAnalysis(sourceCode: string): token[] {
         let rawCharacter = iterator.next();
 
         while (!rawCharacter.done || currentWord) {
-            const character = rawCharacter.value?.toLocaleLowerCase();
+            const character = rawCharacter.value;
             const isLineEnd = rawCharacter.done;
             const isFileEnd = isLineEnd && lineIndex === lines.length - 1;
 

@@ -13,7 +13,10 @@ export const autoMatchInterpreter: wordInterpreter = {
         shouldAdd: true,
         addedCurrentCharacter: true
     }),
-    handleCharacter: (currentWord: currentWord, character: string) => {
+    handleCharacter: (
+        currentWord: currentWord,
+        character: string | undefined
+    ) => {
         //implemented only for convention.
         //shall never be called
         return currentWord;

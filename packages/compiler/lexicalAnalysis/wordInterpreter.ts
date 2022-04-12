@@ -6,7 +6,7 @@ export type wordInterpreter = {
     create: (character: string) => currentWord;
     handleCharacter: (
         currentWord: currentWord,
-        character: string
+        character: string | undefined
     ) => currentWord;
     addToStack: (
         tokens: token[],

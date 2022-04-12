@@ -11,7 +11,7 @@ WriteLn('There"s NO String variables IN THIS language');
             { line: 2, word: '(', id: symbols['('] },
             {
                 line: 2,
-                word: 'there"s no string variables in this language',
+                word: 'There"s NO String variables IN THIS language',
                 id: symbols.literal
             },
             { line: 2, word: ')', id: symbols[')'] },
@@ -24,7 +24,7 @@ WriteLn('There"s NO String variables IN THIS language');
         expect(lexicalAnalysis(source)).toEqual([
             {
                 line: 1,
-                word: 'this is ground control to major tom',
+                word: 'THIS IS GROUND CONTROL TO MAJOR TOM',
                 id: symbols.literal
             }
         ]);
@@ -49,7 +49,7 @@ consectetur adipiscing elit.'`;
         ).toEqual([
             {
                 line: 2,
-                word: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam a mauris sed diam feugiat malesuada. vestibulum maximus elementum odio, ac tempor elit egestas at. nulla ut lorem cursus, convallis sapien non, pharetra mi. pellentesque habitant morbi tristi',
+                word: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a mauris sed diam feugiat malesuada. Vestibulum maximus elementum odio, ac tempor elit egestas at. Nulla ut lorem cursus, convallis sapien non, pharetra mi. Pellentesque habitant morbi tristi',
                 id: symbols.literal
             }
         ]);
@@ -61,7 +61,7 @@ consectetur adipiscing elit.'`;
         ).toEqual([
             {
                 line: 2,
-                word: 'lorem ipsum dolor sit amet, consectetur adipiscing elit. nullam a mauris sed diam feugiat malesuada. vestibulum maximus elementum odio, ac tempor elit egestas at. nulla ut lorem cursus, convallis sapien non, pharetra mi. pellentesque habitant morbi tristiq',
+                word: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a mauris sed diam feugiat malesuada. Vestibulum maximus elementum odio, ac tempor elit egestas at. Nulla ut lorem cursus, convallis sapien non, pharetra mi. Pellentesque habitant morbi tristiq',
                 id: symbols.literal
             }
         ]);

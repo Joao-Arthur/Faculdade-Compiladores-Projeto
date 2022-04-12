@@ -14,8 +14,11 @@ export const numberInterpreter: wordInterpreter = {
         shouldAdd: false,
         addedCurrentCharacter: true
     }),
-    handleCharacter: (currentWord: currentWord, character: string) => {
-        if (numbers.includes(character))
+    handleCharacter: (
+        currentWord: currentWord,
+        character: string | undefined
+    ) => {
+        if (character && numbers.includes(character))
             return {
                 type: 'number',
                 word: currentWord.word + character,
