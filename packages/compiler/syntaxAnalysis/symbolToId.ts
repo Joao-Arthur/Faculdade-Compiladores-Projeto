@@ -1,13 +1,10 @@
-import { symbolsKeys, symbolsIdsType, symbols } from '../symbols';
-import {
-    nonTerminalKeys,
-    nonTerminalSymbols,
-    nonTerminalSymbolsIdsType
-} from '../nonTerminalSymbols';
+import { symbols } from '../symbols';
+import { nonTerminalSymbols } from '../nonTerminalSymbols';
+import { terminalOrNonTerminal, terminalOrNonTerminalKeys } from '../types';
 
 export function symbolToId(
-    symbol: symbolsKeys | nonTerminalKeys
-): symbolsIdsType | nonTerminalSymbolsIdsType | undefined {
+    symbol: terminalOrNonTerminalKeys
+): terminalOrNonTerminal | undefined {
     if ((nonTerminalSymbols as any)[symbol])
         return (nonTerminalSymbols as any)[symbol];
     if ((symbols as any)[symbol]) return (symbols as any)[symbol];

@@ -1,9 +1,10 @@
 import { nonTerminalKeys } from './nonTerminalSymbols';
 import { symbolsKeys } from './symbols';
+import { terminalOrNonTerminalKeys } from './types';
 
 type productionsType = {
     [terminalKey in nonTerminalKeys]: Partial<{
-        [terminalKey in symbolsKeys]: (nonTerminalKeys | symbolsKeys)[];
+        [terminalKey in symbolsKeys]: terminalOrNonTerminalKeys[];
     }>;
 };
 

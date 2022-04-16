@@ -109,4 +109,4 @@ export const symbolsIds = {
 export type symbolsKeys = keyof typeof symbols;
 export type symbolsIdsType = typeof symbols[keyof typeof symbols];
 
-export const symbolsValues = Object.values(symbols);
+export const symbolsValues: number[] = Object.values(symbols);

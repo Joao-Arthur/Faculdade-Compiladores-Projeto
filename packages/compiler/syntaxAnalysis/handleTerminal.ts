@@ -2,12 +2,9 @@ import { symbolsIdsType } from '../symbols';
 
 export function handleTerminal(
     currentToken: symbolsIdsType,
-    currentProduction: number | undefined,
+    currentProduction: symbolsIdsType,
     tokens: symbolsIdsType[]
 ) {
-    if (currentToken === currentProduction) {
-        tokens.pop();
-    } else {
-        throw new Error('non existe');
-    }
+    if (currentToken !== currentProduction) throw new Error('Sintaxe inválida');
+    tokens.pop();
 }

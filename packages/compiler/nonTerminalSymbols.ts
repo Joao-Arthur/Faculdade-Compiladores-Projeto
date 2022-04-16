@@ -80,4 +80,5 @@ export type nonTerminalKeys = keyof typeof nonTerminalSymbols;
 export type nonTerminalSymbolsIdsType =
     typeof nonTerminalSymbols[keyof typeof nonTerminalSymbols];
 
-export const nonTerminalSymbolsValues = Object.values(nonTerminalSymbols);
+export const nonTerminalSymbolsValues: number[] =
+    Object.values(nonTerminalSymbols);
