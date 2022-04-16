@@ -10,8 +10,7 @@ var
 begin
   CompareValue := 1;
   repeat
-    CompareValue := CompareValue * 10;
-    writeln('writeln comparevalue if <> 10 ', CompareValue);
+    CompareValue := CompareValue * 10
   until CompareValue <> 10;
   readln(CompareValue, CompareValue);
 end.
@@ -36,32 +35,20 @@ end.
             { line: 8, word: 'comparevalue', id: symbols.identificador },
             { line: 8, word: '*', id: symbols['*'] },
             { line: 8, word: '10', id: symbols.inteiro },
-            { line: 8, word: ';', id: symbols[';'] },
-            { line: 9, word: 'writeln', id: symbols.writeln },
-            { line: 9, word: '(', id: symbols['('] },
-            {
-                line: 9,
-                word: 'writeln comparevalue if <> 10 ',
-                id: symbols.literal
-            },
-            { line: 9, word: ',', id: symbols[','] },
+            { line: 9, word: 'until', id: symbols.until },
             { line: 9, word: 'comparevalue', id: symbols.identificador },
-            { line: 9, word: ')', id: symbols[')'] },
+            { line: 9, word: '<>', id: symbols['<>'] },
+            { line: 9, word: '10', id: symbols.inteiro },
             { line: 9, word: ';', id: symbols[';'] },
-            { line: 10, word: 'until', id: symbols.until },
+            { line: 10, word: 'readln', id: symbols.readln },
+            { line: 10, word: '(', id: symbols['('] },
             { line: 10, word: 'comparevalue', id: symbols.identificador },
-            { line: 10, word: '<>', id: symbols['<>'] },
-            { line: 10, word: '10', id: symbols.inteiro },
+            { line: 10, word: ',', id: symbols[','] },
+            { line: 10, word: 'comparevalue', id: symbols.identificador },
+            { line: 10, word: ')', id: symbols[')'] },
             { line: 10, word: ';', id: symbols[';'] },
-            { line: 11, word: 'readln', id: symbols.readln },
-            { line: 11, word: '(', id: symbols['('] },
-            { line: 11, word: 'comparevalue', id: symbols.identificador },
-            { line: 11, word: ',', id: symbols[','] },
-            { line: 11, word: 'comparevalue', id: symbols.identificador },
-            { line: 11, word: ')', id: symbols[')'] },
-            { line: 11, word: ';', id: symbols[';'] },
-            { line: 12, word: 'end', id: symbols.end },
-            { line: 12, word: '.', id: symbols['.'] }
+            { line: 11, word: 'end', id: symbols.end },
+            { line: 11, word: '.', id: symbols['.'] }
         ]);
     });
 });
