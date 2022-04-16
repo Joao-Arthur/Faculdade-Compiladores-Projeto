@@ -4,7 +4,7 @@ import { nonTerminalSymbols } from '../nonTerminalSymbols';
 import { terminalOrNonTerminal } from '../types';
 
 describe('handleNonTerminal', () => {
-    it('should remove token from stack if both are equal', () => {
+    it('should push found production to stack', () => {
         const syntaxStack: terminalOrNonTerminal[] = [];
         handleNonTerminal(
             symbols.program,
@@ -13,11 +13,55 @@ describe('handleNonTerminal', () => {
         );
 
         expect(syntaxStack).toEqual([
-            symbols.program,
-            symbols.identificador,
-            symbols[';'],
+            symbols['.'],
             nonTerminalSymbols.bloco,
-            symbols['.']
+            symbols[';'],
+            symbols.identificador,
+            symbols.program
+        ]);
+    });
+
+    it('should push found production to stack', () => {
+        const syntaxStack: terminalOrNonTerminal[] = [symbols['.']];
+        handleNonTerminal(symbols.begin, nonTerminalSymbols.bloco, syntaxStack);
+
+        expect(syntaxStack).toEqual([
+            symbols['.'],
+            nonTerminalSymbols.corpo,
+            nonTerminalSymbols.declaracaoProc,
+            nonTerminalSymbols.declaracaoVar,
+            nonTerminalSymbols.declaracaoConst,
+            nonTerminalSymbols.declaracaoRot
+        ]);
+    });
+
+    it('should throw if production is not found', () => {
+        expect(() =>
+            handleNonTerminal(symbols.label, nonTerminalSymbols.programa, [])
+        ).toThrow();
+    });
+
+    it('should not push empty production to stack', () => {
+        const syntaxStack: terminalOrNonTerminal[] = [
+            symbols['.'],
+            nonTerminalSymbols.corpo,
+            nonTerminalSymbols.declaracaoProc,
+            nonTerminalSymbols.declaracaoVar,
+            nonTerminalSymbols.declaracaoConst
+        ];
+
+        handleNonTerminal(
+            symbols.begin,
+            nonTerminalSymbols.declaracaoRot,
+            syntaxStack
+        );
+
+        expect(syntaxStack).toEqual([
+            symbols['.'],
+            nonTerminalSymbols.corpo,
+            nonTerminalSymbols.declaracaoProc,
+            nonTerminalSymbols.declaracaoVar,
+            nonTerminalSymbols.declaracaoConst
         ]);
     });
 });

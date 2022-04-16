@@ -17,7 +17,10 @@ export function handleNonTerminal(
         symbolsIds[currentToken]
     );
     if (!foundProduction) throw new Error('produção não encontrada');
-    foundProduction.map(symbolToId).forEach(symbol => {
-        if (symbol) syntaxStack.push(symbol);
-    });
+    foundProduction
+        .map(symbolToId)
+        .reverse()
+        .forEach(symbol => {
+            if (symbol) syntaxStack.push(symbol);
+        });
 }
