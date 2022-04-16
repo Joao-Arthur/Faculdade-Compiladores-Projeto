@@ -8,11 +8,9 @@ program CaseProgram;
 var
   PossiblePrime: integer;
 begin
-  PossiblePrime := readln(1, 1);
+  readln(PossiblePrime);
   case PossiblePrime of
     2, 3, 5, 7, 9: writeln('PRIME NUMBER SMALLER THAN 10!');
-  else
-    writeln('NOT A PRIME NUMBER SMALLER THAN 10!');  
   end;
 end.
 `;
@@ -26,13 +24,9 @@ end.
             { line: 4, word: 'integer', id: symbols.integer },
             { line: 4, word: ';', id: symbols[';'] },
             { line: 5, word: 'begin', id: symbols.begin },
-            { line: 6, word: 'possibleprime', id: symbols.identificador },
-            { line: 6, word: ':=', id: symbols[':='] },
             { line: 6, word: 'readln', id: symbols.readln },
             { line: 6, word: '(', id: symbols['('] },
-            { line: 6, word: '1', id: symbols.inteiro },
-            { line: 6, word: ',', id: symbols[','] },
-            { line: 6, word: '1', id: symbols.inteiro },
+            { line: 6, word: 'possibleprime', id: symbols.identificador },
             { line: 6, word: ')', id: symbols[')'] },
             { line: 6, word: ';', id: symbols[';'] },
             { line: 7, word: 'case', id: symbols.case },
@@ -56,21 +50,10 @@ end.
                 id: symbols.literal
             },
             { line: 8, word: ')', id: symbols[')'] },
-            { line: 8, word: ';', id: symbols[';'] },
-            { line: 9, word: 'else', id: symbols.else },
-            { line: 10, word: 'writeln', id: symbols.writeln },
-            { line: 10, word: '(', id: symbols['('] },
-            {
-                line: 10,
-                word: 'NOT A PRIME NUMBER SMALLER THAN 10!',
-                id: symbols.literal
-            },
-            { line: 10, word: ')', id: symbols[')'] },
-            { line: 10, word: ';', id: symbols[';'] },
-            { line: 11, word: 'end', id: symbols.end },
-            { line: 11, word: ';', id: symbols[';'] },
-            { line: 12, word: 'end', id: symbols.end },
-            { line: 12, word: '.', id: symbols['.'] }
+            { line: 9, word: 'end', id: symbols.end },
+            { line: 9, word: ';', id: symbols[';'] },
+            { line: 10, word: 'end', id: symbols.end },
+            { line: 10, word: '.', id: symbols['.'] }
         ]);
     });
 });
