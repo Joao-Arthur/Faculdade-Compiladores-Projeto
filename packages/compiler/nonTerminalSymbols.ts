@@ -35,4 +35,49 @@ export const nonTerminalSymbols = {
     contCase: 85,
     repeticaoInteiro: 86,
     semefeito: 87
-};
+} as const;
+
+export const nonTerminalSymbolsIds = {
+    52: 'programa',
+    53: 'bloco',
+    54: 'declaracaoRot',
+    55: 'lId',
+    56: 'repident',
+    57: 'declaracaoConst',
+    58: 'ldConst',
+    59: 'declaracaoVar',
+    60: 'ldVar',
+    61: 'tipo',
+    62: 'declaracaoProc',
+    63: 'defpar',
+    64: 'corpo',
+    65: 'repComando',
+    66: 'comando',
+    67: 'rcomid',
+    68: 'rVar',
+    69: 'parametros',
+    70: 'repeticaoParametro',
+    71: 'elseparte',
+    72: 'variavel',
+    73: 'variavel1',
+    74: 'repeticaoVariavel',
+    75: 'itemSaida',
+    76: 'repeticaoItem',
+    77: 'expressao',
+    78: 'repeticaoExpressaoImp',
+    79: 'expressaoImp',
+    80: 'repeticaoExpressao',
+    81: 'termo',
+    82: 'repeticaoTermo',
+    83: 'fator',
+    84: 'condicaoCase',
+    85: 'contCase',
+    86: 'repeticaoInteiro',
+    87: 'semefeito'
+} as const;
+
+export type nonTerminalKeys = keyof typeof nonTerminalSymbols;
+export type nonTerminalSymbolsIdsType =
+    typeof nonTerminalSymbols[keyof typeof nonTerminalSymbols];
+
+export const nonTerminalSymbolsValues = Object.values(nonTerminalSymbols);

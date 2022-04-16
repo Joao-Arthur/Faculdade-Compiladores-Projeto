@@ -51,3 +51,62 @@ export const symbols = {
     '..': 50,
     $: 51
 } as const;
+
+export const symbolsIds = {
+    1: 'program',
+    2: 'label',
+    3: 'const',
+    4: 'var',
+    5: 'procedure',
+    6: 'begin',
+    7: 'end',
+    8: 'integer',
+    9: 'array',
+    10: 'of',
+    11: 'call',
+    12: 'goto',
+    13: 'if',
+    14: 'then',
+    15: 'else',
+    16: 'while',
+    17: 'do',
+    18: 'repeat',
+    19: 'until',
+    20: 'readln',
+    21: 'writeln',
+    22: 'or',
+    23: 'and',
+    24: 'not',
+    25: 'identificador',
+    26: 'inteiro',
+    27: 'for',
+    28: 'to',
+    29: 'case',
+    30: '+',
+    31: '-',
+    32: '*',
+    33: '/',
+    34: '[',
+    35: ']',
+    36: '(',
+    37: ')',
+    38: ':=',
+    39: ':',
+    40: '=',
+    41: '>',
+    42: '>=',
+    43: '<',
+    44: '<=',
+    45: '<>',
+    46: ',',
+    47: ';',
+    48: 'literal',
+    49: '.',
+    50: '..',
+    51: '$'
+} as const;
+
+export type symbolsKeys = keyof typeof symbols;
+export type symbolsIdsType = typeof symbols[keyof typeof symbols];
+
+export const symbolsValues = Object.values(symbols);

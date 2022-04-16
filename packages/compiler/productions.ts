@@ -1,4 +1,13 @@
-export const nonTerminalSymbols = {
+import { nonTerminalKeys } from './nonTerminalSymbols';
+import { symbolsKeys } from './symbols';
+
+type productionsType = {
+    [terminalKey in nonTerminalKeys]: Partial<{
+        [terminalKey in symbolsKeys]: (nonTerminalKeys | symbolsKeys)[];
+    }>;
+};
+
+export const productions: productionsType = {
     programa: {
         program: ['program', 'identificador', ';', 'bloco', '.']
     },
@@ -111,7 +120,7 @@ export const nonTerminalSymbols = {
         if: ['if', 'expressao', 'then', 'comando', 'elseparte'],
         else: [],
         while: ['while', 'expressao', 'do', 'comando'],
-        repeat: ['repeat , comando , until , expressao'],
+        repeat: ['repeat', 'comando', 'until', 'expressao'],
         until: [],
         readln: ['readln', '(', 'variavel', 'repeticaoVariavel', ')'],
         writeln: ['writeln', '(', 'itemSaida', 'repeticaoItem', ')'],
@@ -232,8 +241,8 @@ export const nonTerminalSymbols = {
         not: ['termo', 'repeticaoExpressao'],
         identificador: ['termo', 'repeticaoExpressao'],
         inteiro: ['termo', 'repeticaoExpressao'],
-        '+': ['+ , termo', 'repeticaoExpressao'],
-        '-': ['- , termo', 'repeticaoExpressao'],
+        '+': ['+', 'termo', 'repeticaoExpressao'],
+        '-': ['-', 'termo', 'repeticaoExpressao'],
         '(': ['termo', 'repeticaoExpressao']
     },
     repeticaoExpressao: {
@@ -305,5 +314,6 @@ export const nonTerminalSymbols = {
     repeticaoInteiro: {
         ':': [],
         ',': [',', 'inteiro', 'repeticaoInteiro']
-    }
+    },
+    semefeito: {}
 };
