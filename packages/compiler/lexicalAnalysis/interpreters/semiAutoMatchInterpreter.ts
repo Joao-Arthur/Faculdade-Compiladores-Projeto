@@ -13,7 +13,10 @@ export const semiAutoMatchInterpreter: wordInterpreter = {
         shouldAdd: false,
         addedCurrentCharacter: true
     }),
-    handleCharacter: (currentWord: currentWord, character: string) => {
+    handleCharacter: (
+        currentWord: currentWord,
+        character: string | undefined
+    ) => {
         currentWord.shouldAdd = true;
         currentWord.addedCurrentCharacter = false;
         if (currentWord.word === ':' && character === '=') {

@@ -13,7 +13,10 @@ export const commentInterpreter: wordInterpreter = {
         shouldAdd: false,
         addedCurrentCharacter: true
     }),
-    handleCharacter: (currentWord: currentWord, character: string) => {
+    handleCharacter: (
+        currentWord: currentWord,
+        character: string | undefined
+    ) => {
         if ((currentWord.word + character).endsWith(commentEndDelimiter))
             return {
                 type: 'comment',

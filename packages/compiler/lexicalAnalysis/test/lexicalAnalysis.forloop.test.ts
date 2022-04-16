@@ -69,7 +69,7 @@ end.
             { line: 10, word: ';', id: symbols[';'] },
             { line: 11, word: 'writeln', id: symbols.writeln },
             { line: 11, word: '(', id: symbols['('] },
-            { line: 11, word: 'i value is: ', id: symbols.literal },
+            { line: 11, word: 'I value is: ', id: symbols.literal },
             { line: 11, word: ',', id: symbols[','] },
             { line: 11, word: 'i', id: symbols.identificador },
             { line: 11, word: ')', id: symbols[')'] },

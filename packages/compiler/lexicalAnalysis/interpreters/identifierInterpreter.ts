@@ -8,21 +8,26 @@ const numbers = '0123456789' as const;
 const maxLength = 30;
 
 export const identifierInterpreter: wordInterpreter = {
-    matches: (character: string) => identifierCharacters.includes(character),
+    matches: (character: string) =>
+        identifierCharacters.includes(character.toLocaleLowerCase()),
     create: (character: string) => ({
         type: 'identifier',
-        word: character,
+        word: character.toLocaleLowerCase(),
         shouldAdd: false,
         addedCurrentCharacter: true
     }),
-    handleCharacter: (currentWord: currentWord, character: string) => {
+    handleCharacter: (
+        currentWord: currentWord,
+        character: string | undefined
+    ) => {
         if (
-            identifierCharacters.includes(character) ||
-            numbers.includes(character)
+            (character &&
+                identifierCharacters.includes(character.toLocaleLowerCase())) ||
+            (character && numbers.includes(character))
         )
             return {
                 type: 'identifier',
-                word: currentWord.word + character,
+                word: currentWord.word + character.toLocaleLowerCase(),
                 shouldAdd: false,
                 addedCurrentCharacter: true
             };

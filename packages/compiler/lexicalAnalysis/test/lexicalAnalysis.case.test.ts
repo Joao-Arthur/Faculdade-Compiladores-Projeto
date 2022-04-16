@@ -52,7 +52,7 @@ end.
             { line: 8, word: '(', id: symbols['('] },
             {
                 line: 8,
-                word: 'prime number smaller than 10!',
+                word: 'PRIME NUMBER SMALLER THAN 10!',
                 id: symbols.literal
             },
             { line: 8, word: ')', id: symbols[')'] },
@@ -62,7 +62,7 @@ end.
             { line: 10, word: '(', id: symbols['('] },
             {
                 line: 10,
-                word: 'not a prime number smaller than 10!',
+                word: 'NOT A PRIME NUMBER SMALLER THAN 10!',
                 id: symbols.literal
             },
             { line: 10, word: ')', id: symbols[')'] },

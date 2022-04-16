@@ -13,8 +13,11 @@ export const stringInterpreter: wordInterpreter = {
         shouldAdd: false,
         addedCurrentCharacter: true
     }),
-    handleCharacter: (currentWord: currentWord, character: string) => {
-        if (stringDelimiter.includes(character))
+    handleCharacter: (
+        currentWord: currentWord,
+        character: string | undefined
+    ) => {
+        if (character && stringDelimiter.includes(character))
             return {
                 type: 'string',
                 word: currentWord.word,
