@@ -6,7 +6,7 @@ describe('lexicalAnalysis', () => {
         const source = `
 program ForLoopProgram;
 var
-  values: array of integer;
+  values: array [1..100] of integer;
   i: integer;
 begin
   for i := 1 to 99 do
@@ -25,6 +25,11 @@ end.
             { line: 4, word: 'values', id: symbols.identificador },
             { line: 4, word: ':', id: symbols[':'] },
             { line: 4, word: 'array', id: symbols.array },
+            { line: 4, word: '[', id: symbols['['] },
+            { line: 4, word: '1', id: symbols.inteiro },
+            { line: 4, word: '..', id: symbols['..'] },
+            { line: 4, word: '100', id: symbols.inteiro },
+            { line: 4, word: ']', id: symbols[']'] },
             { line: 4, word: 'of', id: symbols.of },
             { line: 4, word: 'integer', id: symbols.integer },
             { line: 4, word: ';', id: symbols[';'] },

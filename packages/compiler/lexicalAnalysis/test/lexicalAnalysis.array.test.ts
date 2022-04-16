@@ -7,7 +7,7 @@ describe('lexicalAnalysis', () => {
 program ArrayProgram;
 var
   FirstArray: Array [1..6] of integer;
-  SecondArray: Array of integer;
+  SecondArray: Array [1..6] of integer;
 begin
   FirstArray[1] := -32767; (*test negative min value*)
   FirstArray[2] := -2048;
@@ -42,6 +42,11 @@ end.
             { line: 5, word: 'secondarray', id: symbols.identificador },
             { line: 5, word: ':', id: symbols[':'] },
             { line: 5, word: 'array', id: symbols.array },
+            { line: 5, word: '[', id: symbols['['] },
+            { line: 5, word: '1', id: symbols.inteiro },
+            { line: 5, word: '..', id: symbols['..'] },
+            { line: 5, word: '6', id: symbols.inteiro },
+            { line: 5, word: ']', id: symbols[']'] },
             { line: 5, word: 'of', id: symbols.of },
             { line: 5, word: 'integer', id: symbols.integer },
             { line: 5, word: ';', id: symbols[';'] },

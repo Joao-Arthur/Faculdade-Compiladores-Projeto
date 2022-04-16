@@ -8,7 +8,7 @@ program WhileLoopProgram;
 const
   INTERVAL = 4;
 var
-  ArrayValue: Array of integer;
+  ArrayValue: Array [1..2] of integer;
 begin
   ArrayValue[1] := 2;
   ArrayValue[2] := 2048;
@@ -32,6 +32,11 @@ end.
             { line: 6, word: 'arrayvalue', id: symbols.identificador },
             { line: 6, word: ':', id: symbols[':'] },
             { line: 6, word: 'array', id: symbols.array },
+            { line: 6, word: '[', id: symbols['['] },
+            { line: 6, word: '1', id: symbols.inteiro },
+            { line: 6, word: '..', id: symbols['..'] },
+            { line: 6, word: '2', id: symbols.inteiro },
+            { line: 6, word: ']', id: symbols[']'] },
             { line: 6, word: 'of', id: symbols.of },
             { line: 6, word: 'integer', id: symbols.integer },
             { line: 6, word: ';', id: symbols[';'] },
