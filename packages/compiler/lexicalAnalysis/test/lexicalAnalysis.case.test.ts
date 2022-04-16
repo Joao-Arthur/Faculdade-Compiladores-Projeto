@@ -10,7 +10,7 @@ var
 begin
   readln(PossiblePrime);
   case PossiblePrime of
-    2, 3, 5, 7, 9: writeln('PRIME NUMBER SMALLER THAN 10!');
+    2, 3, 5, 7, 9: writeln('PRIME NUMBER SMALLER THAN 10!')
   end;
 end.
 `;

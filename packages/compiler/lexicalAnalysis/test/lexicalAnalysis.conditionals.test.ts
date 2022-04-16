@@ -25,17 +25,17 @@ begin
     n1 := n1 -3000;
 
   (*test greater and smaller expressions*)
-  if n2 > 300 and n2 < 400 then
+  if (n2 > 300) and (n2 < 400) then
     n2 := n2 + 7;
-  if n2 >= 300 and n2 <= 400 then
+  if (n2 >= 300) and (n2 <= 400) then
     n2 := n2 + 76;
-  if n3 > 300 or n3 < 400 then
+  if (n3 > 300) or (n3 < 400) then
     n2 := n2 + 765;
-  if n3 >= 300 or n3 <= 400 then
+  if (n3 >= 300) or n3 <= 400 then
     n2 := n2 + 7654;
 
   (*test and or expressions*)
-  if n1 = n2 or n2 = n3 then
+  if (n1 = n2) or n2 = n3 then
     n3 := - n1 + n2;
   if n1 = n2 and (not (n1 = n3)) then
     n3 := n1 - n2;
@@ -122,13 +122,17 @@ end.
             { line: 20, word: '3000', id: symbols.inteiro },
             { line: 20, word: ';', id: symbols[';'] },
             { line: 23, word: 'if', id: symbols.if },
+            { line: 23, word: '(', id: symbols['('] },
             { line: 23, word: 'n2', id: symbols.identificador },
             { line: 23, word: '>', id: symbols['>'] },
             { line: 23, word: '300', id: symbols.inteiro },
+            { line: 23, word: ')', id: symbols[')'] },
             { line: 23, word: 'and', id: symbols.and },
+            { line: 23, word: '(', id: symbols['('] },
             { line: 23, word: 'n2', id: symbols.identificador },
             { line: 23, word: '<', id: symbols['<'] },
             { line: 23, word: '400', id: symbols.inteiro },
+            { line: 23, word: ')', id: symbols[')'] },
             { line: 23, word: 'then', id: symbols.then },
             { line: 24, word: 'n2', id: symbols.identificador },
             { line: 24, word: ':=', id: symbols[':='] },
@@ -137,13 +141,17 @@ end.
             { line: 24, word: '7', id: symbols.inteiro },
             { line: 24, word: ';', id: symbols[';'] },
             { line: 25, word: 'if', id: symbols.if },
+            { line: 25, word: '(', id: symbols['('] },
             { line: 25, word: 'n2', id: symbols.identificador },
             { line: 25, word: '>=', id: symbols['>='] },
             { line: 25, word: '300', id: symbols.inteiro },
+            { line: 25, word: ')', id: symbols[')'] },
             { line: 25, word: 'and', id: symbols.and },
+            { line: 25, word: '(', id: symbols['('] },
             { line: 25, word: 'n2', id: symbols.identificador },
             { line: 25, word: '<=', id: symbols['<='] },
             { line: 25, word: '400', id: symbols.inteiro },
+            { line: 25, word: ')', id: symbols[')'] },
             { line: 25, word: 'then', id: symbols.then },
             { line: 26, word: 'n2', id: symbols.identificador },
             { line: 26, word: ':=', id: symbols[':='] },
@@ -152,13 +160,17 @@ end.
             { line: 26, word: '76', id: symbols.inteiro },
             { line: 26, word: ';', id: symbols[';'] },
             { line: 27, word: 'if', id: symbols.if },
+            { line: 27, word: '(', id: symbols['('] },
             { line: 27, word: 'n3', id: symbols.identificador },
             { line: 27, word: '>', id: symbols['>'] },
             { line: 27, word: '300', id: symbols.inteiro },
+            { line: 27, word: ')', id: symbols[')'] },
             { line: 27, word: 'or', id: symbols.or },
+            { line: 27, word: '(', id: symbols['('] },
             { line: 27, word: 'n3', id: symbols.identificador },
             { line: 27, word: '<', id: symbols['<'] },
             { line: 27, word: '400', id: symbols.inteiro },
+            { line: 27, word: ')', id: symbols[')'] },
             { line: 27, word: 'then', id: symbols.then },
             { line: 28, word: 'n2', id: symbols.identificador },
             { line: 28, word: ':=', id: symbols[':='] },
@@ -167,9 +179,11 @@ end.
             { line: 28, word: '765', id: symbols.inteiro },
             { line: 28, word: ';', id: symbols[';'] },
             { line: 29, word: 'if', id: symbols.if },
+            { line: 29, word: '(', id: symbols['('] },
             { line: 29, word: 'n3', id: symbols.identificador },
             { line: 29, word: '>=', id: symbols['>='] },
             { line: 29, word: '300', id: symbols.inteiro },
+            { line: 29, word: ')', id: symbols[')'] },
             { line: 29, word: 'or', id: symbols.or },
             { line: 29, word: 'n3', id: symbols.identificador },
             { line: 29, word: '<=', id: symbols['<='] },
@@ -182,9 +196,11 @@ end.
             { line: 30, word: '7654', id: symbols.inteiro },
             { line: 30, word: ';', id: symbols[';'] },
             { line: 33, word: 'if', id: symbols.if },
+            { line: 33, word: '(', id: symbols['('] },
             { line: 33, word: 'n1', id: symbols.identificador },
             { line: 33, word: '=', id: symbols['='] },
             { line: 33, word: 'n2', id: symbols.identificador },
+            { line: 33, word: ')', id: symbols[')'] },
             { line: 33, word: 'or', id: symbols.or },
             { line: 33, word: 'n2', id: symbols.identificador },
             { line: 33, word: '=', id: symbols['='] },
