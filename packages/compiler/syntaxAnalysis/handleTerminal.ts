@@ -5,6 +5,7 @@ export function handleTerminal(
     currentProduction: symbolsIdsType,
     tokens: symbolsIdsType[]
 ) {
-    if (currentToken !== currentProduction) throw new Error('Sintaxe inválida');
+    if (currentToken !== currentProduction)
+        throw new Error('sintaxe inválida!');
     tokens.pop();
 }

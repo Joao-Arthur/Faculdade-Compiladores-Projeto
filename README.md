@@ -17,9 +17,6 @@ A arquitetura do projeto é composta de 3 camadas:
 -   análise léxica
     -   Números com sinal positivo e negativo
     -   Erro em caracteres inválidos
--   análise sintâtica
-    -   implementação do algoritmo
-    -   testes
 -   análise semântica
 
 -   GUI

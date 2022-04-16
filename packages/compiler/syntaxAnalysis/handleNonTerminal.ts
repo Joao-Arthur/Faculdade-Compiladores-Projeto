@@ -16,7 +16,7 @@ export function handleNonTerminal(
         nonTerminalSymbolsIds[currentProduction as nonTerminalSymbolsIdsType],
         symbolsIds[currentToken]
     );
-    if (!foundProduction) throw new Error('produção não encontrada');
+    if (!foundProduction) throw new Error('sintaxe inválida!');
     foundProduction
         .map(symbolToId)
         .reverse()
