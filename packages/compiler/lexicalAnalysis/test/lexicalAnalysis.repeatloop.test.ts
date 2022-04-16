@@ -2,7 +2,7 @@ import { symbols } from '../../symbols';
 import { lexicalAnalysis } from '../lexicalAnalysis';
 
 describe('lexicalAnalysis', () => {
-    it('should identify while loops', () => {
+    it('should identify repeat loops', () => {
         const source = `
 program RepeatLoopProgram;
 var

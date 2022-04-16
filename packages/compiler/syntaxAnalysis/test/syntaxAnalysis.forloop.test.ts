@@ -1,23 +1,8 @@
-import { symbols } from '../symbols';
-import { syntaxAnalysis } from './syntaxAnalysis';
+import { symbols } from '../../symbols';
+import { syntaxAnalysis } from '../syntaxAnalysis';
 
 describe('syntaxAnalysis', () => {
-    it('should correct analize working program', () => {
-        const tokens = [
-            symbols.program,
-            symbols.identificador,
-            symbols[';'],
-            symbols.begin,
-            symbols.end,
-            symbols['.']
-        ].reverse();
-
-        expect(() => syntaxAnalysis(tokens)).not.toThrow();
-
-        expect(tokens).toEqual([]);
-    });
-
-    it('should correct analize working program', () => {
+    it('should identify while loops', () => {
         const tokens = [
             symbols.program,
             symbols.identificador,
@@ -85,6 +70,7 @@ describe('syntaxAnalysis', () => {
             symbols.end,
             symbols['.']
         ].reverse();
+
         expect(() => syntaxAnalysis(tokens)).not.toThrow();
         expect(tokens).toEqual([]);
     });
