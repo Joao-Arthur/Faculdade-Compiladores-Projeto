@@ -15,7 +15,6 @@ A arquitetura do projeto é composta de 3 camadas:
 ### TODO
 
 -   análise léxica
-    -   Números com sinal positivo e negativo
     -   Erro em caracteres inválidos
 -   análise semântica
 
