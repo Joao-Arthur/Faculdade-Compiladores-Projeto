@@ -3,7 +3,8 @@ import { literalObject } from '../../types';
 import { currentWord, token } from '../types';
 import { wordInterpreter } from '../wordInterpreter';
 
-const semiAutoMatchCharacters = ':<>.(' as const;
+const semiAutoMatchCharacters = ':<>.(+-' as const;
+const numbers = '0123456789' as const;
 
 export const semiAutoMatchInterpreter: wordInterpreter = {
     matches: (character: string) => semiAutoMatchCharacters.includes(character),
@@ -63,6 +64,30 @@ export const semiAutoMatchInterpreter: wordInterpreter = {
             return {
                 type: 'comment',
                 word: '',
+                addedCurrentCharacter: true,
+                shouldAdd: false
+            };
+        }
+        if (
+            currentWord.word === '+' &&
+            character &&
+            numbers.includes(character)
+        ) {
+            return {
+                type: 'number',
+                word: character,
+                addedCurrentCharacter: true,
+                shouldAdd: false
+            };
+        }
+        if (
+            currentWord.word === '-' &&
+            character &&
+            numbers.includes(character)
+        ) {
+            return {
+                type: 'number',
+                word: currentWord.word + character,
                 addedCurrentCharacter: true,
                 shouldAdd: false
             };

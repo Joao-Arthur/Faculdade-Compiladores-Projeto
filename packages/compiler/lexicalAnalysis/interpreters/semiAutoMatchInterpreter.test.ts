@@ -17,8 +17,8 @@ describe('semiAutoMatchInterpreter', () => {
         expect(semiAutoMatchInterpreter.matches(`<`)).toBe(true);
         expect(semiAutoMatchInterpreter.matches(':')).toBe(true);
         expect(semiAutoMatchInterpreter.matches('=')).toBe(false);
-        expect(semiAutoMatchInterpreter.matches('+')).toBe(false);
-        expect(semiAutoMatchInterpreter.matches('-')).toBe(false);
+        expect(semiAutoMatchInterpreter.matches('+')).toBe(true);
+        expect(semiAutoMatchInterpreter.matches('-')).toBe(true);
         expect(semiAutoMatchInterpreter.matches('[')).toBe(false);
         expect(semiAutoMatchInterpreter.matches('(')).toBe(true);
         expect(semiAutoMatchInterpreter.matches(';')).toBe(false);
@@ -144,6 +144,50 @@ describe('semiAutoMatchInterpreter', () => {
             word: '..',
             shouldAdd: true,
             addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, '7'))(
+                semiAutoMatchInterpreter.create('+')
+            )
+        ).toEqual({
+            type: 'number',
+            word: '7',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, ' '))(
+                semiAutoMatchInterpreter.create('+')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '+',
+            shouldAdd: true,
+            addedCurrentCharacter: false
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, '5'))(
+                semiAutoMatchInterpreter.create('-')
+            )
+        ).toEqual({
+            type: 'number',
+            word: '-5',
+            shouldAdd: false,
+            addedCurrentCharacter: true
+        });
+
+        expect(
+            pipe(word => semiAutoMatchInterpreter.handleCharacter(word, ' '))(
+                semiAutoMatchInterpreter.create('-')
+            )
+        ).toEqual({
+            type: 'semiAutoMatch',
+            word: '-',
+            shouldAdd: true,
+            addedCurrentCharacter: false
         });
 
         expect(

@@ -17,8 +17,8 @@ describe('autoMatchInterpreter', () => {
         expect(autoMatchInterpreter.matches(`<`)).toBe(false);
         expect(autoMatchInterpreter.matches(':')).toBe(false);
         expect(autoMatchInterpreter.matches('=')).toBe(true);
-        expect(autoMatchInterpreter.matches('+')).toBe(true);
-        expect(autoMatchInterpreter.matches('-')).toBe(true);
+        expect(autoMatchInterpreter.matches('+')).toBe(false);
+        expect(autoMatchInterpreter.matches('-')).toBe(false);
         expect(autoMatchInterpreter.matches('[')).toBe(true);
         expect(autoMatchInterpreter.matches('(')).toBe(false);
         expect(autoMatchInterpreter.matches(';')).toBe(true);
