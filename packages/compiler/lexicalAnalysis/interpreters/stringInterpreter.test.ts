@@ -4,6 +4,7 @@ import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { stringInterpreter } from './stringInterpreter';
 import { UnterminatedStringException } from './exceptions/UnterminatedStringException';
+import { StringMaxLengthExceededException } from './exceptions/StringMaxLengthExceededException';
 
 describe('stringInterpreter', () => {
     it('should verify if character matches', () => {
@@ -102,7 +103,7 @@ describe('stringInterpreter', () => {
                 shouldAdd: true,
                 addedCurrentCharacter: true
             })
-        ).not.toThrow('o tamanho máximo para uma string é 256 caracteres!');
+        ).not.toThrow(StringMaxLengthExceededException);
 
         expect(() =>
             stringInterpreter.onBeforePush?.({
@@ -111,7 +112,7 @@ describe('stringInterpreter', () => {
                 shouldAdd: true,
                 addedCurrentCharacter: true
             })
-        ).not.toThrow('o tamanho máximo para uma string é 256 caracteres!');
+        ).not.toThrow(StringMaxLengthExceededException);
 
         expect(() =>
             stringInterpreter.onBeforePush?.({
@@ -120,6 +121,6 @@ describe('stringInterpreter', () => {
                 shouldAdd: true,
                 addedCurrentCharacter: true
             })
-        ).toThrow('o tamanho máximo para uma string é 256 caracteres!');
+        ).toThrow(StringMaxLengthExceededException);
     });
 });
