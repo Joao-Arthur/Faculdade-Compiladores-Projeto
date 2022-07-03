@@ -80,6 +80,8 @@ describe('commentInterpreter', () => {
     });
 
     it('should handle file end', () => {
-        expect(() => commentInterpreter.onFileEnd?.(10)).toThrow(UnterminatedCommentException);
+        expect(() => commentInterpreter.onFileEnd?.(10)).toThrow(
+            UnterminatedCommentException
+        );
     });
 });

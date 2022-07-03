@@ -1,6 +1,7 @@
 import { pipe } from 'ramda';
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
+import { IdentifierMaxLengthExceededException } from './exceptions/IdentifierMaxLengthExceededException';
 import { identifierInterpreter } from './identifierInterpreter';
 
 describe('identifierInterpreter', () => {
@@ -105,9 +106,7 @@ describe('identifierInterpreter', () => {
                 shouldAdd: true,
                 addedCurrentCharacter: true
             })
-        ).not.toThrow(
-            'o tamanho máximo para um identificador é 30 caracteres!'
-        );
+        ).not.toThrow(IdentifierMaxLengthExceededException);
 
         expect(() =>
             identifierInterpreter.onBeforePush?.({
@@ -116,9 +115,7 @@ describe('identifierInterpreter', () => {
                 shouldAdd: true,
                 addedCurrentCharacter: true
             })
-        ).not.toThrow(
-            'o tamanho máximo para um identificador é 30 caracteres!'
-        );
+        ).not.toThrow(IdentifierMaxLengthExceededException);
 
         expect(() =>
             identifierInterpreter.onBeforePush?.({
@@ -127,6 +124,6 @@ describe('identifierInterpreter', () => {
                 shouldAdd: true,
                 addedCurrentCharacter: true
             })
-        ).toThrow('o tamanho máximo para um identificador é 30 caracteres!');
+        ).toThrow(IdentifierMaxLengthExceededException);
     });
 });

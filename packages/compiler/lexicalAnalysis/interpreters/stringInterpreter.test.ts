@@ -3,6 +3,7 @@ import faker from '@faker-js/faker';
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { stringInterpreter } from './stringInterpreter';
+import { UnterminatedStringException } from './exceptions/UnterminatedStringException';
 
 describe('stringInterpreter', () => {
     it('should verify if character matches', () => {
@@ -85,7 +86,7 @@ describe('stringInterpreter', () => {
 
     it('should handle line end', () => {
         expect(() => stringInterpreter.onLineEnd?.()).toThrow(
-            'string não encerrada!'
+            UnterminatedStringException
         );
     });
 

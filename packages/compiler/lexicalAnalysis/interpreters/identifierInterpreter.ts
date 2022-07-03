@@ -2,6 +2,7 @@ import { symbols } from '../../symbols';
 import { reservedWords } from '../../reservedWords';
 import { currentWord, token } from '../types';
 import { wordInterpreter } from '../wordInterpreter';
+import { IdentifierMaxLengthExceededException } from './exceptions/IdentifierMaxLengthExceededException';
 
 const identifierCharacters = 'abcdefghijklmnopqrstuvwxyz_' as const;
 const numbers = '0123456789' as const;
@@ -49,8 +50,6 @@ export const identifierInterpreter: wordInterpreter = {
     },
     onBeforePush: (currentWord: currentWord) => {
         if (currentWord.word.length > maxLength)
-            throw new Error(
-                `o tamanho máximo para um identificador é ${maxLength} caracteres!`
-            );
+            throw new IdentifierMaxLengthExceededException(maxLength);
     }
 };
