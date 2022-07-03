@@ -32,13 +32,17 @@ WriteLn('There"s NO String variables IN THIS language');
 
     it('should throw on unfinished string', () => {
         const source = `'so far, so good, so what?`;
-        expect(() => lexicalAnalysis(source)).toThrow('string não encerrada');
+        expect(() => lexicalAnalysis(source)).toThrow(
+            'string não encerrada na linha 1'
+        );
     });
 
     it('should throw on multiline string', () => {
         const source = `'Lorem ipsum dolor sit amet,
 consectetur adipiscing elit.'`;
-        expect(() => lexicalAnalysis(source)).toThrow('string não encerrada');
+        expect(() => lexicalAnalysis(source)).toThrow(
+            'string não encerrada na linha 1'
+        );
     });
 
     it('should throw on strings larger than 256 character', () => {

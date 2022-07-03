@@ -226,7 +226,7 @@ describe('semiAutoMatchInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(semiAutoMatchInterpreter.onLineEnd?.()).toEqual(undefined);
+        expect(semiAutoMatchInterpreter.onLineEnd?.(10)).toEqual(undefined);
     });
 
     it('should handle file end', () => {

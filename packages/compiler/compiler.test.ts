@@ -27,7 +27,7 @@ end.
         const { tokens, error } = compile(`'ill be back`);
 
         expect(tokens).toEqual(undefined);
-        expect(error).toEqual('string não encerrada!');
+        expect(error).toEqual('string não encerrada na linha 1!');
     });
 
     it('should return the lexical error', () => {

@@ -78,7 +78,7 @@ describe('numberInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(numberInterpreter.onLineEnd?.()).toEqual(undefined);
+        expect(numberInterpreter.onLineEnd?.(10)).toEqual(undefined);
     });
 
     it('should handle file end', () => {

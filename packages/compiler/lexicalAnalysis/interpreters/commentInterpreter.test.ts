@@ -76,7 +76,7 @@ describe('commentInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(commentInterpreter.onLineEnd?.()).toEqual(undefined);
+        expect(commentInterpreter.onLineEnd?.(10)).toEqual(undefined);
     });
 
     it('should handle file end', () => {

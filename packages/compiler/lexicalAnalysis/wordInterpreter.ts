@@ -13,7 +13,7 @@ export type wordInterpreter = {
         currentWord: currentWord,
         line: number
     ) => void;
-    onLineEnd?: () => void;
+    onLineEnd?: (line: number) => void;
     onFileEnd?: (line: number) => void;
     onBeforePush?: (currentWord: currentWord) => void;
 };

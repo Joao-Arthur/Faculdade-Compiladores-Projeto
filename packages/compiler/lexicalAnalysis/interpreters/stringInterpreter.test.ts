@@ -85,7 +85,7 @@ describe('stringInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(() => stringInterpreter.onLineEnd?.()).toThrow(
+        expect(() => stringInterpreter.onLineEnd?.(10)).toThrow(
             UnterminatedStringException
         );
     });

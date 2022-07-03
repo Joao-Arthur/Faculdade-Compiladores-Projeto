@@ -1,5 +1,5 @@
 export class UnterminatedStringException extends Error {
-    constructor() {
-        super('string não encerrada!');
+    constructor(readonly line: number) {
+        super(`string não encerrada na linha ${line}!`);
     }
 }

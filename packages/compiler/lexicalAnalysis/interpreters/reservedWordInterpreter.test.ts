@@ -68,7 +68,7 @@ describe('reservedWordInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(reservedWordInterpreter.onLineEnd?.()).toEqual(undefined);
+        expect(reservedWordInterpreter.onLineEnd?.(10)).toEqual(undefined);
     });
 
     it('should handle file end', () => {

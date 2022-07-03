@@ -39,8 +39,8 @@ export const stringInterpreter: wordInterpreter = {
             word: currentWord.word
         });
     },
-    onLineEnd: () => {
-        throw new UnterminatedStringException();
+    onLineEnd: (line: number) => {
+        throw new UnterminatedStringException(line);
     },
     onBeforePush: (currentWord: currentWord) => {
         if (currentWord.word.length > maxLength)

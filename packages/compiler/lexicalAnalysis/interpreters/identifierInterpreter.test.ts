@@ -91,7 +91,7 @@ describe('identifierInterpreter', () => {
     });
 
     it('should handle line end', () => {
-        expect(identifierInterpreter.onLineEnd?.()).toEqual(undefined);
+        expect(identifierInterpreter.onLineEnd?.(10)).toEqual(undefined);
     });
 
     it('should handle file end', () => {
