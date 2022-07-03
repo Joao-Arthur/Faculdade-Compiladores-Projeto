@@ -3,6 +3,8 @@ import faker from '@faker-js/faker';
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { numberInterpreter } from './numberInterpreter';
+import { NumberMaxValueExceededException } from './exceptions/NumberMaxValueExceededException';
+import { NumberMinValueExceededException } from './exceptions/NumberMinValueExceededException';
 
 describe('numberInterpreter', () => {
     it('should verify if character matches', () => {
@@ -95,7 +97,7 @@ describe('numberInterpreter', () => {
                     addedCurrentCharacter: true
                 })
             )(faker.datatype.number({ min: -32767, max: 32767 }))
-        ).not.toThrow('o valor mínimo para um número é -32767!');
+        ).not.toThrow(NumberMinValueExceededException);
 
         expect(() =>
             pipe(String, word =>
@@ -106,7 +108,7 @@ describe('numberInterpreter', () => {
                     addedCurrentCharacter: true
                 })
             )(faker.datatype.number({ min: -32767, max: 32767 }))
-        ).not.toThrow('o valor máximo para um número é 32767!');
+        ).not.toThrow(NumberMaxValueExceededException);
 
         expect(() =>
             pipe(String, word =>
@@ -117,7 +119,7 @@ describe('numberInterpreter', () => {
                     addedCurrentCharacter: true
                 })
             )(faker.datatype.number({ max: -32766 }))
-        ).not.toThrow('o valor mínimo para um número é -32767!');
+        ).not.toThrow(NumberMinValueExceededException);
 
         expect(() =>
             pipe(String, word =>
@@ -128,6 +130,6 @@ describe('numberInterpreter', () => {
                     addedCurrentCharacter: true
                 })
             )(faker.datatype.number({ min: 32766 }))
-        ).toThrow('o valor máximo para um número é 32767!');
+        ).toThrow(NumberMaxValueExceededException);
     });
 });

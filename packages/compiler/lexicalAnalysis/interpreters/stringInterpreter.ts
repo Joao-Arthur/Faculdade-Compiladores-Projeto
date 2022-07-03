@@ -1,6 +1,7 @@
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { wordInterpreter } from '../wordInterpreter';
+import { StringMaxLengthExceeded } from './exceptions/StringMaxLengthExceeded';
 import { UnterminatedStringException } from './exceptions/UnterminatedStringException';
 
 const stringDelimiter = `'` as const;
@@ -44,8 +45,6 @@ export const stringInterpreter: wordInterpreter = {
     },
     onBeforePush: (currentWord: currentWord) => {
         if (currentWord.word.length > maxLength)
-            throw new Error(
-                `o tamanho máximo para uma string é ${maxLength} caracteres!`
-            );
+            throw new StringMaxLengthExceeded(maxLength);
     }
 };

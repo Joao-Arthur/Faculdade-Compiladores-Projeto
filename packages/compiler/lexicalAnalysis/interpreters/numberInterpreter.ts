@@ -1,6 +1,8 @@
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { wordInterpreter } from '../wordInterpreter';
+import { NumberMaxValueExceededException } from './exceptions/NumberMaxValueExceededException';
+import { NumberMinValueExceededException } from './exceptions/NumberMinValueExceededException';
 
 const numbers = '0123456789' as const;
 const minValue = -32767;
@@ -41,8 +43,8 @@ export const numberInterpreter: wordInterpreter = {
     },
     onBeforePush: (currentWord: currentWord) => {
         if (Number(currentWord.word) > maxValue)
-            throw new Error(`o valor máximo para um número é ${maxValue}!`);
+            throw new NumberMaxValueExceededException(maxValue);
         if (Number(currentWord.word) < minValue)
-            throw new Error(`o valor mínimo para um número é ${minValue}!`);
+            throw new NumberMinValueExceededException(minValue);
     }
 };
