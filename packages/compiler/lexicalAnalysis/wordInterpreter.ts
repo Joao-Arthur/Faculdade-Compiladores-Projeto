@@ -14,6 +14,6 @@ export type wordInterpreter = {
         line: number
     ) => void;
     onLineEnd?: () => void;
-    onFileEnd?: () => void;
+    onFileEnd?: (line: number) => void;
     onBeforePush?: (currentWord: currentWord) => void;
 };

@@ -82,7 +82,7 @@ describe('numberInterpreter', () => {
     });
 
     it('should handle file end', () => {
-        expect(numberInterpreter.onFileEnd?.()).toEqual(undefined);
+        expect(numberInterpreter.onFileEnd?.(10)).toEqual(undefined);
     });
 
     it('should handle before push', () => {

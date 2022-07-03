@@ -1,6 +1,7 @@
 import { pipe } from 'ramda';
 import { currentWord, token } from '../types';
 import { commentInterpreter } from './commentInterpreter';
+import { UnterminatedCommentException } from './exceptions/UnterminatedCommentException';
 
 describe('commentInterpreter', () => {
     it('should verify if character matches', () => {
@@ -79,8 +80,6 @@ describe('commentInterpreter', () => {
     });
 
     it('should handle file end', () => {
-        expect(() => commentInterpreter.onFileEnd?.()).toThrow(
-            'comentário não encerrado!'
-        );
+        expect(() => commentInterpreter.onFileEnd?.(10)).toThrow(UnterminatedCommentException);
     });
 });

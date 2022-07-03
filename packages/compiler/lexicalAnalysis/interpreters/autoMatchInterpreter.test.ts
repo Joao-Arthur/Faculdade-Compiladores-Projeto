@@ -67,6 +67,6 @@ describe('autoMatchInterpreter', () => {
     });
 
     it('should handle file end', () => {
-        expect(autoMatchInterpreter.onFileEnd?.()).toEqual(undefined);
+        expect(autoMatchInterpreter.onFileEnd?.(10)).toEqual(undefined);
     });
 });

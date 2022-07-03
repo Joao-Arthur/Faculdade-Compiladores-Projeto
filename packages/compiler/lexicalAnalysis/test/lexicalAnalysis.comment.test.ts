@@ -93,12 +93,11 @@ Quis enim lobortis scelerisque fermentum.
     });
 
     it('should throw on unfinished comment', () => {
-        const source = '(*no comments so far';
-        expect(() => lexicalAnalysis(source)).toThrow(
-            'comentário não encerrado'
+        expect(() => lexicalAnalysis('(*no comments so far')).toThrow(
+            'comentário não encerrado na linha 1!'
         );
         expect(() => lexicalAnalysis('(*)')).toThrow(
-            'comentário não encerrado'
+            'comentário não encerrado na linha 1!'
         );
     });
 });

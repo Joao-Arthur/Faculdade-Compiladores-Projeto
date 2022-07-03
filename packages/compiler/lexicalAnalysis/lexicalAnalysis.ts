@@ -21,7 +21,7 @@ export function lexicalAnalysis(sourceCode: string): token[] {
                 const wordInterpreter = getInterpreter(currentWord.type);
 
                 if (isLineEnd) wordInterpreter.onLineEnd?.();
-                if (isFileEnd) wordInterpreter.onFileEnd?.();
+                if (isFileEnd) wordInterpreter.onFileEnd?.(lineIndex + 1);
                 if (
                     wordInterpreter.supportsMultiline &&
                     isLineEnd &&

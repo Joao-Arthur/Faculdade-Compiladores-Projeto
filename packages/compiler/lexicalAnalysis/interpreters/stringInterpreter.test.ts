@@ -90,7 +90,7 @@ describe('stringInterpreter', () => {
     });
 
     it('should handle file end', () => {
-        expect(stringInterpreter.onFileEnd?.()).toEqual(undefined);
+        expect(stringInterpreter.onFileEnd?.(10)).toEqual(undefined);
     });
 
     it('should handle before push', () => {

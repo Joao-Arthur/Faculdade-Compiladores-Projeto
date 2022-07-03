@@ -1,5 +1,6 @@
 import { currentWord, token } from '../types';
 import { wordInterpreter } from '../wordInterpreter';
+import { UnterminatedCommentException } from './exceptions/UnterminatedCommentException';
 
 const commentStartDelimiter = '(*' as const;
 const commentEndDelimiter = '*)' as const;
@@ -32,7 +33,7 @@ export const commentInterpreter: wordInterpreter = {
         };
     },
     addToStack: (tokens: token[], currentWord: currentWord, line: number) => {},
-    onFileEnd: () => {
-        throw new Error('comentário não encerrado!');
+    onFileEnd: (line: number) => {
+        throw new UnterminatedCommentException(line);
     }
 };

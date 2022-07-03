@@ -230,6 +230,6 @@ describe('semiAutoMatchInterpreter', () => {
     });
 
     it('should handle file end', () => {
-        expect(semiAutoMatchInterpreter.onFileEnd?.()).toEqual(undefined);
+        expect(semiAutoMatchInterpreter.onFileEnd?.(10)).toEqual(undefined);
     });
 });
