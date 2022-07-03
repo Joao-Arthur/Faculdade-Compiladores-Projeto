@@ -1,7 +1,7 @@
 import { pipe } from 'ramda';
+import { UnterminatedCommentException } from './exceptions/UnterminatedCommentException';
 import { currentWord, token } from '../types';
 import { commentInterpreter } from './commentInterpreter';
-import { UnterminatedCommentException } from './exceptions/UnterminatedCommentException';
 
 describe('commentInterpreter', () => {
     it('should verify if character matches', () => {

@@ -1,6 +1,7 @@
 import { symbols } from '../../symbols';
 import { currentWord, token } from '../types';
 import { wordInterpreter } from '../wordInterpreter';
+import { UnterminatedStringException } from './exceptions/UnterminatedStringException';
 
 const stringDelimiter = `'` as const;
 const maxLength = 256;
@@ -39,7 +40,7 @@ export const stringInterpreter: wordInterpreter = {
         });
     },
     onLineEnd: () => {
-        throw new Error('string não encerrada!');
+        throw new UnterminatedStringException();
     },
     onBeforePush: (currentWord: currentWord) => {
         if (currentWord.word.length > maxLength)
