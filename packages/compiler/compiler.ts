@@ -1,5 +1,6 @@
 import { lexicalAnalysis } from './lexicalAnalysis';
 import { token } from './lexicalAnalysis/types';
+import { semanticAnalysis } from './semanticalAnalysis';
 import { symbolsIdsType } from './symbols';
 import { syntaxAnalysis } from './syntaxAnalysis';
 
@@ -13,6 +14,7 @@ export function compile(source: string) {
             .map(token => token.id)
             .reverse() as symbolsIdsType[];
         syntaxAnalysis(tokensIds);
+        semanticAnalysis();
     } catch (compileError) {
         if (compileError instanceof Error) error = compileError.message;
     }
