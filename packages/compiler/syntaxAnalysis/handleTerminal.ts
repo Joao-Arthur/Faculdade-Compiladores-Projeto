@@ -1,11 +1,13 @@
 import { symbolsIdsType } from '../symbols';
+import { InvalidSyntaxException } from './exceptions/InvalidSyntaxException';
+import { syntaxToken } from './types';
 
 export function handleTerminal(
-    currentToken: symbolsIdsType,
+    currentToken: syntaxToken,
     currentProduction: symbolsIdsType,
-    tokens: symbolsIdsType[]
+    tokens: syntaxToken[]
 ) {
-    if (currentToken !== currentProduction)
-        throw new Error('sintaxe inválida!');
+    if (currentToken.id !== currentProduction)
+        throw new InvalidSyntaxException(currentToken.line);
     tokens.pop();
 }

@@ -37,6 +37,6 @@ begin
 end.
 `);
 
-        expect(error).toEqual('sintaxe inválida!');
+        expect(error).toEqual('sintaxe inválida na linha 2!');
     });
 });

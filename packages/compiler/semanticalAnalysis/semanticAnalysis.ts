@@ -3,7 +3,7 @@ function loadVariables(scope: object) {
 }
 
 export function semanticAnalysis() {
-    const variables: string[] = loadVariables();
+    // const variables: string[] = loadVariables();
     const scopes = [{}];
 
     for (const scope of scopes) {

@@ -7,8 +7,9 @@ import { symbolsIdsType, symbolsValues } from '../symbols';
 import { terminalOrNonTerminal } from '../types';
 import { handleNonTerminal } from './handleNonTerminal';
 import { handleTerminal } from './handleTerminal';
+import { syntaxToken } from './types';
 
-export function syntaxAnalysis(tokens: symbolsIdsType[]) {
+export function syntaxAnalysis(tokens: syntaxToken[]) {
     const syntaxStack: terminalOrNonTerminal[] = [nonTerminalSymbols.programa];
     let currentProduction = syntaxStack.pop();
     let currentToken = tokens[tokens.length - 1];

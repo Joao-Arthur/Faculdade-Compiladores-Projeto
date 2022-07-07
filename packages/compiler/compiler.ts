@@ -1,8 +1,8 @@
 import { lexicalAnalysis } from './lexicalAnalysis';
 import { token } from './lexicalAnalysis/types';
 import { semanticAnalysis } from './semanticalAnalysis';
-import { symbolsIdsType } from './symbols';
 import { syntaxAnalysis } from './syntaxAnalysis';
+import { syntaxToken } from './syntaxAnalysis/types';
 
 export function compile(source: string) {
     let tokens: token[] | undefined;
@@ -11,8 +11,8 @@ export function compile(source: string) {
     try {
         tokens = lexicalAnalysis(source);
         const tokensIds = tokens
-            .map(token => token.id)
-            .reverse() as symbolsIdsType[];
+            .map(({ id, line }) => ({ line, id }))
+            .reverse() as syntaxToken[];
         syntaxAnalysis(tokensIds);
         semanticAnalysis();
     } catch (compileError) {

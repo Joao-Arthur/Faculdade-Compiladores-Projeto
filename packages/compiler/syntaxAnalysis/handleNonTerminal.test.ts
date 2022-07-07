@@ -7,7 +7,7 @@ describe('handleNonTerminal', () => {
     it('should push found production to stack', () => {
         const syntaxStack: terminalOrNonTerminal[] = [];
         handleNonTerminal(
-            symbols.program,
+            { line: 1, id: symbols.program },
             nonTerminalSymbols.programa,
             syntaxStack
         );
@@ -23,7 +23,11 @@ describe('handleNonTerminal', () => {
 
     it('should push found production to stack', () => {
         const syntaxStack: terminalOrNonTerminal[] = [symbols['.']];
-        handleNonTerminal(symbols.begin, nonTerminalSymbols.bloco, syntaxStack);
+        handleNonTerminal(
+            { line: 1, id: symbols.begin },
+            nonTerminalSymbols.bloco,
+            syntaxStack
+        );
 
         expect(syntaxStack).toEqual([
             symbols['.'],
@@ -37,7 +41,11 @@ describe('handleNonTerminal', () => {
 
     it('should throw if production is not found', () => {
         expect(() =>
-            handleNonTerminal(symbols.label, nonTerminalSymbols.programa, [])
+            handleNonTerminal(
+                { line: 1, id: symbols.label },
+                nonTerminalSymbols.programa,
+                []
+            )
         ).toThrow();
     });
 
@@ -51,7 +59,7 @@ describe('handleNonTerminal', () => {
         ];
 
         handleNonTerminal(
-            symbols.begin,
+            { line: 1, id: symbols.begin },
             nonTerminalSymbols.declaracaoRot,
             syntaxStack
         );
