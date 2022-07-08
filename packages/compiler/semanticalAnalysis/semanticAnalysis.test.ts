@@ -7,11 +7,11 @@ describe('semanticAnalysis', () => {
     it('should verify duplicated variables', () => {
         expect(() =>
             semanticAnalysis([
-                { line: 1, word: 'program', id: symbols.var },
+                { line: 1, word: 'program', id: symbols.program },
                 {
                     line: 1,
                     word: 'DuplicatedVariablesProgram',
-                    id: symbols.program
+                    id: symbols.identificador
                 },
                 { line: 1, word: ';', id: symbols[';'] },
                 { line: 2, word: 'const', id: symbols.const },
@@ -32,8 +32,8 @@ describe('semanticAnalysis', () => {
                 { line: 7, word: ':', id: symbols[':'] },
                 { line: 7, word: 'integer', id: symbols.integer },
                 { line: 7, word: ';', id: symbols[';'] },
-                { line: 1, word: 'begin', id: symbols.var },
-                { line: 1, word: 'end', id: symbols.var }
+                { line: 1, word: 'begin', id: symbols.begin },
+                { line: 1, word: 'end', id: symbols.end }
             ])
         ).toThrow(VariableAlreadyDeclaredException);
     });
@@ -41,11 +41,11 @@ describe('semanticAnalysis', () => {
     it('should verify duplicated const', () => {
         expect(() =>
             semanticAnalysis([
-                { line: 1, word: 'program', id: symbols.var },
+                { line: 1, word: 'program', id: symbols.program },
                 {
                     line: 1,
                     word: 'DuplicatedVariablesProgram',
-                    id: symbols.program
+                    id: symbols.identificador
                 },
                 { line: 1, word: ';', id: symbols[';'] },
                 { line: 2, word: 'const', id: symbols.const },
@@ -66,8 +66,8 @@ describe('semanticAnalysis', () => {
                 { line: 7, word: ':', id: symbols[':'] },
                 { line: 7, word: 'integer', id: symbols.integer },
                 { line: 7, word: ';', id: symbols[';'] },
-                { line: 1, word: 'begin', id: symbols.var },
-                { line: 1, word: 'end', id: symbols.var }
+                { line: 1, word: 'begin', id: symbols.begin },
+                { line: 1, word: 'end', id: symbols.end }
             ])
         ).toThrow(VariableAlreadyDeclaredException);
     });
@@ -75,11 +75,11 @@ describe('semanticAnalysis', () => {
     it('should verify duplicated const and var', () => {
         expect(() =>
             semanticAnalysis([
-                { line: 1, word: 'program', id: symbols.var },
+                { line: 1, word: 'program', id: symbols.program },
                 {
                     line: 1,
                     word: 'DuplicatedVariablesProgram',
-                    id: symbols.program
+                    id: symbols.identificador
                 },
                 { line: 1, word: ';', id: symbols[';'] },
                 { line: 2, word: 'const', id: symbols.const },
@@ -100,8 +100,8 @@ describe('semanticAnalysis', () => {
                 { line: 7, word: ':', id: symbols[':'] },
                 { line: 7, word: 'integer', id: symbols.integer },
                 { line: 7, word: ';', id: symbols[';'] },
-                { line: 1, word: 'begin', id: symbols.var },
-                { line: 1, word: 'end', id: symbols.var }
+                { line: 1, word: 'begin', id: symbols.begin },
+                { line: 1, word: 'end', id: symbols.end }
             ])
         ).toThrow(VariableAlreadyDeclaredException);
     });
@@ -109,11 +109,11 @@ describe('semanticAnalysis', () => {
     it('should verify undeclared variables', () => {
         expect(() =>
             semanticAnalysis([
-                { line: 1, word: 'program', id: symbols.var },
+                { line: 1, word: 'program', id: symbols.program },
                 {
                     line: 1,
                     word: 'DuplicatedVariablesProgram',
-                    id: symbols.program
+                    id: symbols.identificador
                 },
                 { line: 1, word: ';', id: symbols[';'] },
                 { line: 2, word: 'const', id: symbols.const },
@@ -130,22 +130,22 @@ describe('semanticAnalysis', () => {
                 { line: 6, word: ':', id: symbols[':'] },
                 { line: 6, word: 'integer', id: symbols.integer },
                 { line: 6, word: ';', id: symbols[';'] },
-                { line: 1, word: 'begin', id: symbols.var },
+                { line: 1, word: 'begin', id: symbols.begin },
                 { line: 6, word: 'currentvalue', id: symbols.identificador },
                 { line: 6, word: ':=', id: symbols[':='] },
                 { line: 6, word: 'pi', id: symbols.inteiro },
                 { line: 6, word: ';', id: symbols[';'] },
-                { line: 1, word: 'end', id: symbols.var }
+                { line: 1, word: 'end', id: symbols.end }
             ])
         ).not.toThrow();
 
         expect(() =>
             semanticAnalysis([
-                { line: 1, word: 'program', id: symbols.var },
+                { line: 1, word: 'program', id: symbols.program },
                 {
                     line: 1,
                     word: 'DuplicatedVariablesProgram',
-                    id: symbols.program
+                    id: symbols.identificador
                 },
                 { line: 1, word: ';', id: symbols[';'] },
                 { line: 2, word: 'const', id: symbols.const },
@@ -162,7 +162,7 @@ describe('semanticAnalysis', () => {
                 { line: 6, word: ':', id: symbols[':'] },
                 { line: 6, word: 'integer', id: symbols.integer },
                 { line: 6, word: ';', id: symbols[';'] },
-                { line: 1, word: 'begin', id: symbols.var },
+                { line: 1, word: 'begin', id: symbols.begin },
                 { line: 6, word: 'currentvalue', id: symbols.identificador },
                 { line: 6, word: ':=', id: symbols[':='] },
                 { line: 6, word: '4', id: symbols.inteiro },
@@ -171,7 +171,7 @@ describe('semanticAnalysis', () => {
                 { line: 6, word: ':=', id: symbols[':='] },
                 { line: 6, word: 'oldvalue', id: symbols.identificador },
                 { line: 6, word: ';', id: symbols[';'] },
-                { line: 1, word: 'end', id: symbols.var }
+                { line: 1, word: 'end', id: symbols.end }
             ])
         ).toThrow(VariableNotInScopeException);
     });
@@ -179,11 +179,11 @@ describe('semanticAnalysis', () => {
     it('should verify duplicated variables between scopes', () => {
         expect(() =>
             semanticAnalysis([
-                { line: 1, word: 'program', id: symbols.var },
+                { line: 1, word: 'program', id: symbols.program },
                 {
                     line: 1,
                     word: 'DuplicatedVariablesProgram',
-                    id: symbols.program
+                    id: symbols.identificador
                 },
                 { line: 1, word: ';', id: symbols[';'] },
                 { line: 2, word: 'const', id: symbols.const },
@@ -216,12 +216,8 @@ describe('semanticAnalysis', () => {
                 { line: 6, word: ':', id: symbols[':'] },
                 { line: 6, word: 'integer', id: symbols.integer },
                 { line: 6, word: ';', id: symbols[';'] },
-                { line: 7, word: 'currentvalue', id: symbols.identificador },
-                { line: 7, word: ':', id: symbols[':'] },
-                { line: 7, word: 'integer', id: symbols.integer },
-                { line: 7, word: ';', id: symbols[';'] },
-                { line: 8, word: 'begin', id: symbols.var },
-                { line: 8, word: 'end', id: symbols.var }
+                { line: 8, word: 'begin', id: symbols.begin },
+                { line: 8, word: 'end', id: symbols.end }
             ])
         ).not.toThrow();
     });
