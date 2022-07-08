@@ -14,7 +14,7 @@ export function compile(source: string) {
             .map(({ id, line }) => ({ line, id }))
             .reverse() as syntaxToken[];
         syntaxAnalysis(tokensIds);
-        semanticAnalysis();
+        semanticAnalysis(tokens);
     } catch (compileError) {
         if (compileError instanceof Error) error = compileError.message;
     }

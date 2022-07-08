@@ -1,9 +1,10 @@
+import { token } from '../lexicalAnalysis/types';
+
 function loadVariables(scope: object) {
     return [''];
 }
 
-export function semanticAnalysis() {
-    // const variables: string[] = loadVariables();
+export function semanticAnalysis(tokens: token[]) {
     const scopes = [{}];
 
     for (const scope of scopes) {

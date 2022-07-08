@@ -7,16 +7,16 @@ describe('lexicalAnalysis', () => {
 program ProcedureCallProgram;
 const
   NUMBERVALUE = 2398;
-procedure PrintValue;
-const
-  MINVALUE = 1234;
-var
-  CurrentValue: integer;
-begin 
-  writeln('== Before: ', CurrentValue);
-  CurrentValue := (MINVALUE + NUMBERVALUE / 28 + 9) * 2;
-  writeln('== After: ', CurrentValue);
-end;
+  procedure PrintValue;
+  const
+    MINVALUE = 1234;
+  var
+    CurrentValue: integer;
+  begin 
+    writeln('== Before: ', CurrentValue);
+    CurrentValue := (MINVALUE + NUMBERVALUE / 28 + 9) * 2;
+    writeln('== After: ', CurrentValue);
+  end;
 begin
   call PrintValue;
 end.
