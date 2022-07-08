@@ -14,16 +14,54 @@ export function semanticAnalysis(tokens: token[]) {
     let level = 0;
     let isLoadingVariables = false;
     let isVerifyingVariables = false;
+    let isLoadingProcedureName = false;
+
     for (const currentToken of tokens) {
+        console.log(variables);
+
         if (
             currentToken.id === symbols.var ||
             currentToken.id === symbols.const
         ) {
             isLoadingVariables = true;
             isVerifyingVariables = false;
+            continue;
+        }
+
+        if (currentToken.id === symbols.procedure) {
+            isLoadingVariables = false;
+            isVerifyingVariables = false;
+            isLoadingProcedureName = true;
             level++;
             continue;
         }
+
+        if (
+            isLoadingProcedureName &&
+            currentToken.id === symbols.identificador
+        ) {
+            console.log(
+                'iurhgfewurghtrwiuphrtiughrwpiuhgripuhgrewphiureghpiutrhpiutrghpiwreu'
+            );
+            const foundVariable = variables.find(
+                variable => variable.name === currentToken.word
+            );
+            if (foundVariable && foundVariable.level === level) {
+                throw new VariableAlreadyDeclaredException(currentToken.word);
+            } else {
+                variables.push({ name: currentToken.word, level: level - 1 });
+            }
+            isLoadingProcedureName = false;
+            continue;
+        }
+
+        if (currentToken.id === symbols.program) {
+            isLoadingVariables = false;
+            isVerifyingVariables = false;
+            level++;
+            continue;
+        }
+
         if (currentToken.id === symbols.begin) {
             isLoadingVariables = false;
             isVerifyingVariables = true;
@@ -47,7 +85,8 @@ export function semanticAnalysis(tokens: token[]) {
                 } else {
                     variables.push({ name: currentToken.word, level });
                 }
-            } else continue;
+            }
+            continue;
         }
 
         if (isVerifyingVariables) {
